@@ -1,8 +1,13 @@
+import { Nav, Icon, FixedContainer } from './style';
+
 function SideNav() {
 	return (
-		<nav>
-		
-		</nav>
+		<Nav>
+			<FixedContainer>
+				<Icon />
+				<Icon />
+			</FixedContainer>
+		</Nav>
 	)
 } 
 

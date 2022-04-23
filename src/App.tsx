@@ -1,38 +1,12 @@
 import React from 'react';
 import { GlobalStyle } from './styles';
+import Routes from './Router';
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
-
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-      <h1> Hello </h1>
-
+      <Routes />
     </div>
   );
 }

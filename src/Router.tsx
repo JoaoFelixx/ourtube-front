@@ -1,10 +1,20 @@
 import React from 'react';
+import {
+  Route,
+  Routes,
+  Navigate,
+  BrowserRouter,
+} from 'react-router-dom';
+import { HomePage } from './pages';
 
 function Router() {
   return (
-    <div>
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
