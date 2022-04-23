@@ -3,6 +3,7 @@ import {
 	Videos,
 	SideNav,
 	SearchBar,
+	PopularWords,
 } from '../../components';
 
 function Home() {
@@ -11,6 +12,7 @@ function Home() {
 			<Grid>
 				<SideNav />
 				<SearchBar />
+				<PopularWords />
 				<Videos />
 			</Grid>
 		</div>

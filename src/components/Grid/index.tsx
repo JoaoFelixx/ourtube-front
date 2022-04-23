@@ -4,7 +4,7 @@ const Grid = styled.div`
 	display: Grid;
 	grid-template-columns: 1fr 9fr;
 	grid-template-rows: auto auto auto auto;
-	grid-template-areas: "searchBar searchBar"
+	grid-template-areas: "sideNav searchBar"
 											 "sideNav 	popWords"
 											 "sideNav 	videos"
 											 "sideNav 	videos"
