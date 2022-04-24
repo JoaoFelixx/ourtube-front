@@ -1,4 +1,5 @@
 import {
+	Ad,
 	Grid,
 	Videos,
 	SideNav,
@@ -13,6 +14,7 @@ function Home() {
 				<SideNav />
 				<SearchBar />
 				<PopularWords />
+				<Ad />
 				<Videos />
 			</Grid>
 		</div>
