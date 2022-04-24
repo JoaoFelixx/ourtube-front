@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Card = styled.div` 
 	grid-area: advertising;
-	width: 100%;
 	height: 200px;
 	background-color: black;
 	color: #fff;
@@ -11,10 +10,10 @@ const Card = styled.div`
 `;
 
 const Div = styled.div` 
-	width: 48%;
+	width: auto;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 `;
 
 const Text = styled.h3`

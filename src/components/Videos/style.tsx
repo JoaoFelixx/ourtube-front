@@ -5,7 +5,8 @@ const Card = styled.div`
 	display: flex;
 	flex-flow: row wrap;
 	align-content: center;
-
+	padding: 6px;
+	justify-content: space-between;
 	@media (max-width: 768px) {
 		flex-flow: column wrap;
 	}
@@ -14,7 +15,6 @@ const Card = styled.div`
 const Video = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin: 4px;
 	width: 32%;
 	height: 300px;
 	border 1px solid #ACB0B0;

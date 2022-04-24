@@ -11,17 +11,16 @@ function Ad() {
 			<Div>
 				<Image src="https://felixflix.netlify.app/img/phone.png" alt="ad"/>
 				<Text>
-					Where does it come from?	chunk of Lorem Ipsum used since the 1500s 
-					is reproduced below for those interested. Sections 1.10.32 and 1.10.33
-					from "de Finibus Bonorum et Malorum"
-				</Text>
-			</Div>
-			<Div>
-				<Image src="https://felixflix.netlify.app/img/phone.png" alt="ad"/>
-				<Text>
-					Where does it come from?	chunk of Lorem Ipsum used since the 1500s 
-					is reproduced below for those interested. Sections 1.10.32 and 1.10.33
-					from "de Finibus Bonorum et Malorum"
+					P
+					R
+					O
+					P
+					A
+					G
+					A
+					N
+					D
+					A
 				</Text>
 			</Div>
 		</Card>
