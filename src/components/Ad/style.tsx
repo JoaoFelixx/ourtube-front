@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Card = styled.div` 
 	grid-area: advertising;
+	margin: 6px;
 	height: 200px;
 	background-color: black;
 	color: #fff;

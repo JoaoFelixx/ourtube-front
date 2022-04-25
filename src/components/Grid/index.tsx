@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Grid = styled.div` 
 	display: Grid;
-	grid-template-columns: 1fr 11fr;
+	grid-template-columns: 1fr 15fr;
 	grid-template-rows: auto auto auto auto;
 	grid-template-areas: "sideNav searchBar"
 											 "sideNav popWords"

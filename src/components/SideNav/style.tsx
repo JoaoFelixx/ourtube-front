@@ -19,7 +19,19 @@ const FixedContainer = styled.div`
 	width: auto;
 `; 
 
+const Icon = styled.div`
+	text-align: center;
+	transition: 1s;
+	padding: 6px;
+	font-size: 12px;
+
+	&:hover {
+		background-color: red;
+	}
+`;
+
 export {
 	Nav,
+	Icon,
 	FixedContainer,
 }
