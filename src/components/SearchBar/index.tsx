@@ -2,9 +2,11 @@ import { GiMagnifyingGlass } from 'react-icons/gi';
 import { BiUserCircle } from 'react-icons/bi'
 import { 
 	Nav, 
-	Div,
 	Logo,
 	Search,
+	CardLogo,
+	CardLogin,
+	SearchCard,
 	LoginButton,
 	SearchButton,
 } from './style';
@@ -13,19 +15,19 @@ function SearchBar() {
 	return (
 		<>
 			<Nav>
-				<Div style={{ width: '22%' }} >
+				<CardLogo>
 					<Logo src="./img/ourtube-logo.png" alt="Logo" />
-				</Div>
-				<Div style={{ width: '45%' }}>
+				</CardLogo>
+				<SearchCard>
 					<Search type="sarch" placeholder="Pesquisar" />
 					<SearchButton type="submit"><GiMagnifyingGlass /></SearchButton>
-				</Div>
-				<Div style={{ justifyContent: 'end', width: '28%' }}>
+				</SearchCard>
+				<CardLogin>
 					<LoginButton> 
 						<BiUserCircle color='#5A95E3' /> 
 						<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p> 
 					</LoginButton>
-				</Div>
+				</CardLogin>
 			</Nav>
 		</>
 	)

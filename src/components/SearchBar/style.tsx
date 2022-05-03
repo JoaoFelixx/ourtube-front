@@ -14,21 +14,13 @@ const Nav = styled.nav`
 
 const Logo = styled.img` 
 	width: 150px;
-
+	cursor: pointer;
 `; 
 
 const Search = styled.input` 
 	width: 100%;
 	padding: 0 10px 0 10px;
 	font-size: 16px;
-`;
-
-const Div = styled.div`
-	display: flex;
-
-	@media (max-width: 768px) {
-		display: none;
-	}
 `;
 
 const LoginButton = styled.button` 
@@ -40,17 +32,49 @@ const LoginButton = styled.button`
 	background-color: #fff;
 	font-size: 15px;
 	font-weight: bold;
+	cursor: pointer;
 `;
 
 const SearchButton = styled.button`
 	padding: 0 10px 0 10px;
+	cursor: pointer;
+`;
+
+const CardLogo = styled.div`
+	display: flex;
+	width: 22%;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+`;
+
+const SearchCard = styled.div`
+	display: flex;
+	width: 45%;
+
+	@media (max-width: 768px) {
+		width: 96%;
+	}
+`; 
+
+const CardLogin = styled.div`
+	display: flex;
+	justify-content: end;
+	width: 28%;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 export {
 	Nav,
-	Div,
 	Logo,
 	Search,
+	CardLogo,
+	CardLogin,
+	SearchCard,
 	LoginButton,
 	SearchButton,
 }

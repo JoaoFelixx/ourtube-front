@@ -19,19 +19,27 @@ const FixedContainer = styled.div`
 	width: auto;
 `; 
 
-const Icon = styled.div`
+const Div = styled.div`
 	text-align: center;
-	transition: 1s;
-	padding: 6px;
+	padding: 10px 15px 20px;
 	font-size: 12px;
+	cursor: pointer;
+	transition: 1s;
 
 	&:hover {
-		background-color: red;
+		background-color: #C3C7C7;	
 	}
+`;
+
+const Menu = styled.div`
+	text-align: center;
+	font-size: 12px;
+	cursor: pointer;
 `;
 
 export {
 	Nav,
-	Icon,
+	Div,
+	Menu,
 	FixedContainer,
 }

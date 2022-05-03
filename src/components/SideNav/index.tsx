@@ -1,4 +1,4 @@
-import { Nav, Icon ,FixedContainer } from './style';
+import { Nav, Div, Menu, FixedContainer } from './style';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { FaRegCompass } from 'react-icons/fa';
 import { FiYoutube } from 'react-icons/fi';
@@ -10,34 +10,33 @@ function SideNav() {
 		<Nav>
 			<FixedContainer>
 				<br />
-				<Icon>
+				<Menu>
 					<AiOutlineMenu size="26px"/>
-				</Icon> <br/>
-				<Icon>
+				</Menu><br/>
+				<Div>
 					<AiFillHome size="24px"/><br />
 					Inicio
-				</Icon> <br/>
-				<Icon>
+				</Div>
+				<Div>
 					<FaRegCompass size="24px"/><br />
 					Explorar
-				</Icon> <br />
-				<Icon>
+				</Div>
+				<Div>
 					<FiYoutube size="24px"/><br />
 					Shorts
-				</Icon> <br />
-				<Icon>
+				</Div>
+				<Div>
 					<BsCollectionPlayFill size="24px"/><br />
 					Inscrições
-				</Icon> <br />
-				<Icon>
+				</Div>
+				<Div>
 					<MdVideoLibrary size="28px"/><br />
 					Biblioteca
-				</Icon> <br />
-				<Icon>
+				</Div>
+				<Div>
 					<MdHistory size="30px"/><br />
 					Histórico
-				</Icon> <br />
-				
+				</Div>
 			</FixedContainer>
 		</Nav>
 	)

@@ -6,6 +6,10 @@ const Card = styled.div`
 	align-content: center;
 	height: 30px;
 	padding: 6px;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 const Words = styled.p`

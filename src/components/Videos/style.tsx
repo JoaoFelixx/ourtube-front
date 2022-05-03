@@ -20,7 +20,10 @@ const Video = styled.div`
 	border 1px solid #ACB0B0;
 	cursor: pointer;
 
-	@media (max-width: 768px) { width: 98%; }
+	@media (max-width: 768px) { 
+		width: 100%; 
+		height: auto; 
+	}
 `;
 
 const Description = styled.div` 
@@ -29,7 +32,7 @@ const Description = styled.div`
 	align-items: center;
 `; 
 
-const Preview = styled.img`
+const Preview = styled.video`
 	width: 100%;
 	margin-bottom: 10px;
 `;

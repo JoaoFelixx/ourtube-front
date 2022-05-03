@@ -9,7 +9,7 @@ function Ad() {
 	return (
 		<Card>
 			<Div>
-				<Image src="https://felixflix.netlify.app/img/phone.png" alt="ad"/>
+				<Image src="./img/felixflix.png" alt="ad"/>
 				<Text>
 					P
 					R

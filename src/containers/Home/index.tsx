@@ -11,7 +11,7 @@ function Home() {
 	return (
 		<div>
 			<Grid>
-				<SideNav />
+				<SideNav /><br />
 				<SearchBar />
 				<PopularWords />
 				<Ad />
