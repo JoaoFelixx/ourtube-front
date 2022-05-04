@@ -14,20 +14,12 @@ interface VideosData {
 	_id: string;
 	createdAt: Date;
 	mimetype: string;
-	preview_src: string;
+	photo_id:  string;
 	updatedAt: Date;
 }
 
-const initialState = {
-	_id: '',
-	createdAt: new Date(),
-	mimetype: '',
-	preview_src: '',
-	updatedAt: new Date(),
-}
-
 function Videos() {
-	const [videos, setVideos] = useState<VideosData[]>([initialState]);
+	const [videos, setVideos] = useState<VideosData[] | null>(null);
 
 	useEffect(() => {
 		(async () => {
@@ -35,6 +27,8 @@ function Videos() {
 				const { data } = await api.get<VideosData[]>('/videos');
 
 				setVideos(data);
+
+				console.log(data)
 
 			} catch (err) {
 				console.error(err)
@@ -45,10 +39,10 @@ function Videos() {
 	return (
 		<Card>
 			{React.Children.toArray(
-				videos.map(({ _id, mimetype }) => {
+				Array.isArray(videos) && videos.map(({ _id, mimetype, photo_id }) => {
 					return (
 						<Video> 
-							<Preview controls>
+							<Preview poster={`http://localhost:4545/api/v1/files/${photo_id}`} loop controls>
 							  <source src={`http://localhost:4545/api/v1/files/${_id}`} type={mimetype} />
 							</Preview>
 							<Description>
