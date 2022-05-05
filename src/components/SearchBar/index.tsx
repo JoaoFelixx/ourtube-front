@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { BiUserCircle } from 'react-icons/bi'
 import { 
@@ -23,10 +24,12 @@ function SearchBar() {
 					<SearchButton type="submit"><GiMagnifyingGlass /></SearchButton>
 				</SearchCard>
 				<CardLogin>
-					<LoginButton> 
-						<BiUserCircle color='#5A95E3' /> 
-						<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p> 
-					</LoginButton>
+					<Link to="/login">
+						<LoginButton> 
+							<BiUserCircle color='#5A95E3' /> 
+							<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p> 
+						</LoginButton>
+					</Link>	
 				</CardLogin>
 			</Nav>
 		</>

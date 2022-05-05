@@ -1,11 +1,7 @@
-import {
-	Home,
-} from '../../containers';
+import { Home } from '../../containers';
 
-function HomePage() {
+export function HomePage() {
 	return (
 		<Home />
 	)
 }
-
-export default HomePage;

@@ -5,13 +5,14 @@ import {
   Navigate,
   BrowserRouter,
 } from 'react-router-dom';
-import { HomePage } from './pages';
+import { HomePage, LoginPage } from './pages';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,9 @@ import Grid from './Grid';
 import Videos from './Videos';
 import SideNav from './SideNav';
 import SearchBar from './SearchBar';
+import { FormLogin } from './forms';
 import PopularWords from './PopularWords';
+
 
 export {
 	Ad,
@@ -11,5 +13,6 @@ export {
 	Videos,
 	SideNav,
 	SearchBar,
+	FormLogin,
 	PopularWords,
 }

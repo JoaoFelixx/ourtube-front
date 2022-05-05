@@ -7,7 +7,7 @@ import {
 	PopularWords,
 } from '../../components';
 
-function Home() {
+export function Home() {
 	return (
 		<div>
 			<Grid>
@@ -20,5 +20,3 @@ function Home() {
 		</div>
 	)
 }
-
-export default Home;
