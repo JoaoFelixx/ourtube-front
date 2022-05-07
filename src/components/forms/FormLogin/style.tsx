@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Color {
+	color: string;
+}
+
 const Card = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -11,29 +15,39 @@ const Card = styled.div`
 		display: flex;
 		flex-direction: column;
 		width: 400px;
-		height: 400px;
+		height: auto;
 		padding: 6px;
-		background-color: red;
+		border: 4px solid;
+		border-image: linear-gradient(270deg, #000, #019AFA 100%) 1;
 	}
 
-	label {
-		color: #fff;
-	}
-
-	h1 {
-		color: #fff;
-		text-align: center;
-	}
-
-	div {
-		display: block;
-	}
-
-	button {
+	input {
+		border: none;
 		font-size: 1em;
-		width: 25%;
-		float: right;
+		border-bottom: 1px solid #000;
+	}
+
+	img {
+		width: 80px;
+	}
+
+	div.top {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 `;
 
-export { Card, }
+const Button = styled.button<Color>` 
+	font-size: 1em;
+	padding: 6px;
+	color: #fff;
+	background-color: ${props => props.color};
+	width: 25%;
+	float: right;
+	cursor: pointer;
+	border: none;
+	margin: 1px;
+`;
+
+export { Card, Button }
