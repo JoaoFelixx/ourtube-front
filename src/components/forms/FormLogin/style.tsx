@@ -4,6 +4,10 @@ interface Color {
 	color: string;
 }
 
+interface InputHasError {
+	hasError?: boolean;
+}
+
 const Card = styled.div`
   background-image: url('./img/fireworks.jpg');
   background-attachment: fixed;
@@ -36,17 +40,6 @@ const Card = styled.div`
 		font-size: 16px;
 	}
 
-	input {
-		border: none;
-		font-size: 18px;
-		border-bottom: 1px solid #000;
-		background-color: transparent;
-		&:focus {
-			box-shadow: 0 0 0 0;
-			outline: 0;
-		}
-	}
-
 	img {
 		width: 80px;
 	}
@@ -70,4 +63,15 @@ const Button = styled.button<Color>`
 	margin: 1px;
 `;
 
-export { Card, Button }
+const Input = styled.input<InputHasError>` 
+	border: none;
+	font-size: 18px;
+	border-bottom: 2px solid ${props => props.hasError ? '#ff0000' : '#000'};
+	background-color: transparent;
+	&:focus {
+		box-shadow: 0 0 0 0;
+		outline: 0;
+	}
+`;
+
+export { Card, Input, Button }

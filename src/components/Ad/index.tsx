@@ -4,13 +4,12 @@ import {
 	Card,
 	Image,
 } from './style';
-import felixflix from '../../assets/felixflix.png';
 
 function Ad() {
 	return (
 		<Card>
 			<Div>
-				<Image src={felixflix} alt="ad" />
+				<Image src="./img/felixflix.png" alt="ad" />
 				<Text>
 					P
 					R

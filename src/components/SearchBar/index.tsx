@@ -11,8 +11,11 @@ import {
 	LoginButton,
 	SearchButton,
 } from './style';
+import { useSelectorAuth } from 'Context/AuthProvider';
 
 function SearchBar() {
+	const { authenticated } = useSelectorAuth();
+
 	return (
 		<>
 			<Nav>
@@ -24,12 +27,14 @@ function SearchBar() {
 					<SearchButton type="submit"><GiMagnifyingGlass /></SearchButton>
 				</SearchCard>
 				<CardLogin>
+				{!authenticated && 
 					<Link to="/login">
 						<LoginButton>
 							<BiUserCircle color='#5A95E3' />
 							<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p>
 						</LoginButton>
 					</Link>
+				}
 				</CardLogin>
 			</Nav>
 		</>

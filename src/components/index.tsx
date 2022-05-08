@@ -5,7 +5,7 @@ import SideNav from './SideNav';
 import SearchBar from './SearchBar';
 import { FormLogin } from './forms';
 import PopularWords from './PopularWords';
-
+import { ShowVideo } from './ShowVideo';
 
 export {
 	Ad,
@@ -14,5 +14,6 @@ export {
 	SideNav,
 	SearchBar,
 	FormLogin,
+	ShowVideo,
 	PopularWords,
 }

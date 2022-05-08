@@ -1,13 +1,32 @@
 import { IconContext } from "react-icons";
 import { GlobalStyle } from 'styles';
-import Routes from './Router';
+import { ToastContainer } from 'react-toastify';
+import Routes from 'Router';
+import { AuthProvider } from 'Context/AuthProvider';
+import { VideosProvider } from 'Context/VideosProvider';
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover />
       <IconContext.Provider value={{ color: "#000", className: "global-class-name", size: '26px' }}>
-        <Routes />
+        <AuthProvider>
+          <VideosProvider>
+            <Routes />
+          </VideosProvider>
+        </AuthProvider>
       </IconContext.Provider>
     </div>
   );
