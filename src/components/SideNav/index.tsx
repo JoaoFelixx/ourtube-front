@@ -11,35 +11,35 @@ function SideNav() {
 			<FixedContainer>
 				<br />
 				<Menu>
-					<AiOutlineMenu size="26px"/>
-				</Menu><br/>
+					<AiOutlineMenu size="26px" />
+				</Menu><br />
 				<Div>
-					<AiFillHome size="24px"/><br />
+					<AiFillHome size="24px" /><br />
 					Inicio
 				</Div>
 				<Div>
-					<FaRegCompass size="24px"/><br />
+					<FaRegCompass size="24px" /><br />
 					Explorar
 				</Div>
 				<Div>
-					<FiYoutube size="24px"/><br />
+					<FiYoutube size="24px" /><br />
 					Shorts
 				</Div>
 				<Div>
-					<BsCollectionPlayFill size="24px"/><br />
+					<BsCollectionPlayFill size="24px" /><br />
 					Inscrições
 				</Div>
 				<Div>
-					<MdVideoLibrary size="28px"/><br />
+					<MdVideoLibrary size="28px" /><br />
 					Biblioteca
 				</Div>
 				<Div>
-					<MdHistory size="30px"/><br />
+					<MdHistory size="30px" /><br />
 					Histórico
 				</Div>
 			</FixedContainer>
 		</Nav>
 	)
-} 
+}
 
 export default SideNav;

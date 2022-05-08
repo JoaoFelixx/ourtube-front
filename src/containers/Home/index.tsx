@@ -5,7 +5,7 @@ import {
 	SideNav,
 	SearchBar,
 	PopularWords,
-} from '../../components';
+} from 'components';
 
 export function Home() {
 	return (

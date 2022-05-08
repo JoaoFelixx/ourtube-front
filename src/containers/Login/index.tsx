@@ -1,4 +1,4 @@
-import { FormLogin } from '../../components';
+import { FormLogin } from 'components';
 
 export function Login() {
 	return (

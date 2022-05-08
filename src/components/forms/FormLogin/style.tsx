@@ -5,26 +5,46 @@ interface Color {
 }
 
 const Card = styled.div`
+  background-image: url('./img/fireworks.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
+
 	form {
 		display: flex;
 		flex-direction: column;
 		width: 400px;
-		height: auto;
 		padding: 6px;
 		border: 4px solid;
-		border-image: linear-gradient(270deg, #000, #019AFA 100%) 1;
+		border-image: linear-gradient(270deg, #fff, #019AFA 100%) 1;
+		background-color: rgb(255,255,255,0.9);
+
+		@media (max-width: 500px) {
+			width: 94%;
+		}
+	}
+
+	label {
+		font-size: 16px;
 	}
 
 	input {
 		border: none;
-		font-size: 1em;
+		font-size: 18px;
 		border-bottom: 1px solid #000;
+		background-color: transparent;
+		&:focus {
+			box-shadow: 0 0 0 0;
+			outline: 0;
+		}
 	}
 
 	img {

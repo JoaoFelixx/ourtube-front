@@ -1,20 +1,39 @@
+import React, { useState } from 'react';
 import { Card, Button } from './style';
 
 export function FormLogin () {
+	const [email, setEmail] = useState<string | null>(null);
+	const [password, setPassword] = useState<string | null>(null)
+
+	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		console.log(email);
+		console.log(password);
+	}
+
 	return (
 		<Card>
-			<form>
+			<form onSubmit={onSubmit} >
 				<div className="top">
-					<img src="./img/icon.svg" alt="Icon ourtube"/> 
 					<h1>Fazer Login</h1>
+					<img src="./img/icon.svg" alt="Icon ourtube"/> 
 				</div>
 				<label>Email</label>
-				<input type="email" placeholder="email"/><br/>
+				<input 
+					type="email" 
+					required
+					onChange={(event) => setEmail(event.target.value)}
+					placeholder="username@user.com" /><br/><br/>
 				<label>Senha</label>
-				<input type="password" placeholder="*******"/><br />
+				<input 
+					type="password"
+					required
+					onChange={(event) => setPassword(event.target.value)} 
+					placeholder="*******"/><br /><br/>
 				<div className="buttons">
-					<Button color='#ff0000'>Cancelar</Button>
-					<Button color='#019AFA'>Enviar</Button>
+					<Button type="submit" color='#ff0000'>Cancelar</Button>
+					<Button type="reset" color='#019AFA'>Enviar</Button>
 				</div>
 			</form>
 		</Card>

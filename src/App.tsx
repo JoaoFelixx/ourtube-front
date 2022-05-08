@@ -1,6 +1,5 @@
-import React from 'react';
 import { IconContext } from "react-icons";
-import { GlobalStyle } from './styles';
+import { GlobalStyle } from 'styles';
 import Routes from './Router';
 
 function App() {

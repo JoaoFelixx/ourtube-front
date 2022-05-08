@@ -1,7 +1,4 @@
-import { 
-	Card,
-	Words, 
-} from './style'
+import { Card, Words, } from './style'
 
 function PopularWords() {
 	return (

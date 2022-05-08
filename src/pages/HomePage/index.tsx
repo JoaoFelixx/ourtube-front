@@ -1,4 +1,4 @@
-import { Home } from '../../containers';
+import { Home } from 'containers';
 
 export function HomePage() {
 	return (

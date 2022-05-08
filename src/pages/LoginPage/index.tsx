@@ -1,4 +1,4 @@
-import { Login } from '../../containers';
+import { Login } from 'containers';
 
 export function LoginPage() {
 	return (
