@@ -13,7 +13,7 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.img` 
-	width: 150px;
+	width: 10em;
 	cursor: pointer;
 `; 
 

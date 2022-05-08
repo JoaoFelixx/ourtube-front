@@ -1,8 +1,8 @@
 import {
 	Ad,
-	Grid,
 	Videos,
 	SideNav,
+	GridHome,
 	SearchBar,
 	PopularWords,
 } from 'components';
@@ -10,13 +10,13 @@ import {
 export function Home() {
 	return (
 		<div>
-			<Grid>
+			<GridHome>
 				<SideNav /><br />
 				<SearchBar />
 				<PopularWords />
 				<Ad />
 				<Videos />
-			</Grid>
+			</GridHome>
 		</div>
 	)
 }

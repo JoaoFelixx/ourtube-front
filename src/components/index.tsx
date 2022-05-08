@@ -1,19 +1,24 @@
 import Ad from './Ad';
-import Grid from './Grid';
 import Videos from './Videos';
 import SideNav from './SideNav';
 import SearchBar from './SearchBar';
+import { Comments } from './Comments';
 import { FormLogin } from './forms';
-import PopularWords from './PopularWords';
 import { ShowVideo } from './ShowVideo';
+import { ListVideos } from './lists';
+import PopularWords from './PopularWords';
+import { GridHome, GridVideos } from './Grids';
 
 export {
 	Ad,
-	Grid,
 	Videos,
 	SideNav,
+	GridHome,
+	Comments, 
 	SearchBar,
 	FormLogin,
 	ShowVideo,
+	GridVideos,
+	ListVideos,
 	PopularWords,
 }

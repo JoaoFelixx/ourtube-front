@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-const Card = styled.div`
-	width: 100vw;
-	height: auto;
-	background-color: red; 
-
-	video {
-		width: 60%;
-	}
+const Video = styled.video`
+	width: 100%;
 `;
 
-export { Card, }
+const Card = styled.div` 
+	grid-area: video;
+`;
+
+export { Video, Card };

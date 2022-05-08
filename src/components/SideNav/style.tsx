@@ -21,14 +21,9 @@ const FixedContainer = styled.div`
 
 const Div = styled.div`
 	text-align: center;
-	padding: 10px 15px 20px;
-	font-size: 12px;
+	font-size: 1em;
 	cursor: pointer;
-	transition: 1s;
-
-	&:hover {
-		background-color: #C3C7C7;	
-	}
+	padding: 15px 0;
 `;
 
 const Menu = styled.div`

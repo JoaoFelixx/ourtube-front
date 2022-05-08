@@ -15,7 +15,8 @@ const Card = styled.div`
 const Video = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 32%;
+	flex-wrap: wrap;
+	flex-basis: 32%;
 	height: 300px;
 	border 1px solid #ACB0B0;
 	cursor: pointer;

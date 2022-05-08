@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Grid = styled.div` 
+export const GridHome = styled.div` 
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 15fr;
@@ -21,5 +21,3 @@ const Grid = styled.div`
 												 "videos";
 	} 
 `; 
-
-export default Grid;

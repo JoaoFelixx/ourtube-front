@@ -12,15 +12,17 @@ import {
 	SearchButton,
 } from './style';
 import { useSelectorAuth } from 'Context/AuthProvider';
+const ourtube = require('../../assets/ourtube-logo.png');
 
 function SearchBar() {
 	const { authenticated } = useSelectorAuth();
 
 	return (
-		<>
 			<Nav>
 				<CardLogo>
-					<Logo src="./img/ourtube-logo.png" alt="Logo" />
+					<Link to="/">
+						<Logo src={ourtube} alt="Logo" />
+					</Link>
 				</CardLogo>
 				<SearchCard>
 					<Search type="sarch" placeholder="Pesquisar" />
@@ -37,7 +39,6 @@ function SearchBar() {
 				}
 				</CardLogin>
 			</Nav>
-		</>
 	)
 }
 

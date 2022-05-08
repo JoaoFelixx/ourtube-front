@@ -1,7 +1,20 @@
-import { ShowVideo } from 'components';
+import {
+	Comments,
+	ShowVideo,
+	SearchBar,
+	ListVideos,
+	GridVideos,
+} from 'components';
 
 export function ShowVideos() {
 	return (
-		<ShowVideo />
+		<div>
+			<GridVideos>
+				<SearchBar />
+				<ListVideos />
+				<ShowVideo />
+				<Comments />
+			</GridVideos>
+		</div>
 	)
 }
