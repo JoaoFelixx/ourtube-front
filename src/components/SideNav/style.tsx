@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-	grid-area: sideNav;
+	padding: 0 3em;
 	display: flex;
 	justify-content: center;
 	justify-items: center;

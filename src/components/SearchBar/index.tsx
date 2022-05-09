@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CgMenuGridR } from 'react-icons/cg';
+import { BiUserCircle } from 'react-icons/bi';
+import { TiSocialYoutube } from 'react-icons/ti';
 import { GiMagnifyingGlass } from 'react-icons/gi';
-import { BiUserCircle } from 'react-icons/bi'
 import {
 	Nav,
 	Logo,
+	Modal,
 	Search,
 	CardLogo,
 	CardLogin,
@@ -15,6 +19,7 @@ import { useSelectorAuth } from 'Context/AuthProvider';
 const ourtube = require('../../assets/ourtube-logo.png');
 
 function SearchBar() {
+	const [showModal, setShowModal] = useState<boolean>(false);
 	const { authenticated } = useSelectorAuth();
 
 	return (
@@ -29,7 +34,11 @@ function SearchBar() {
 					<SearchButton type="submit"><GiMagnifyingGlass /></SearchButton>
 				</SearchCard>
 				<CardLogin>
-				{!authenticated && 
+				{showModal && 
+					<Modal>
+						<TiSocialYoutube />Canal
+					</Modal>}
+				{authenticated ? <CgMenuGridR style={{ cursor: 'pointer' }} onClick={() => setShowModal(!showModal)}/> : 
 					<Link to="/login">
 						<LoginButton>
 							<BiUserCircle color='#5A95E3' />

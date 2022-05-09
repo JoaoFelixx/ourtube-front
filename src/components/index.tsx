@@ -7,7 +7,7 @@ import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
 import { ListVideos } from './lists';
 import PopularWords from './PopularWords';
-import { GridHome, GridVideos } from './Grids';
+import { GridHome, GridVideos, GridMyChannel } from './Grids';
 
 export {
 	Ad,

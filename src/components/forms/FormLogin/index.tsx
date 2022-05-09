@@ -4,6 +4,7 @@ import { Card, Input, Button } from './style';
 import { useSelectorAuth } from 'Context/AuthProvider';
 import { api } from 'service';
 import { toast } from 'react-toastify';
+const ourtube = require('../../../assets/icon.png');
 
 export function FormLogin () {
 	const [email, setEmail] = useState<string | null>(null);
@@ -34,9 +35,9 @@ export function FormLogin () {
 		<Card>
 			<form onSubmit={onSubmit} >
 				<div className="top">
-					<h1>Fazer Login</h1>
-					<img src="./img/icon.svg" alt="Icon ourtube"/> 
-				</div>
+					<img src={ourtube} alt="Icon ourtube"/> 
+					<h1 style={{ marginLeft: '4px' }}>Fazer Login</h1>
+				</div><br/>
 				<label>Email</label>
 				<Input 
 					type="email" 

@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import {
 	Ad,
 	Videos,
@@ -7,16 +8,24 @@ import {
 	PopularWords,
 } from 'components';
 
+const Page = styled.div`
+	width: 100vw;
+	display: flex;
+`;
+
 export function Home() {
 	return (
 		<div>
+		<Page>
+			<SideNav />
 			<GridHome>
-				<SideNav /><br />
+				<br />
 				<SearchBar />
 				<PopularWords />
 				<Ad />
 				<Videos />
 			</GridHome>
+		</Page>
 		</div>
 	)
 }

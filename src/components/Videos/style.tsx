@@ -7,6 +7,7 @@ const Card = styled.div`
 	align-content: center;
 	padding: 6px;
 	justify-content: space-between;
+	
 	@media (max-width: 768px) {
 		flex-flow: column wrap;
 	}
@@ -14,10 +15,8 @@ const Card = styled.div`
 
 const Video = styled.div`
 	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	flex-basis: 32%;
-	height: 300px;
+	width: 30%;
+	flex-flow: column wrap;
 	border 1px solid #ACB0B0;
 	cursor: pointer;
 
@@ -33,7 +32,7 @@ const Description = styled.div`
 	align-items: center;
 `; 
 
-const Preview = styled.video`
+const Preview = styled.img`
 	width: 100%;
 	margin-bottom: 10px;
 `;

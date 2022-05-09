@@ -4,7 +4,12 @@ import {
   Navigate,
   BrowserRouter,
 } from 'react-router-dom';
-import { HomePage, LoginPage, ShowVideoPage } from './pages';
+import { 
+  HomePage, 
+  LoginPage, 
+  ShowVideoPage,
+  MyChannelPage, 
+} from './pages';
 
 function Router() {
   return (
@@ -13,6 +18,8 @@ function Router() {
         <Route path='/' element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:id" element={<ShowVideoPage />}/>
+        <Route path="/myChannel" element={<MyChannelPage />} />
+        <Route path="/channel/:id" element={<h1>por id</h1>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

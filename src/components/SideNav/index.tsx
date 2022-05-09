@@ -8,8 +8,7 @@ import { MdVideoLibrary, MdHistory } from 'react-icons/md';
 function SideNav() {
 	return (
 		<Nav>
-			<FixedContainer>
-				<br />
+			<FixedContainer><br/>
 				<Menu>
 					<AiOutlineMenu size="26px" />
 				</Menu><br />

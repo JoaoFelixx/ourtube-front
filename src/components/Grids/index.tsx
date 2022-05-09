@@ -1,4 +1,5 @@
 import { GridHome } from "./GridHome";
 import { GridVideos } from "./GridVideos";
+import { GridMyChannel } from './GridMyChannel';
 
-export { GridVideos, GridHome };
+export { GridHome, GridVideos, GridMyChannel };

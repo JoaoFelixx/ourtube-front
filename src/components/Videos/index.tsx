@@ -21,9 +21,7 @@ function Videos() {
 					return (
 						<Video>
 							<Link to={`/video/${_id}`}>
-								<Preview poster={`http://localhost:4545/api/v1/files/${photo_id}`} loop>
-									<source src={`http://localhost:4545/api/v1/files/${_id}`} type={mimetype} />
-								</Preview>
+								<Preview src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Preview" />
 								<Description>
 									<Icon src="https://cdn.pixabay.com/photo/2016/03/31/18/25/alien-1294345_960_720.png" alt="icon" />
 									<div style={{ marginLeft: '6px' }}>
@@ -35,7 +33,7 @@ function Videos() {
 						</Video>
 					)
 				})
-			)}
+			)}<br/>
 		</Card>
 	)
 }

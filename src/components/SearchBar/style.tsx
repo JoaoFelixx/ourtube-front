@@ -61,6 +61,7 @@ const SearchCard = styled.div`
 const CardLogin = styled.div`
 	display: flex;
 	justify-content: end;
+	align-items: center;
 	width: 28%;
 
 	@media (max-width: 768px) {
@@ -68,9 +69,20 @@ const CardLogin = styled.div`
 	}
 `;
 
+const Modal = styled.div`
+	position: static;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1em;
+	background-color: #fff;
+	color: #000;
+`; 
+
 export {
 	Nav,
 	Logo,
+	Modal,
 	Search,
 	CardLogo,
 	CardLogin,
