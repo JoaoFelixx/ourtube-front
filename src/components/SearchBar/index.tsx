@@ -35,9 +35,11 @@ function SearchBar() {
 				</SearchCard>
 				<CardLogin>
 				{showModal && 
-					<Modal>
-						<TiSocialYoutube />Canal
-					</Modal>}
+					<Link to="/myChannel" >
+						<Modal>
+							<TiSocialYoutube />Canal
+						</Modal>
+					</Link>}
 				{authenticated ? <CgMenuGridR style={{ cursor: 'pointer' }} onClick={() => setShowModal(!showModal)}/> : 
 					<Link to="/login">
 						<LoginButton>

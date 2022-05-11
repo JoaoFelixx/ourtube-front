@@ -7,7 +7,7 @@ const Nav = styled.nav`
 	justify-items: center;
 	align-content: center;
 	background-color: #EDEDED;
-
+	height: 100vh;
 	@media (max-width: 768px) {
 		display: none;
 	}

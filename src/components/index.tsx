@@ -8,6 +8,7 @@ import { ShowVideo } from './ShowVideo';
 import { ListVideos } from './lists';
 import PopularWords from './PopularWords';
 import { GridHome, GridVideos, GridMyChannel } from './Grids';
+import { ChannelConfig } from './ChannelConfig';
 
 export {
 	Ad,
@@ -21,4 +22,6 @@ export {
 	GridVideos,
 	ListVideos,
 	PopularWords,
+	GridMyChannel,
+	ChannelConfig,
 }

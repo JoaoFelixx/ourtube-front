@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const GridHome = styled.div` 
-	flex-grow: 9;
-	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto auto auto auto;

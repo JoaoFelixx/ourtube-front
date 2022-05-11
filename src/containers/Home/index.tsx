@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
 	Ad,
 	Videos,
@@ -7,15 +6,10 @@ import {
 	SearchBar,
 	PopularWords,
 } from 'components';
-
-const Page = styled.div`
-	width: 100vw;
-	display: flex;
-`;
+import { Page } from '../style';
 
 export function Home() {
 	return (
-		<div>
 		<Page>
 			<SideNav />
 			<GridHome>
@@ -26,6 +20,5 @@ export function Home() {
 				<Videos />
 			</GridHome>
 		</Page>
-		</div>
 	)
 }

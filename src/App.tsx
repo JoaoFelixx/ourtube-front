@@ -5,8 +5,6 @@ import Routes from 'Router';
 import { AuthProvider } from 'Context/AuthProvider';
 import { VideosProvider } from 'Context/VideosProvider';
 
-import "react-toastify/dist/ReactToastify.css";
-
 function App() {
   return (
     <div className="App">
