@@ -1,102 +1,82 @@
-import React, { useState, useEffect, memo } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useState, useEffect, memo } from 'react';
 import { toast } from 'react-toastify';
-import { 
-	Icon,  
-	Card, 
+import {
+	Icon,
+	Card,
 	Exit,
 	Modal,
-	Button, 
-	ButtonSend,
-	EditChannel, 
+	Banner,
+	Button,
+	EditChannel,
 } from './style';
+import { AiTwotoneEdit } from 'react-icons/ai';
+import { MdAddAPhoto } from 'react-icons/md';
 import { api } from 'service';
+import { FormChannelImages, FormCreateChannel } from '../forms';
 
-interface ChannelDataProps {
+interface Channel {
+	_id: string;
 	name: string;
-	description: string;	
-}
-
-interface ChannelImageProps {
-	icon: string;
-	banner: string;
+	description: string;
+	banner_id?: string;
+	icon_id?: string;
 }
 
 export function ChannelConfig() {
-	const { 
-		register: registerData, 
-		handleSubmit: submitData 
-	} = useForm<ChannelDataProps>();
-	const { 
-		register: registerImages, 
-		handleSubmit: submitImage 
-	} = useForm<ChannelImageProps>();
-
-	const [channel, setChannel] = useState(null);
+	const [channel, setChannel] = useState<Channel | null>(null);
 	const [showModal, setShowModal] = useState<boolean>(false);
+	const [formSelected, setFormSelected] = useState<string>('');
 
-	const onSubmitData: SubmitHandler<ChannelDataProps> = async (data) => {
-		try {
-
-			await api.post('/channels', data);
-
-			toast.success('Canal criado com sucesso');
-
-		} catch (error) {
-			toast.error('Erro ao registrar canal, tente novamente');
-		}
-	}
-
-	const onSubmitImages: SubmitHandler<ChannelImageProps> = async (data) => {
-		try {
-
-			console.log(data)
-
-		} catch (error) {
-			toast.error('Erro ao registrar imagens');
-		}
-	}
-
-	const ChannelDataForm = memo(() => {
+	const SelectForm = memo(() => {
 		return (
 			<div>
-				<h1 style={{ textAlign: 'center' }} >Personalizar Canal</h1><br/>
-				<form onSubmit={submitData(onSubmitData)} className="data-form" name="channelForm">
-					<label>Nome do Canal</label><br />
-					<input type="text" {...registerData("name")} /><br /><br />
-					<label>Descrição do canal</label><br />
-					<input type="text" {...registerData("description")}/><br /><br/>
-					<ButtonSend color="#777777">Enviar </ButtonSend>
-					<ButtonSend color="#ff0000">Cancelar</ButtonSend>
-				</form>
+				<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
+				<div style={{
+					display: 'flex',
+					justifyContent: 'space-around',
+					alignItems: 'center'
+				}}>
+					<div onClick={() => setFormSelected('images')} style={{
+						height: '140px',
+						padding: '10px',
+						backgroundColor: '#333333',
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}>
+						<MdAddAPhoto size="2em" /><br />
+						Editar banner e icone do canal
+					</div>
+
+					<div style={{ width: '2px', height: '140px', backgroundColor: '#000' }} />
+
+					<div onClick={() => setFormSelected('info')} style={{
+						height: '140px',
+						padding: '10px',
+						backgroundColor: '#333333',
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}>
+						<AiTwotoneEdit size="2em" /><br />
+						Editar nome e descrição do canal
+					</div>
+				</div>
 			</div>
 		)
 	})
-
-	const ChannelImagesForm = memo(() => {
-		return (
-			<div>
-				<h1 style={{ textAlign: 'center' }} >Personalizar Canal</h1><br/>
-				<form onSubmit={submitImage(onSubmitImages)} name="channelForm">
-					<label>Icone do Canal</label><br />
-					<input type="file" {...registerImages("icon")} /><br /><br />
-					<label>Banner do canal</label><br />
-					<input type="file" {...registerImages("banner")}/><br /><br/>
-					<ButtonSend color="#777777">Enviar </ButtonSend>
-					<ButtonSend color="#ff0000">Cancelar</ButtonSend>
-				</form>
-			</div>
-		)
-	})
-
 
 	useEffect(() => {
 		(async () => {
 			try {
+				const { data, status } = await api.get<Channel | null>('/myChannel');
 
-				const result = await api.get('/myChannel');
+				if (status === 204)
+					return
 
-				console.log(result);
+				setChannel(data);
 
 			} catch (error) {
 				toast.error('Erro ao buscar dados');
@@ -104,20 +84,39 @@ export function ChannelConfig() {
 		})()
 	}, [])
 
+	interface FormSelected {
+		form: string;
+	}
+
+	const Forms = ({ form }: FormSelected): JSX.Element => ({
+		'info': <FormCreateChannel />,
+		'images': <FormChannelImages />,
+	}[form] || <SelectForm />)
+
 	return (
 		<Card><br />
+			{channel?.banner_id &&
+				<Banner src={`http://localhost:4545/api/v1/files/${channel.banner_id}`} alt="banner" />
+			}
 			<EditChannel>
-				{showModal && 
+				{showModal &&
 					<Modal>
-						<Exit onClick={() => setShowModal(false)}>X</Exit>
-						<ChannelDataForm />
+						<Exit onClick={() => {setShowModal(false); setFormSelected(''); }}>X</Exit>
+						<Forms form={formSelected}/>
 					</Modal>
 				}
 				<div style={{ display: 'flex', alignItems: 'center' }}>
-					<Icon src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="logo" />
+					{channel?.icon_id ?
+						<Icon src={`http://localhost:4545/api/v1/files/${channel.icon_id}`} alt="logo" />
+						:
+						<Icon src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="logo" />
+					}
+
 					<div>
-						<h1>DemonLixo</h1>
-						<span style={{ color: '#777777' }} > Canal de comédia </span>
+						<h1>{channel?.name || 'Channel name'}</h1>
+						<span style={{ color: '#777777' }} >
+							{channel?.description || 'Description'}
+						</span>
 					</div>
 				</div>
 				<div>

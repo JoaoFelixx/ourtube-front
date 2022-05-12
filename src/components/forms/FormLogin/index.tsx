@@ -26,6 +26,8 @@ export function FormLogin () {
 
 			navigate('/');
 
+			window.location.reload();
+
 		} catch (error) {
 			toast.error('Erro')
 		}

@@ -1,5 +1,6 @@
 import React, { 
-	useState, 
+	useState,
+	useEffect, 
 	useContext, 
 	createContext,
 	SetStateAction,
@@ -20,6 +21,14 @@ interface Provider {
 
 function AuthProvider({ children }: Provider) {
 	const [authenticated, setAuthenticated] = useState<boolean>(false);
+
+	useEffect(() => {
+
+		if (!localStorage.getItem('ourtube_token'))
+			return 
+			
+		setAuthenticated(true)
+	}, [])
 
 	return (
 		<Context.Provider value={{ authenticated, setAuthenticated }}>

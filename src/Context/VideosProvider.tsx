@@ -7,7 +7,6 @@ import React, {
 import { Video } from 'interfaces';
 import { api } from 'service';
 
-
 interface Provider {
 	children: React.ReactNode;
 }

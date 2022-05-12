@@ -11,29 +11,15 @@ const Card = styled.div`
 	margin: 0 10px;
 `;
 
+const Banner = styled.img`
+	width: 100%;
+	height: 300px;
+`;
+
 const EditChannel = styled.div`
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-
-	form {
-		padding: 6px;
-	}
-
-	form.data-form {
-
-		input {
-			width: 100%;
-			font-size: 1em;
-			border: none;
-			border-bottom: 2px solid #000;
-
-			&:focus {
-				box-shadow: 0 0 0 0;
-				outline: 0;
-			}
-		}
-	}
 
 	@media (max-width: 768px) {
 		flex-direction: column;
@@ -99,4 +85,4 @@ const ButtonSend = styled.button<Color>`
 	margin: 1px;
 `;
 
-export { EditChannel, ButtonSend, Button, Card, Icon, Modal, Exit };
+export { EditChannel, ButtonSend, Button, Card, Icon, Modal, Banner, Exit };
