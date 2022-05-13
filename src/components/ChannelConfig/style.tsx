@@ -11,11 +11,6 @@ const Card = styled.div`
 	margin: 0 10px;
 `;
 
-const Banner = styled.img`
-	width: 100%;
-	height: 300px;
-`;
-
 const EditChannel = styled.div`
 	display: flex;
 	justify-content: space-around;
@@ -85,4 +80,4 @@ const ButtonSend = styled.button<Color>`
 	margin: 1px;
 `;
 
-export { EditChannel, ButtonSend, Button, Card, Icon, Modal, Banner, Exit };
+export { EditChannel, ButtonSend, Button, Card, Icon, Modal, Exit };

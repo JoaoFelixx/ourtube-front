@@ -10,3 +10,11 @@ export interface Video {
 		icon_id: string;
 	}
 }
+
+export interface Channel {
+	_id: string;
+	name: string;
+	description: string;
+	banner_id?: string;
+	icon_id?: string;
+}

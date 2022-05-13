@@ -8,7 +8,8 @@ import {
   HomePage, 
   LoginPage, 
   ShowVideoPage,
-  MyChannelPage, 
+  MyChannelPage,
+  ChannelByIdPage,
 } from './pages';
 
 function Router() {
@@ -19,7 +20,7 @@ function Router() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:id" element={<ShowVideoPage />}/>
         <Route path="/myChannel" element={<MyChannelPage />} />
-        <Route path="/channel/:id" element={<h1>por id</h1>} />
+        <Route path="/channel/:id" element={<ChannelByIdPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

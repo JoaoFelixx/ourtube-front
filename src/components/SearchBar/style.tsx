@@ -5,7 +5,7 @@ const Nav = styled.nav`
 	display: flex;
 	flex-direction: row; 
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	border-bottom: 1px solid #ACB0B0;
 	background-color: #EDEDED;
 	grid-area: searchBar;
@@ -43,7 +43,7 @@ const SearchButton = styled.button`
 
 const CardLogo = styled.div`
 	display: flex;
-	width: 22%;
+	flex-grow: 2;
 
 	@media (max-width: 768px) {
 		display: none;
@@ -52,7 +52,7 @@ const CardLogo = styled.div`
 
 const SearchCard = styled.div`
 	display: flex;
-	width: 45%;
+	flex-grow: 4;
 
 	@media (max-width: 768px) {
 		width: 96%;
@@ -60,10 +60,10 @@ const SearchCard = styled.div`
 `; 
 
 const CardLogin = styled.div`
+	flex-grow: 2;
 	display: flex;
 	justify-content: end;
 	align-items: center;
-	width: 28%;
 
 	@media (max-width: 768px) {
 		display: none;

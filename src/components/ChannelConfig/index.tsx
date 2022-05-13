@@ -5,22 +5,15 @@ import {
 	Card,
 	Exit,
 	Modal,
-	Banner,
 	Button,
 	EditChannel,
 } from './style';
+import { Banner } from '../Banner';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { MdAddAPhoto } from 'react-icons/md';
 import { api } from 'service';
 import { FormChannelImages, FormCreateChannel } from '../forms';
-
-interface Channel {
-	_id: string;
-	name: string;
-	description: string;
-	banner_id?: string;
-	icon_id?: string;
-}
+import { Channel } from 'interfaces';
 
 export function ChannelConfig() {
 	const [channel, setChannel] = useState<Channel | null>(null);
@@ -96,7 +89,7 @@ export function ChannelConfig() {
 	return (
 		<Card><br />
 			{channel?.banner_id &&
-				<Banner src={`http://localhost:4545/api/v1/files/${channel.banner_id}`} alt="banner" />
+				<Banner image={`http://localhost:4545/api/v1/files/${channel.banner_id}`} />
 			}
 			<EditChannel>
 				{showModal &&
