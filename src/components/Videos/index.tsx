@@ -26,14 +26,15 @@ function Videos() {
 							<Description>
 								<Icon src={`http://localhost:4545/api/v1/files/${channel_id.icon_id}`} alt="icon" />
 								<div style={{ marginLeft: '6px' }}>
-									<Title>{description}</Title> <br />
+									<Title>{description}</Title>
 									<ChannelName> {channel_id.name} </ChannelName>
 								</div>
 							</Description>
+							<br/><br/>
 						</Video>
 					)
 				})
-			)}<br/>
+			)}
 		</Card>
 	)
 }

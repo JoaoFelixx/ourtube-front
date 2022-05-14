@@ -47,7 +47,7 @@ export function ChannelConfig() {
 		'info': <FormCreateChannel />,
 		'images': <FormChannelImages />,
 	}[form] || (
-		<div>
+		<>
 			<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
 			<ContentCenter>
 				<ClickCard onClick={() => setFormSelected('images')} >
@@ -62,7 +62,7 @@ export function ChannelConfig() {
 					Editar nome e descrição do canal
 				</ClickCard>
 			</ContentCenter>
-		</div>
+		</>
 	))
 
 	return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Container } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
 
@@ -8,12 +9,14 @@ export function ListVideos() {
   return (
   	<Container>
       {React.Children.toArray(
-        videos?.map((video) => {
+        videos?.map(({ _id, photo_id, description }) => {
           return (
-            <Card>
-              <img src={`http://localhost:4545/api/v1/files/${video?.photo_id}`} alt="Foto"/>
-              <p> Video muito divertido </p>
-            </Card>
+            <Link to={`/video/${_id}`} style={{ textDecoration: 'none' }}>
+              <Card>
+                <img src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Foto"/>
+                <p> {description} </p>
+              </Card>
+            </Link>
           )
         })
       )}

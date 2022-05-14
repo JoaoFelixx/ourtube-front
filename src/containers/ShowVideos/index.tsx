@@ -6,6 +6,7 @@ import {
 	FlexVideos,
 } from 'components';
 import { Page } from '../style';
+import { Flex } from './style';
 
 export function ShowVideos() {
 	return (
@@ -13,8 +14,10 @@ export function ShowVideos() {
 			<SideNav />
 			<FlexVideos>
 				<SearchBar />
-				<ListVideos />
-				<ShowVideo />
+				<Flex>
+					<ShowVideo />
+					<ListVideos />
+				</Flex>
 			</FlexVideos>
 		</Page>
 	)

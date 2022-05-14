@@ -4,8 +4,8 @@ const Video = styled.video`
 	width: 100%;
 `;
 
-const Card = styled.div` 
-	grid-area: video;
+const Card = styled.div`
+	width: 100%;
 `;
 
 export { Video, Card };

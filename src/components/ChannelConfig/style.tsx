@@ -86,17 +86,18 @@ const ContentCenter = styled.div`
 `;
 
 const ClickCard = styled.div` 
-	height: 140px;
-	padding: 10px;
+	padding: 0 10px 0 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 `;
 
 const Separator = styled.div` 
+	position: absolute;
 	width: 2px; 
-	height: 140px; 
+	height: 40px; 
 	background-color: #000;
 `;
 

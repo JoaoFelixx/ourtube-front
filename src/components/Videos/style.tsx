@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-const Card = styled.div`	
-	grid-area: videos;	
+const Card = styled.div`
+	padding: 5px;	
 	display: flex;
 	flex-flow: row wrap;
 	align-content: center;
-	padding: 6px;
 	justify-content: space-between;
 	
 	@media (max-width: 768px) {
@@ -15,9 +14,8 @@ const Card = styled.div`
 
 const Video = styled.div`
 	display: flex;
-	width: 30%;
+	width: 32%;
 	flex-flow: column wrap;
-	border 1px solid #ACB0B0;
 	cursor: pointer;
 
 	@media (max-width: 768px) { 
@@ -46,6 +44,7 @@ const Icon = styled.img`
 const Title = styled.p` 
 	color: #000;
 	font-size: 20px;
+	margin-bottom: 2px;
 `; 
 
 const ChannelName = styled.p`
