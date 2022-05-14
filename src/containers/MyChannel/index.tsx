@@ -2,7 +2,7 @@ import { Page } from '../style';
 import { 
 	SideNav, 
 	SearchBar, 
-	GridMyChannel,
+	FlexMyChannel,
 	ChannelConfig, 
 } from 'components';
 
@@ -10,10 +10,10 @@ export function MyChannel() {
 	return (
 		<Page>
 			<SideNav />
-			<GridMyChannel>
+			<FlexMyChannel>
 				<SearchBar />
 				<ChannelConfig />
-			</GridMyChannel>
+			</FlexMyChannel>
 		</Page>
 	)
 }

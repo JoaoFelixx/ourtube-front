@@ -8,9 +8,8 @@ const Nav = styled.nav`
 	justify-content: space-between;
 	border-bottom: 1px solid #ACB0B0;
 	background-color: #EDEDED;
-	grid-area: searchBar;
-	height: 46px;
-	padding: 6px;
+	height: 3em;
+	padding: 0.5em;
 `;
 
 const Logo = styled.img` 

@@ -4,32 +4,30 @@ import SideNav from './SideNav';
 import SearchBar from './SearchBar';
 import PopularWords from './PopularWords';
 import { Banner } from './Banner';
-import { Comments } from './Comments';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
 import { ListVideos } from './lists';
 import { ChannelConfig } from './ChannelConfig';
 import { 
-	GridHome, 
-	GridVideos,
-	GridMyChannel, 
-	GridChannelById, 
-} from './Grids';
+	FlexHome, 
+	FlexVideos,
+	FlexMyChannel, 
+	FlexChannelById, 
+} from './flexContainers';
 
 export {
 	Ad,
 	Videos,
 	Banner,
 	SideNav,
-	GridHome,
-	Comments, 
+	FlexHome,
 	SearchBar,
 	FormLogin,
 	ShowVideo,
-	GridVideos,
+	FlexVideos,
 	ListVideos,
 	PopularWords,
-	GridMyChannel,
+	FlexMyChannel,
 	ChannelConfig,
-	GridChannelById,
+	FlexChannelById,
 }

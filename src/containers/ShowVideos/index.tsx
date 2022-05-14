@@ -1,20 +1,21 @@
 import {
-	Comments,
+	SideNav,
 	ShowVideo,
 	SearchBar,
 	ListVideos,
-	GridVideos,
+	FlexVideos,
 } from 'components';
+import { Page } from '../style';
 
 export function ShowVideos() {
 	return (
-		<div>
-			<GridVideos>
+		<Page>
+			<SideNav />
+			<FlexVideos>
 				<SearchBar />
 				<ListVideos />
 				<ShowVideo />
-				<Comments />
-			</GridVideos>
-		</div>
+			</FlexVideos>
+		</Page>
 	)
 }

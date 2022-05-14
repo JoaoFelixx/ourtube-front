@@ -22,14 +22,14 @@ function Videos() {
 						<Video>
 							<Link to={`/video/${_id}`}>
 								<Preview src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Preview" />
-								<Description>
-									<Icon src={`http://localhost:4545/api/v1/files/${channel_id.icon_id}`} alt="icon" />
-									<div style={{ marginLeft: '6px' }}>
-										<Title>{description}</Title> <br />
-										<ChannelName> {channel_id.name} </ChannelName>
-									</div>
-								</Description>
 							</Link>
+							<Description>
+								<Icon src={`http://localhost:4545/api/v1/files/${channel_id.icon_id}`} alt="icon" />
+								<div style={{ marginLeft: '6px' }}>
+									<Title>{description}</Title> <br />
+									<ChannelName> {channel_id.name} </ChannelName>
+								</div>
+							</Description>
 						</Video>
 					)
 				})

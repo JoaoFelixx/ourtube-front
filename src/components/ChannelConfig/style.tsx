@@ -5,10 +5,9 @@ interface Color {
 }
 
 const Card = styled.div`
-	grid-area: content;
-	background-color: #EDEDED;
+	margin: 6px;
 	height: 80vh;
-	margin: 0 10px;
+	background-color: #EDEDED;
 `;
 
 const EditChannel = styled.div`
@@ -80,4 +79,36 @@ const ButtonSend = styled.button<Color>`
 	margin: 1px;
 `;
 
-export { EditChannel, ButtonSend, Button, Card, Icon, Modal, Exit };
+const ContentCenter = styled.div` 
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+`;
+
+const ClickCard = styled.div` 
+	height: 140px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+`;
+
+const Separator = styled.div` 
+	width: 2px; 
+	height: 140px; 
+	background-color: #000;
+`;
+
+export { 
+	ContentCenter,
+	EditChannel, 
+	ButtonSend, 
+	ClickCard,
+	Separator,
+	Button, 
+	Modal,
+	Card, 
+	Icon, 
+	Exit,
+};

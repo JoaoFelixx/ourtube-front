@@ -4,8 +4,9 @@ interface Image {
 	image: string;
 }
 
-export const Banner = styled.img<Image>`
-	width: 100%;
-	height: 300px;
+export const Banner = styled.div<Image>`
+	margin: 5px;
+	min-height: 250px;
+	max-height: 300px;
 	background: url(${props => props.image});
 `;

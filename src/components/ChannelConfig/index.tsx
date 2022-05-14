@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import {
 	Icon,
@@ -6,7 +6,10 @@ import {
 	Exit,
 	Modal,
 	Button,
+	Separator,
+	ClickCard,
 	EditChannel,
+	ContentCenter,
 } from './style';
 import { Banner } from '../Banner';
 import { AiTwotoneEdit } from 'react-icons/ai';
@@ -19,47 +22,6 @@ export function ChannelConfig() {
 	const [channel, setChannel] = useState<Channel | null>(null);
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [formSelected, setFormSelected] = useState<string>('');
-
-	const SelectForm = memo(() => {
-		return (
-			<div>
-				<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
-				<div style={{
-					display: 'flex',
-					justifyContent: 'space-around',
-					alignItems: 'center'
-				}}>
-					<div onClick={() => setFormSelected('images')} style={{
-						height: '140px',
-						padding: '10px',
-						backgroundColor: '#333333',
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						justifyContent: 'center'
-					}}>
-						<MdAddAPhoto size="2em" /><br />
-						Editar banner e icone do canal
-					</div>
-
-					<div style={{ width: '2px', height: '140px', backgroundColor: '#000' }} />
-
-					<div onClick={() => setFormSelected('info')} style={{
-						height: '140px',
-						padding: '10px',
-						backgroundColor: '#333333',
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						justifyContent: 'center'
-					}}>
-						<AiTwotoneEdit size="2em" /><br />
-						Editar nome e descrição do canal
-					</div>
-				</div>
-			</div>
-		)
-	})
 
 	useEffect(() => {
 		(async () => {
@@ -84,7 +46,24 @@ export function ChannelConfig() {
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
 		'info': <FormCreateChannel />,
 		'images': <FormChannelImages />,
-	}[form] || <SelectForm />)
+	}[form] || (
+		<div>
+			<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
+			<ContentCenter>
+				<ClickCard onClick={() => setFormSelected('images')} >
+					<MdAddAPhoto size="2em" /><br />
+					Editar banner e icone do canal
+				</ClickCard>
+
+				<Separator />
+
+				<ClickCard onClick={() => setFormSelected('info')}>
+					<AiTwotoneEdit size="2em" /><br />
+					Editar nome e descrição do canal
+				</ClickCard>
+			</ContentCenter>
+		</div>
+	))
 
 	return (
 		<Card><br />

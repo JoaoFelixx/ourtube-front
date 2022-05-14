@@ -2,7 +2,7 @@ import {
 	Ad,
 	Videos,
 	SideNav,
-	GridHome,
+	FlexHome,
 	SearchBar,
 	PopularWords,
 } from 'components';
@@ -12,13 +12,12 @@ export function Home() {
 	return (
 		<Page>
 			<SideNav />
-			<GridHome>
-				<br />
+			<FlexHome>
 				<SearchBar />
 				<PopularWords />
 				<Ad />
 				<Videos />
-			</GridHome>
+			</FlexHome>
 		</Page>
 	)
 }
