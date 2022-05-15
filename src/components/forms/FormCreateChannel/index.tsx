@@ -2,14 +2,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Card, Button } from './style';
-
-interface Channel {
-  _id: string;
-  name: string;
-  description: string;
-  banner_id?: string;
-  icon_id?: string;
-}
+import { Channel } from 'interfaces';
 
 type ChannelDataProps = Omit<Channel, '_id'>;
 

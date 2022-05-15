@@ -27,7 +27,9 @@ function Videos() {
 								<Icon src={`http://localhost:4545/api/v1/files/${channel_id.icon_id}`} alt="icon" />
 								<div style={{ marginLeft: '6px' }}>
 									<Title>{description}</Title>
-									<ChannelName> {channel_id.name} </ChannelName>
+									<Link to={`/channel/${channel_id._id}`}>
+										<ChannelName> {channel_id.name} </ChannelName>
+									</Link>
 								</div>
 							</Description>
 							<br/><br/>

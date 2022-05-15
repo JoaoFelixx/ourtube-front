@@ -6,7 +6,8 @@ interface Color {
 
 const Card = styled.div`
   form {
-
+  	padding: 0 20px;
+  	
     input {
       width: 100%;
       font-size: 1em;

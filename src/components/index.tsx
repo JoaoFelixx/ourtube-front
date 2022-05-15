@@ -3,6 +3,7 @@ import Videos from './Videos';
 import SideNav from './SideNav';
 import SearchBar from './SearchBar';
 import PopularWords from './PopularWords';
+import { Painel } from './Painel';
 import { Banner } from './Banner';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
@@ -18,6 +19,7 @@ import {
 export {
 	Ad,
 	Videos,
+	Painel,
 	Banner,
 	SideNav,
 	FlexHome,

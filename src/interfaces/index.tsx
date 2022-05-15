@@ -6,6 +6,7 @@ export interface Video {
 	updatedAt: Date;
 	description: string;
 	channel_id: {
+		_id: string;
 		name: string;
 		icon_id: string;
 	}
