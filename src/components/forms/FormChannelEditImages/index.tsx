@@ -12,7 +12,7 @@ interface ChannelId {
   _id?:string;
 }
 
-export function FormChannelImages({ _id }: ChannelId) {
+export function FormChannelEditImages({ _id }: ChannelId) {
   const { register: registerImg, handleSubmit: submitImg } = useForm<ChannelImages>();
 
   const onSubmitImages: SubmitHandler<ChannelImages> = async ({ iconList, bannerList }) => {

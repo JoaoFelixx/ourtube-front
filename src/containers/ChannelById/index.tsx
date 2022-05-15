@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import { Channel } from 'interfaces';
 import { api } from 'service';
 import { Page } from '../style';
-import { 
-	Painel,
+import {
+	Panel,
 	Banner,
-	SideNav, 
-	SearchBar, 
+	SideNav,
+	SearchBar,
 	FlexChannelById,
 } from 'components';
 
@@ -17,7 +17,7 @@ const Card = styled.div`
 	height: 100%;
 `;
 
-const Apresentation = styled.div` 
+const Presentation = styled.div` 
 	margin: 5px;
 	background-color: #EDEDED;
 	display: flex;
@@ -46,8 +46,8 @@ export function ChannelById() {
 			try {
 				const { status, data } = await api.get(`/channel/${id}`);
 
-				if (status === 204) 
-					return 				
+				if (status === 204)
+					return
 
 				setChannel(data);
 
@@ -65,23 +65,23 @@ export function ChannelById() {
 				{channel && (
 					<Card>
 						<Banner image={`http://localhost:4545/api/v1/files/${channel.banner_id}`} />
-						<Painel channel={channel} />
-						<Apresentation>
+						<Panel channel={channel} />
+						<Presentation>
 							<video controls autoPlay>
 								<source src="https://youtu.be/ALA7CoagMUk?list=RDMMALA7CoagMUk" type="video/mp4" />
 							</video>
 							<div style={{ padding: '8px' }} >
-								<h3>Conheça tal canal</h3><br/>
+								<h3>Conheça tal canal</h3><br />
 								<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
-									Fala galera o canal de não curiosidades foi feito para 
-									vocÊ que não gosta de curiosidades 
+									Fala galera o canal de não curiosidades foi feito para
+									vocÊ que não gosta de curiosidades
 									apenas de coisas que voce já sabe
 								</p>
 							</div>
-						</Apresentation>
+						</Presentation>
 					</Card>
 				)}
-			</FlexChannelById> 
+			</FlexChannelById>
 		</Page>
 	)
 }

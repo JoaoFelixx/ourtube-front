@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Card } from './style';
-import { Painel } from '../Painel';
+import { Panel } from '../Panel';
 import { Banner } from '../Banner';
 import { api } from 'service';
 import { Channel } from 'interfaces';
@@ -30,7 +30,7 @@ export function ChannelConfig() {
 			{channel && (
 				<Card>
 					<Banner image={`http://localhost:4545/api/v1/files/${channel.banner_id}`} />
-					<Painel channel={channel} />
+					<Panel channel={channel} />
 				</Card>
 			)}
 		</>

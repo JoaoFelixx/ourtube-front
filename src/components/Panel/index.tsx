@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Channel } from 'interfaces';
 import { useLocation } from 'react-router-dom';
-import { FormChannelImages, FormCreateChannel } from '../forms';
+import { FormChannelEditImages, FormCreateChannel } from '../forms';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { MdAddAPhoto } from 'react-icons/md';
 import {
@@ -24,14 +24,14 @@ interface FormSelected {
 	form: string;
 }
 
-export function Painel({ channel }: PainelProps) {
+export function Panel({ channel }: PainelProps) {
 	const location = useLocation();
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [formSelected, setFormSelected] = useState<string>('');
 
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
 		'info': <FormCreateChannel />,
-		'images': <FormChannelImages />,
+		'images': <FormChannelEditImages />,
 	}[form] || (
 			<>
 				<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
