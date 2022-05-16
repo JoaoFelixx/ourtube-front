@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
-	margin: 5px;
 	padding: 20px 0 0;
 	display: flex;
 	justify-content: space-around;

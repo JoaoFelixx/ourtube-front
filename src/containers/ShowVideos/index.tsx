@@ -3,22 +3,24 @@ import {
 	ShowVideo,
 	SearchBar,
 	ListVideos,
-	FlexVideos,
+	FlexContainer,
 } from 'components';
-import { Page } from '../style';
+import { Page, Margin } from '../style';
 import { Flex } from './style';
 
 export function ShowVideos() {
 	return (
 		<Page>
 			<SideNav />
-			<FlexVideos>
+			<FlexContainer>
 				<SearchBar />
-				<Flex>
-					<ShowVideo />
-					<ListVideos />
-				</Flex>
-			</FlexVideos>
+				<Margin>
+					<Flex>
+						<ShowVideo />
+						<ListVideos ifIsPhoneRemove={true}/>
+					</Flex>
+				</Margin>
+			</FlexContainer>
 		</Page>
 	)
 }

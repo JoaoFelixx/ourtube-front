@@ -2,22 +2,24 @@ import {
 	Ad,
 	Videos,
 	SideNav,
-	FlexHome,
 	SearchBar,
 	PopularWords,
+	FlexContainer,
 } from 'components';
-import { Page } from '../style';
+import { Page, Margin } from '../style';
 
 export function Home() {
 	return (
 		<Page>
 			<SideNav />
-			<FlexHome>
+			<FlexContainer>
 				<SearchBar />
-				<PopularWords />
-				<Ad />
-				<Videos />
-			</FlexHome>
+				<Margin>
+					<PopularWords />
+					<Ad />
+					<Videos />
+				</Margin>
+			</FlexContainer>
 		</Page>
 	)
 }

@@ -3,22 +3,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Channel } from 'interfaces';
 import { api } from 'service';
-import { Page } from '../style';
+import { Page, Margin } from '../style';
 import {
 	Panel,
 	Banner,
 	SideNav,
 	SearchBar,
-	FlexChannelById,
+	FlexContainer,
 } from 'components';
 
-const Card = styled.div` 
-	width: 100%;
-	height: 100%;
-`;
-
 const Presentation = styled.div` 
-	margin: 5px;
 	background-color: #EDEDED;
 	display: flex;
 	padding: 12px;
@@ -60,11 +54,11 @@ export function ChannelById() {
 	return (
 		<Page>
 			<SideNav />
-			<FlexChannelById>
+			<FlexContainer>
 				<SearchBar />
 				{channel && (
-					<Card>
-						<Banner image={`http://localhost:4545/api/v1/files/${channel.banner_id}`} />
+					<Margin>
+						<Banner src={`http://localhost:4545/api/v1/files/${channel.banner_id}`} />
 						<Panel channel={channel} />
 						<Presentation>
 							<video controls autoPlay>
@@ -79,9 +73,9 @@ export function ChannelById() {
 								</p>
 							</div>
 						</Presentation>
-					</Card>
+					</Margin>
 				)}
-			</FlexChannelById>
+			</FlexContainer>
 		</Page>
 	)
 }

@@ -8,13 +8,7 @@ import { Banner } from './Banner';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
 import { ListVideos } from './lists';
-import { ChannelConfig } from './ChannelConfig';
-import { 
-	FlexHome, 
-	FlexVideos,
-	FlexMyChannel, 
-	FlexChannelById, 
-} from './flexContainers';
+import { FlexContainer } from './FlexContainer';
 
 export {
 	Ad,
@@ -22,14 +16,10 @@ export {
 	Videos,
 	Banner,
 	SideNav,
-	FlexHome,
 	SearchBar,
 	FormLogin,
 	ShowVideo,
-	FlexVideos,
 	ListVideos,
 	PopularWords,
-	FlexMyChannel,
-	ChannelConfig,
-	FlexChannelById,
+	FlexContainer,
 }

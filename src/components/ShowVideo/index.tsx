@@ -26,7 +26,7 @@ export function ShowVideo() {
 	return (
 		<Card>
 			{!videoSelected ? <h2>Error, video not a found</h2> : (
-				<div style={{ margin: '5px' }}>
+				<div>
 					<Video poster={`http://localhost:4545/api/v1/files/${videoSelected?.photo_id}`} loop controls>
 						<source
 							src={`http://localhost:4545/api/v1/files/${videoSelected?._id}`}

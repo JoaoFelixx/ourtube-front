@@ -5,4 +5,12 @@ const Page = styled.div`
 	display: flex;
 `;
 
-export { Page };
+const Margin = styled.div`
+	margin: 5px;
+
+	div {
+		margin: 5px 0;
+	}
+`;
+
+export { Page, Margin };

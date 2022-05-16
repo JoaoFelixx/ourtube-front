@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
-	grid-area: popWords;
 	display: flex;
 	align-content: center;
 	height: 30px;
-	padding: 6px;
 
 	@media (max-width: 768px) {
 		display: none;
@@ -29,7 +27,4 @@ const Words = styled.p`
 	}
 `;
 
-export {
-	Card,
-	Words,
-}
+export { Card, Words, }

@@ -32,7 +32,6 @@ function Videos() {
 									</Link>
 								</div>
 							</Description>
-							<br/><br/>
 						</Video>
 					)
 				})

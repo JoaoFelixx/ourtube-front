@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { Card, Container } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
 
-export function ListVideos() {
+interface RemoveContainer {
+  ifIsPhoneRemove?: boolean;
+}
+
+export function ListVideos({ ifIsPhoneRemove }: RemoveContainer) {
   const videos = useSelectorVideos();
     
   return (
-  	<Container>
+  	<Container ifIsPhoneRemove={ifIsPhoneRemove}>
       {React.Children.toArray(
         videos?.map(({ _id, photo_id, description }) => {
           return (

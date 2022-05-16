@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
-	padding: 5px;	
+	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
-	align-content: center;
 	justify-content: space-between;
 	
 	@media (max-width: 768px) {
 		flex-flow: column wrap;
+		width: auto;
 	}
 `;
 

@@ -1,13 +1,26 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  margin: 5px;
-  padding: 2px;
+interface RemoveContainer {
+  ifIsPhoneRemove?: boolean;
+}
+
+const phoneRemoveAttributes = {
+  computer: 'width: 50%; padding: 2px;',
+  phone: 'display: none' 
+};
+
+const responsiveAttributes = {
+  computer: 'padding: 0;',
+  phone: 'width: 90%;'
+} 
+
+
+const Container = styled.div<RemoveContainer>`
   background-color: #EDEDED;
-  width: 50%;
+  ${props => props?.ifIsPhoneRemove ? phoneRemoveAttributes.computer : responsiveAttributes.computer}
 
   @media (max-width: 900px) {
-    display: none;
+    ${props => props?.ifIsPhoneRemove ? phoneRemoveAttributes.phone : responsiveAttributes.phone}
   }
 `;
 
@@ -21,6 +34,13 @@ const Card = styled.div`
   img { width: 8em; }
 
   p { margin: 0 4px; color: #000; }
+
+  @media (max-width: 768px) {
+    p { 
+      margin: 0; 
+      font-size: 1em; 
+    }    
+  }
 `;
 
 export { Card, Container, }
