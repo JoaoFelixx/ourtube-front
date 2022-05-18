@@ -19,3 +19,7 @@ export interface Channel {
 	banner_id?: string;
 	icon_id?: string;
 }
+
+export interface ID {
+	id: string;
+}

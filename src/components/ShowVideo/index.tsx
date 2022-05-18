@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Video as VideoData } from 'interfaces';
+import { Video as VideoData, ID } from 'interfaces';
 import { Video, Card } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
 
-export function ShowVideo() {
-	const { id } = useParams();
+export function ShowVideo({ id }: ID) {
 	const videos = useSelectorVideos();
 	const [videoSelected, setVideoSelected] = useState<VideoData | null>(null);
 

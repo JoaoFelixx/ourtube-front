@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import {
 	SideNav,
 	ShowVideo,
@@ -5,21 +6,23 @@ import {
 	ListVideos,
 	FlexContainer,
 } from 'components';
-import { Page, Margin } from '../style';
+import { Page } from '../style';
 import { Flex } from './style';
 
 export function ShowVideos() {
+	const { id } = useParams();
+
 	return (
 		<Page>
 			<SideNav />
 			<FlexContainer>
 				<SearchBar />
-				<Margin>
+				{id && (
 					<Flex>
-						<ShowVideo />
-						<ListVideos ifIsPhoneRemove={true}/>
+						<ShowVideo id={id} />
+						<ListVideos id={id} />
 					</Flex>
-				</Margin>
+				)}
 			</FlexContainer>
 		</Page>
 	)

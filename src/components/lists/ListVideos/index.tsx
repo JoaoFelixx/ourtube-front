@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Container } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
+import { ID } from 'interfaces';
 
-interface RemoveContainer {
-  ifIsPhoneRemove?: boolean;
-}
-
-export function ListVideos({ ifIsPhoneRemove }: RemoveContainer) {
+export function ListVideos({ id }: ID) {
   const videos = useSelectorVideos();
-    
+  
+  useEffect(() => {
+    console.log(id)
+  }, [id]);
+
   return (
-  	<Container ifIsPhoneRemove={ifIsPhoneRemove}>
+  	<Container>
       {React.Children.toArray(
         videos?.map(({ _id, photo_id, description }) => {
           return (
-            <Link to={`/video/${_id}`} style={{ textDecoration: 'none' }}>
-              <Card>
-                <img src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Foto"/>
-                <p> {description} </p>
-              </Card>
-            </Link>
+            <Card>
+              <Link to={`/video/${_id}`} style={{ textDecoration: 'none' }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                  <img src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Foto"/>
+                  <p> {description} </p>
+                </div>
+              </Link>
+            </Card>
           )
         })
       )}

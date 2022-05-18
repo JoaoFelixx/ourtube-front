@@ -6,10 +6,10 @@ const Page = styled.div`
 `;
 
 const Margin = styled.div`
-	margin: 5px;
+	padding: 5px;
 
 	div {
-		margin: 5px 0;
+		padding: 5px 0;
 	}
 `;
 

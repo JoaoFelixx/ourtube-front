@@ -7,7 +7,7 @@ import { Panel } from './Panel';
 import { Banner } from './Banner';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
-import { ListVideos } from './lists';
+import { ListVideos, ListVideosById } from './lists';
 import { FlexContainer } from './FlexContainer';
 
 export {
@@ -22,4 +22,5 @@ export {
 	ListVideos,
 	PopularWords,
 	FlexContainer,
+	ListVideosById,
 }

@@ -7,8 +7,8 @@ import {
 	Banner,
 	SideNav, 
 	SearchBar,
-	ListVideos,
 	FlexContainer,
+	ListVideosById,
 } from 'components';
 import { Page, Margin } from '../style';
 
@@ -36,11 +36,13 @@ export function MyChannel() {
 			<SideNav />
 			<FlexContainer>
 				<SearchBar />
-				<Margin>
-					<Banner src={`http://localhost:4545/api/v1/files/${channel?.banner_id}`}/>
-					{channel && <Panel channel={channel}/>}<br/>
-					<ListVideos />
-				</Margin>	
+				{channel && (
+					<Margin>
+						<Banner src={`http://localhost:4545/api/v1/files/${channel?.banner_id}`}/>
+						<Panel channel={channel}/>
+						<ListVideosById id={channel._id} />
+					</Margin>
+				)}
 			</FlexContainer>
 		</Page>
 	)
