@@ -7,7 +7,7 @@ import { Panel } from './Panel';
 import { Banner } from './Banner';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
-import { ListVideos, ListVideosById } from './lists';
+import { ListVideosById } from './lists';
 import { FlexContainer } from './FlexContainer';
 
 export {
@@ -19,7 +19,6 @@ export {
 	SearchBar,
 	FormLogin,
 	ShowVideo,
-	ListVideos,
 	PopularWords,
 	FlexContainer,
 	ListVideosById,
