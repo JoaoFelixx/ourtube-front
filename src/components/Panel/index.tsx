@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Channel } from 'interfaces';
-import { useLocation } from 'react-router-dom';
-import { FormChannelEditImages, FormCreateChannel } from '../forms';
+import { Link, useLocation } from 'react-router-dom';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { MdAddAPhoto } from 'react-icons/md';
+import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
 	Icon,
@@ -30,7 +30,7 @@ export function Panel({ channel }: PainelProps) {
 	const [formSelected, setFormSelected] = useState<string>('');
 
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
-		'info': <FormCreateChannel />,
+		'info': <FormUpdateChannel />,
 		'images': <FormChannelEditImages />,
 	}[form] || (
 			<>
@@ -44,8 +44,10 @@ export function Panel({ channel }: PainelProps) {
 					<Separator />
 
 					<ClickCard onClick={() => setFormSelected('info')}>
-						<AiTwotoneEdit size="2em" /><br />
-						Editar nome e descrição do canal
+						<Link to={`/myChannel/${channel._id}`}>
+							<AiTwotoneEdit size="2em" /><br />
+							Editar nome e descrição do canal
+						</Link>
 					</ClickCard>
 				</Content>
 			</>
@@ -65,7 +67,7 @@ export function Panel({ channel }: PainelProps) {
 					<h1>{channel?.name}</h1>
 					<span> 0 Inscritos </span>
 				</div>
-			</Content><br/>
+			</Content><br />
 
 			<Content>
 				{location.pathname !== '/myChannel' ? <Subscribe> Inscreva-se </Subscribe> : (
