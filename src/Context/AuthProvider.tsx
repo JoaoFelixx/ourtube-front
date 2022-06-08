@@ -5,6 +5,7 @@ import React, {
 	createContext,
 	SetStateAction,
 } from 'react';
+import { Provider } from 'interfaces';
 
 interface ContextData {
 	authenticated: boolean;
@@ -14,10 +15,6 @@ interface ContextData {
 const Context = createContext<ContextData>({ authenticated: false });
 
 const useSelectorAuth = () => useContext(Context);
-
-interface Provider {
-	children: React.ReactNode;
-}
 
 function AuthProvider({ children }: Provider) {
 	const [authenticated, setAuthenticated] = useState<boolean>(false);

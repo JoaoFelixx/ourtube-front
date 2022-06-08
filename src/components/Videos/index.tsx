@@ -10,6 +10,7 @@ import {
 	ChannelName,
 } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
+import { environments } from 'constants/environments';
 
 function Videos() {
 	const videos = useSelectorVideos()
@@ -21,10 +22,10 @@ function Videos() {
 					return (
 						<Video>
 							<Link to={`/video/${_id}`}>
-								<Preview src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="Preview" />
+								<Preview src={`${environments.API_URL}/files/${photo_id}`} alt="Preview" />
 							</Link>
 							<Description>
-								<Icon src={`http://localhost:4545/api/v1/files/${channel_id.icon_id}`} alt="icon" />
+								<Icon src={`${environments.API_URL}/files/${channel_id.icon_id}`} alt="icon" />
 								<div style={{ marginLeft: '6px' }}>
 									<Title>{description}</Title>
 									<Link to={`/channel/${channel_id._id}`}>

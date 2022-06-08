@@ -7,8 +7,8 @@ import { Panel } from './Panel';
 import { Banner } from './Banner';
 import { FormLogin } from './forms';
 import { ShowVideo } from './ShowVideo';
-import { ListVideosById } from './lists';
 import { FlexContainer } from './FlexContainer';
+import { ListVideosById } from './lists';
 
 export {
 	Ad,

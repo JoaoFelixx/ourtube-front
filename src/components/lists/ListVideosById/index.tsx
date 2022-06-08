@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Video } from 'interfaces';
 import { Item, List } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
+import { environments } from 'constants/environments';
 
 interface ListProps {
 	id: string;
@@ -31,7 +32,7 @@ export function ListVideosById({ id, isDisplayNone }: ListProps) {
 						<Item>
 							<Link to={`/video/${_id}`}>
 								<div>
-									<img src={`http://localhost:4545/api/v1/files/${photo_id}`} alt="" />
+									<img src={`${environments.API_URL}/files/${photo_id}`} alt="" />
 									<p>{description}</p>
 								</div>
 							</Link>

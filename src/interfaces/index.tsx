@@ -1,4 +1,4 @@
-export interface Video {
+interface Video {
 	_id: string;
 	createdAt: Date;
 	mimetype: string;
@@ -12,7 +12,7 @@ export interface Video {
 	}
 }
 
-export interface Channel {
+interface Channel {
 	_id: string;
 	name: string;
 	description: string;
@@ -20,6 +20,12 @@ export interface Channel {
 	icon_id?: string;
 }
 
-export interface ID {
+interface ID {
 	id: string;
 }
+
+interface Provider {
+	children: React.ReactNode;
+}
+
+export type { Video, Channel, ID, Provider };

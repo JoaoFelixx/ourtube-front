@@ -1,9 +1,9 @@
 import { IconContext } from "react-icons";
 import { GlobalStyle } from 'styles';
-import { ToastContainer } from 'react-toastify';
-import Routes from 'Router';
 import { AuthProvider } from 'Context/AuthProvider';
+import { ToastContainer } from 'react-toastify';
 import { VideosProvider } from 'Context/VideosProvider';
+import Routes from 'Router';
 
 function App() {
   return (

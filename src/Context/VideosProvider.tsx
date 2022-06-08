@@ -4,12 +4,8 @@ import React, {
 	useContext,
 	createContext,
 } from 'react';
-import { Video } from 'interfaces';
+import { Video, Provider } from 'interfaces';
 import { api } from 'service';
-
-interface Provider {
-	children: React.ReactNode;
-}
 
 const Context = createContext<Video[] | null>(null);
 

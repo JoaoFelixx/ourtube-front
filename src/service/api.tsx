@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { environments } from 'constants/environments';
 
 const token = localStorage.getItem('ourtube_token');
 
 export const api = axios.create({
-	baseURL: 'http://localhost:4545/api/v1',
+  baseURL: environments.API_URL,
   timeout: 3000,
-   headers: {
-    Authorization: `Bearer ${token}`  
-  }  
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
 });

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Video as VideoData, ID } from 'interfaces';
 import { Video, Card } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
+import { environments } from 'constants/environments';
 
 export function ShowVideo({ id }: ID) {
 	const videos = useSelectorVideos();
@@ -25,9 +26,9 @@ export function ShowVideo({ id }: ID) {
 		<Card>
 			{!videoSelected ? <h2>Error, video not a found</h2> : (
 				<div>
-					<Video poster={`http://localhost:4545/api/v1/files/${videoSelected?.photo_id}`} loop controls>
+					<Video poster={`${environments.API_URL}/files/${videoSelected?.photo_id}`} loop controls>
 						<source
-							src={`http://localhost:4545/api/v1/files/${videoSelected?._id}`}
+							src={`${environments.API_URL}/files/${videoSelected?._id}`}
 							type={videoSelected?.mimetype} />
 					</Video>
 				 	<div style={{ gridArea: 'comments' }}>
