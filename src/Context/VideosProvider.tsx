@@ -1,11 +1,12 @@
-import React, {
+import {
 	useState,
 	useEffect,
 	useContext,
 	createContext,
 } from 'react';
-import { Video, Provider } from 'interfaces';
 import { api } from 'service';
+import { toast } from 'react-toastify';
+import { Video, Provider } from 'interfaces';
 
 const Context = createContext<Video[] | null>(null);
 
@@ -16,9 +17,13 @@ function VideosProvider({ children }: Provider) {
 
 	useEffect(() => {
 		(async () => {
-			const { data } = await api.get<Video[]>('/videos');
+			try {
+				const { data } = await api.get<Video[]>('/videos');
 
-			setVideos(data);
+				setVideos(data);
+			} catch (error) {
+				toast.error('Erro ao carregar videos do servidor')
+			}
 		})()
 	}, [])
 

@@ -8,7 +8,7 @@ const Card = styled.div`
 	padding: 6px;
 `;
 
-const Div = styled.div` 
+const Flex = styled.div` 
 	width: auto;
 	display: flex;
 	align-items: center;
@@ -24,7 +24,7 @@ const Image = styled.img`
 `;
 
 export {
-	Div,
+	Flex,
 	Text,
 	Card,
 	Image,

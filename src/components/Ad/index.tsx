@@ -1,5 +1,5 @@
 import {
-	Div,
+	Flex,
 	Text,
 	Card,
 	Image,
@@ -9,7 +9,7 @@ const felixflix = require('../../assets/felixflix.png');
 function Ad() {
 	return (
 		<Card>
-			<Div>
+			<Flex>
 				<Image src={felixflix} alt="ad" />
 				<Text>
 					P
@@ -23,7 +23,7 @@ function Ad() {
 					D
 					A
 				</Text>
-			</Div>
+			</Flex>
 		</Card>
 	)
 }
