@@ -62,7 +62,7 @@ export function Panel({ channel }: PainelProps) {
 				</Modal>
 			}
 			<Content>
-				<Icon src={`http://localhost:4545/api/v1/files/${channel.icon_id}`} alt="Logo" />
+				<Icon src={`http://localhost:4545/api/files/${channel.icon_id}`} alt="Logo" />
 				<div>
 					<h1>{channel?.name}</h1>
 					<span> 0 Inscritos </span>

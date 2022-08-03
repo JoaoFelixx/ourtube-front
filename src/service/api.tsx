@@ -5,7 +5,7 @@ const token = localStorage.getItem('ourtube_token');
 
 export const api = axios.create({
   baseURL: environments.API_URL,
-  timeout: 3000,
+  timeout: 5000,
   headers: {
     Authorization: `Bearer ${token}`
   }
