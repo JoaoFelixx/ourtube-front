@@ -1,21 +1,24 @@
-import { Nav, Div, Menu, FixedContainer } from './style';
-import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
-import { FaRegCompass } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { FiYoutube } from 'react-icons/fi';
+import { FaRegCompass } from 'react-icons/fa';
 import { BsCollectionPlayFill } from 'react-icons/bs';
+import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { MdVideoLibrary, MdHistory } from 'react-icons/md';
+import { Nav, Div, Menu, FixedContainer } from './style';
 
 function SideNav() {
 	return (
 		<Nav>
-			<FixedContainer><br/>
+			<FixedContainer><br />
 				<Menu>
 					<AiOutlineMenu size="26px" />
 				</Menu><br />
-				<Div>
-					<AiFillHome size="24px" /><br />
-					Inicio
-				</Div>
+				<Link style={{ textDecoration: 'none' }} to='/'>
+					<Div>
+						<AiFillHome size="24px" /><br />
+						Inicio
+					</Div>
+				</Link>
 				<Div>
 					<FaRegCompass size="24px" /><br />
 					Explorar

@@ -17,6 +17,11 @@ export function FormChannelEditImages({ _id }: ChannelId) {
 
   const onSubmitImages: SubmitHandler<ChannelImages> = async ({ iconList, bannerList }) => {
 		try {
+			const token = localStorage.getItem('ourtube_token');
+
+			if (!token)
+				return
+
 			const formIcon = new FormData();
 			const formBanner = new FormData();
 
@@ -33,7 +38,8 @@ export function FormChannelEditImages({ _id }: ChannelId) {
 
 			const headers = { 
 				'headers': {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${JSON.parse(token)}`
 				}
 			} 
 

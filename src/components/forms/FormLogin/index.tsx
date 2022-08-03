@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, Input, Button } from './style';
-import { useSelectorAuth } from 'Context/AuthProvider';
 import { api } from 'service';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useSelectorAuth } from 'Context/AuthProvider';
+import { Card, Input, Button } from './style';
 const ourtube = require('../../../assets/icon.png');
 
 export function FormLogin () {
@@ -20,14 +20,11 @@ export function FormLogin () {
 
 			const { data: { token } } = await api.post('/auth', user);
 
-			localStorage.setItem('ourtube_token', token);
+			localStorage.setItem('ourtube_token', JSON.stringify(token));
 
 			setAuthenticated?.(true);
 
 			navigate('/');
-
-			window.location.reload();
-
 		} catch (error) {
 			toast.error('Erro')
 		}

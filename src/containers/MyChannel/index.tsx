@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Channel } from 'interfaces';
-import { 
+import { Page, Margin } from '../style';
+import {
 	Panel,
 	Banner,
-	SideNav, 
+	SideNav,
 	SearchBar,
 	FlexContainer,
 	ListVideosById,
 } from 'components';
-import { Page, Margin } from '../style';
 
 export function MyChannel() {
 	const [channel, setChannel] = useState<Channel | null>(null);
@@ -18,7 +18,16 @@ export function MyChannel() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const { data, status } = await api.get<Channel | null>('/myChannel');
+				const token = localStorage.getItem('ourtube_token')
+
+				if (!token)
+					return
+
+				const headers = {
+					Authorization: `Bearer ${JSON.parse(token)}`
+				}
+
+				const { data, status } = await api.get<Channel | null>('/myChannel', { headers });
 
 				if (status === 204)
 					return
@@ -38,8 +47,8 @@ export function MyChannel() {
 				<SearchBar />
 				{channel && (
 					<Margin>
-						<Banner src={`http://localhost:4545/api/files/${channel?.banner_id}`}/>
-						<Panel channel={channel}/>
+						<Banner src={channel?.banner_src} />
+						<Panel channel={channel} />
 						<ListVideosById id={channel._id} />
 					</Margin>
 				)}

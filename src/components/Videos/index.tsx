@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { memo } from 'react';
 import {
 	Icon,
 	Card,
@@ -9,36 +8,40 @@ import {
 	Description,
 	ChannelName,
 } from './style';
+import { Link } from 'react-router-dom';
 import { useSelectorVideos } from 'Context/VideosProvider';
-import { environments } from 'constants/environments';
 
 function Videos() {
-	const videos = useSelectorVideos()
+	const videos = useSelectorVideos();
 
-	return (
-		<Card>
-			{React.Children.toArray(
-				videos?.map(({ _id, mimetype, photo_id, description, channel_id }) => {
-					return (
-						<Video>
-							<Link to={`/video/${_id}`}>
-								<Preview src={`${environments.API_URL}/files/${photo_id}`} alt="Preview" />
-							</Link>
-							<Description>
-								<Icon src={`${environments.API_URL}/files/${channel_id.icon_id}`} alt="icon" />
-								<div style={{ marginLeft: '6px' }}>
-									<Title>{description}</Title>
-									<Link to={`/channel/${channel_id._id}`}>
-										<ChannelName> {channel_id.name} </ChannelName>
-									</Link>
-								</div>
-							</Description>
-						</Video>
-					)
-				})
-			)}
-		</Card>
-	)
+	const Videos = memo(() => {
+		return (
+			<Card>
+				{React.Children.toArray(
+					videos?.map(({ _id, preview_src, channel_id, description }) => {
+						return (
+							<Video>
+								<Link to={`/video/${_id}`}>
+									<Preview src={preview_src} alt="Preview" />
+								</Link>
+								<Description>
+									<Icon src={channel_id?.icon_src} alt="icon" />
+									<div style={{ marginLeft: '6px' }}>
+										<Title>{description}</Title>
+										<Link style={{ textDecoration: 'none' }} to={`/channel/${channel_id._id}`}>
+											<ChannelName> {channel_id.name} </ChannelName>
+										</Link>
+									</div>
+								</Description>
+							</Video>
+						)
+					})
+				)}
+			</Card>
+		)
+	})
+
+	return <Videos />
 }
 
 export default Videos;

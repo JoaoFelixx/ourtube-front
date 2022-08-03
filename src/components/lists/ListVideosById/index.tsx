@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Video } from 'interfaces';
 import { Item, List } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
-import { environments } from 'constants/environments';
 
 interface ListProps {
 	id: string;
@@ -13,6 +12,27 @@ interface ListProps {
 export function ListVideosById({ id, isDisplayNone }: ListProps) {
 	const [videosSelected, setVideosSelected] = useState<null | Video[]>(null);
 	const videos = useSelectorVideos();
+
+	const Videos = memo(() => {
+		return (
+			<List isDisplayNone={isDisplayNone}>
+				{React.Children.toArray(
+					videosSelected?.map(({ _id, description, preview_src }) => {
+						return (
+							<Item>
+								<Link to={`/video/${_id}`}>
+									<div>
+										<img src={preview_src} alt={description} />
+										<p>{description}</p>
+									</div>
+								</Link>
+							</Item>
+						)
+					})
+				)}
+			</List>
+		)
+	})
 
 	useEffect(() => {
 		const videosWithSameId = videos?.filter(({ channel_id }) => channel_id._id === id);
@@ -24,22 +44,5 @@ export function ListVideosById({ id, isDisplayNone }: ListProps) {
 
 	}, [id, videos]);
 
-	return (
-		<List isDisplayNone={isDisplayNone}>
-			{React.Children.toArray(
-				videosSelected?.map(({ _id, photo_id, description }) => {
-					return (
-						<Item>
-							<Link to={`/video/${_id}`}>
-								<div>
-									<img src={`${environments.API_URL}/files/${photo_id}`} alt="" />
-									<p>{description}</p>
-								</div>
-							</Link>
-						</Item>
-					)
-				})
-			)}
-		</List>
-	)
+	return <Videos />
 }

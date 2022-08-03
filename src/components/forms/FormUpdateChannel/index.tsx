@@ -11,7 +11,16 @@ export function FormUpdateChannel() {
 
   const onSubmitData: SubmitHandler<Channel> = async (data) => {
     try {
-      await api.put(`/channels/${data._id}`, data);
+      const token = localStorage.getItem('ourtube_token')
+
+      if (!token)
+        return
+
+      const headers = {
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
+
+      await api.put(`/channels/${data._id}`, data, { headers });
 
       toast.success('Canal criado com sucesso');
     } catch (error) {

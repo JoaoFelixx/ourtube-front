@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Channel } from 'interfaces';
-import { Link, useLocation } from 'react-router-dom';
-import { AiTwotoneEdit } from 'react-icons/ai';
 import { MdAddAPhoto } from 'react-icons/md';
+import { AiTwotoneEdit } from 'react-icons/ai';
+import { Link, useLocation } from 'react-router-dom';
 import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
@@ -62,7 +62,7 @@ export function Panel({ channel }: PainelProps) {
 				</Modal>
 			}
 			<Content>
-				<Icon src={`http://localhost:4545/api/files/${channel.icon_id}`} alt="Logo" />
+				<Icon src={channel.icon_src} alt="Logo" />
 				<div>
 					<h1>{channel?.name}</h1>
 					<span> 0 Inscritos </span>

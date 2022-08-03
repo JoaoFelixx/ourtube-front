@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { api } from 'service';
 import { toast } from 'react-toastify';
-import { Card, Button } from './style';
 import { Channel } from 'interfaces';
+import { Card, Button } from './style';
 
 type ChannelDataProps = Omit<Channel, '_id'>;
 
@@ -11,8 +11,16 @@ export function FormCreateChannel() {
 
   const onSubmitData: SubmitHandler<ChannelDataProps> = async (data) => {
     try {
+      const token = localStorage.getItem('ourtube_token')
 
-      await api.post('/channels', data);
+      if (!token)
+        return
+
+      const headers = {
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
+
+      await api.post('/channels', data, { headers });
 
       toast.success('Canal criado com sucesso');
 

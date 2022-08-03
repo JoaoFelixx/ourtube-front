@@ -20,7 +20,6 @@ function AuthProvider({ children }: Provider) {
 	const [authenticated, setAuthenticated] = useState<boolean>(false);
 
 	useEffect(() => {
-
 		if (!localStorage.getItem('ourtube_token'))
 			return 
 			

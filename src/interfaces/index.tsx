@@ -1,23 +1,18 @@
-interface Video {
-	_id: string;
-	createdAt: Date;
-	mimetype: string;
-	photo_id: string;
-	updatedAt: Date;
-	description: string;
-	channel_id: {
-		_id: string;
-		name: string;
-		icon_id: string;
-	}
-}
-
 interface Channel {
 	_id: string;
 	name: string;
+	icon_src?: string;
+	banner_src?: string;
 	description: string;
-	banner_id?: string;
-	icon_id?: string;
+}
+
+interface Video {
+	_id: string;
+	video_src: string;
+	preview_src: string;
+	mimetype: string;
+	channel_id: Channel;
+	description: string;
 }
 
 interface ID {
@@ -28,4 +23,4 @@ interface Provider {
 	children: React.ReactNode;
 }
 
-export type { Video, Channel, ID, Provider };
+export type { ID, Video, Channel, Provider };
