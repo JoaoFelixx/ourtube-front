@@ -4,13 +4,13 @@ import {
 	Card,
 	Image,
 } from './style';
-const felixflix = require('../../assets/felixflix.png');
+import Felixflix from 'assets/felixflix.png';
 
-function Ad() {
+export function Ad() {
 	return (
 		<Card>
 			<Flex>
-				<Image src={felixflix} alt="ad" />
+				<Image src={Felixflix} alt="ad" />
 				<Text>
 					P
 					R
@@ -27,5 +27,3 @@ function Ad() {
 		</Card>
 	)
 }
-
-export default Ad;

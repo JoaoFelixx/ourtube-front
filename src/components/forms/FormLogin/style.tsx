@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const background = require('../../../assets/fireworks.jpg');
+import Background from '../../../assets/fireworks.jpg';
 
 interface Color {
 	color: string;
@@ -10,7 +10,7 @@ interface InputHasError {
 }
 
 const Card = styled.div`
-  background-image: url(${background});
+  background-image: url(${Background});
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

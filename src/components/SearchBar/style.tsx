@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface IsVisible {
+	isVisible?: boolean;
+}
+
 const Nav = styled.nav`
 	display: flex;
 	flex-direction: row; 
@@ -14,7 +18,7 @@ const Nav = styled.nav`
 const Logo = styled.img` 
 	width: 10em;
 	cursor: pointer;
-`; 
+`;
 
 const Search = styled.input` 
 	width: 100%;
@@ -55,7 +59,7 @@ const SearchCard = styled.div`
 	@media (max-width: 768px) {
 		width: 96%;
 	}
-`; 
+`;
 
 const CardLogin = styled.div`
 	flex-grow: 2;
@@ -68,15 +72,26 @@ const CardLogin = styled.div`
 	}
 `;
 
-const Modal = styled.div`
+const Modal = styled.div<IsVisible>`
+	visibility: ${props => props.isVisible ? 'normal' : 'hidden'};
 	position: static;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 1em;
 	background-color: #fff;
-	color: #000;
-`; 
+	color: #000; 
+
+	ul {
+    list-style-type:none;
+	}
+
+  li {
+    display: flex;
+    justify-content: space-around;
+	  align-items: center;
+  }
+`;
 
 export {
 	Nav,

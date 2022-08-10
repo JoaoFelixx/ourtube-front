@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelectorVideos } from 'Context/VideosProvider';
 import {
 	Icon,
 	Card,
@@ -8,10 +10,8 @@ import {
 	Description,
 	ChannelName,
 } from './style';
-import { Link } from 'react-router-dom';
-import { useSelectorVideos } from 'Context/VideosProvider';
 
-function Videos() {
+export function Videos() {
 	const videos = useSelectorVideos();
 
 	const Videos = memo(() => {
@@ -21,9 +21,9 @@ function Videos() {
 					videos?.map(({ _id, preview_src, channel_id, description }) => {
 						return (
 							<Video>
-								<Link to={`/video/${_id}`}>
+								<a href={`/video/${_id}`}>
 									<Preview src={preview_src} alt="Preview" />
-								</Link>
+								</a>
 								<Description>
 									<Icon src={channel_id?.icon_src} alt="icon" />
 									<div style={{ marginLeft: '6px' }}>
@@ -43,5 +43,3 @@ function Videos() {
 
 	return <Videos />
 }
-
-export default Videos;
