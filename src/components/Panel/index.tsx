@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Channel } from 'interfaces';
 import { MdAddAPhoto } from 'react-icons/md';
 import { AiTwotoneEdit } from 'react-icons/ai';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
@@ -33,7 +33,7 @@ export function Panel({ channel }: PainelProps) {
 		'info': <FormUpdateChannel />,
 		'images': <FormChannelEditImages />,
 	}[form] || (
-			<>
+			<React.Fragment>
 				<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
 				<Content style={{ justifyContent: 'space-around' }}>
 					<ClickCard onClick={() => setFormSelected('images')} >
@@ -44,13 +44,11 @@ export function Panel({ channel }: PainelProps) {
 					<Separator />
 
 					<ClickCard onClick={() => setFormSelected('info')}>
-						<Link to={`/myChannel/${channel._id}`}>
-							<AiTwotoneEdit size="2em" /><br />
-							Editar nome e descrição do canal
-						</Link>
+						<AiTwotoneEdit size="2em" /><br />
+						Editar nome e descrição do canal
 					</ClickCard>
 				</Content>
-			</>
+			</React.Fragment>
 		))
 
 	return (

@@ -71,13 +71,13 @@ const Modal = styled.div`
   top: 100px;
   z-index: 1;
   display: block;
-	margin: 0 auto;
-	background-color: #fff;
+	margin: auto;
+	background-color: #FFF;
 	width: 600px;
 	border: 1px solid #333333;
 
 	div {
-		padding: 10px 0 40px 0;
+		padding: 10px 0 20px 0;
 	}
 
 	@media (max-width: 768px) {
@@ -86,9 +86,11 @@ const Modal = styled.div`
 `;
 
 const Exit = styled.button`
+	position: relative;
 	background-color: #ff0000;
 	float: right;
 	color: #fff;
+	top: -6px;
 	padding: 6px 10px;
 	font-size: 1em;
 	font-weight: bold;
