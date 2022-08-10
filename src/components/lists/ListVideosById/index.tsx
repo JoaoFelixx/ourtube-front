@@ -1,5 +1,4 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Link } from 'react-router-dom';
 import { Video } from 'interfaces';
 import { Item, List } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
@@ -20,12 +19,12 @@ export function ListVideosById({ id, isDisplayNone }: ListProps) {
 					videosSelected?.map(({ _id, description, preview_src }) => {
 						return (
 							<Item>
-								<Link to={`/video/${_id}`}>
+								<a href={`/video/${_id}`}>
 									<div>
 										<img src={preview_src} alt={description} />
 										<p>{description}</p>
 									</div>
-								</Link>
+								</a>
 							</Item>
 						)
 					})
