@@ -8,7 +8,7 @@ import { FormLogin } from './forms';
 import { SearchBar } from './SearchBar';
 import { ShowVideo } from './ShowVideo';
 import { FlexContainer } from './FlexContainer';
-import { ListVideosById } from './lists';
+import { ListVideosById, ListChannelVideos } from './lists';
 
 export {
 	Ad,
@@ -22,4 +22,5 @@ export {
 	PopularWords,
 	FlexContainer,
 	ListVideosById,
+	ListChannelVideos,
 }
