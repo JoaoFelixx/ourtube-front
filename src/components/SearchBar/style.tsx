@@ -78,19 +78,26 @@ const Modal = styled.div<IsVisible>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 1em;
+	padding: 1em 1.2em;
 	background-color: #fff;
 	color: #000; 
 
 	ul {
     list-style-type:none;
-	}
+    line-height: 2em;  
+	}  
 
-  li {
+   li > a {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 	  align-items: center;
   }
+li {
+    display: flex;
+    justify-content: space-between;
+	  align-items: center;
+
+}
 `;
 
 export {

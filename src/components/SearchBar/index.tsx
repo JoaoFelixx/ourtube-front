@@ -39,7 +39,7 @@ export function SearchBar() {
 					<ul>
 						<li>
 							<Link to="/myChannel" >
-								<TiSocialYoutube />Canal
+								Canal <TiSocialYoutube />
 							</Link>
 						</li>
 						<li>
