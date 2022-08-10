@@ -19,8 +19,6 @@ export function ShowVideo({ id }: ID) {
 		setVideoSelected(video);
 	}, [videos, id])
 
-	console.log(videoSelected)
-
 	return (
 		<Card>
 			{(!videoSelected && videoNotExists) ? <h2>Error, video not a found</h2> : (
