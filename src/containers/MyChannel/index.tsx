@@ -9,7 +9,7 @@ import {
 	SideNav,
 	SearchBar,
 	FlexContainer,
-	ListVideosById,
+	ListChannelVideos,
 } from 'components';
 
 export function MyChannel() {
@@ -49,7 +49,7 @@ export function MyChannel() {
 					<Margin>
 						<Banner src={channel?.banner_src} />
 						<Panel channel={channel} />
-						<ListVideosById id={channel._id} />
+						<ListChannelVideos id={channel._id} />
 					</Margin>
 				)}
 			</FlexContainer>
