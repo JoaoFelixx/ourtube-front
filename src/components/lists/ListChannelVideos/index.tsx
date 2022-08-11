@@ -4,7 +4,7 @@ import { useSelectorVideos } from 'Context/VideosProvider';
 import { Item, List, Flex, Content, Preview } from './style';
 
 interface ListProps {
-	id: string;
+	id?: string;
 }
 
 export function ListChannelVideos({ id }: ListProps) {
