@@ -1,9 +1,9 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from 'service';
+import { Channel } from 'interfaces';
 import { useParams } from 'react-router-dom';
 import { Page, Margin } from '../style';
-import { Channel, Provider } from 'interfaces';
-import { Tabs, Presentation } from './style';
+import { Li, Btn, Tabs, Content, Presentation } from './style';
 import {
 	Panel,
 	Banner,
@@ -13,37 +13,50 @@ import {
 	ListChannelVideos,
 } from 'components';
 
+interface PageSelected {
+	page: string;
+}
+
 export function ChannelById() {
 	const { id } = useParams();
-	const [channel, setChannel] = useState<Channel | null>(null);
+	const [channel, setChannel] = useState<Channel | null>(null); 
+	const [pageSelected, setPageSelected] = useState<string>('home');
 
-	const MemorizedChannel = memo(({ children }: Provider) => {
-		return (
-			<FlexContainer>
-				{children}
-				{channel && (
-					<Margin>
-						<Banner src={channel.banner_src} />
-						<Panel channel={channel} />
-						<Tabs>
-							<li>INICIO</li>
-							<li>VIDEOS</li>
-							<li>SOBRE</li>
-						</Tabs>
-						<Presentation>
-							{id && <ListChannelVideos id={id}/>}
-							<div style={{ padding: '8px' }} >
-								<h3>Conheça {channel.name}</h3><br />
-								<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
-									{channel.description}
-								</p>
-							</div>
-						</Presentation>
-					</Margin>
-				)}
-			</FlexContainer>
-		)
-	})
+	const Pagination = ({ page }: PageSelected) => ({
+		'home': (
+			<Content>
+				<Presentation>
+					{id && <ListChannelVideos id={id}/>}
+					{channel && (
+						<div style={{ padding: '8px' }} >
+							<h3>Conheça {channel.name}</h3><br />
+							<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
+								{channel.description}
+							</p>
+						</div>
+					)}
+				</Presentation>
+			</Content>
+		),
+		'about': (
+			<Content>
+				<Presentation>
+					{channel && (
+						<div style={{ padding: '8px' }} >
+							<h3>Conheça {channel.name}</h3><br />
+							<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
+								{channel.description}
+							</p>
+						</div>
+					)}
+				</Presentation>
+			</Content>
+		),
+	}[page] || (
+		<Content>
+			{id && <ListChannelVideos id={id}/>}
+		</Content>
+	));
 
 	useEffect(() => {
 		(async () => {
@@ -64,9 +77,21 @@ export function ChannelById() {
 	return (
 		<Page>
 			<SideNav />
-			<MemorizedChannel>
+			<FlexContainer>
 				<SearchBar />
-			</MemorizedChannel>
+				{channel && (
+					<Margin>
+						<Banner src={channel.banner_src} />
+						<Panel channel={channel} />
+						<Tabs>
+							<Li><Btn onClick={() => setPageSelected('home')}>INICIO</Btn></Li>
+							<Li><Btn onClick={() => setPageSelected('videos')}>VIDEOS</Btn></Li>
+							<Li><Btn onClick={() => setPageSelected('about')}>SOBRE</Btn></Li>
+						</Tabs>
+						<Pagination page={pageSelected} />
+					</Margin>
+				)}
+			</FlexContainer>
 		</Page>
 	)
 }

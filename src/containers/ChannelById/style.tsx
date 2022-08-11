@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Clicked {
+	clicked?: boolean;
+}
+
 const Presentation = styled.div` 
 	background-color: #EDEDED;
 	display: flex;
@@ -19,34 +23,50 @@ const Presentation = styled.div`
 	}
 `;
 
+const Content = styled.div` 
+	position: relative;
+	animation: startAnimation 2s;
+
+	@keyframes startAnimation {
+	  from { opacity: 0.1; }
+	  to { opacity: 1; }
+	}
+`;
+
 const Tabs = styled.ul`
 	list-style-type: none;
 	display: flex;
 	justify-content: end;
 	width: 90%;
 
-	li {
-		display: inline-block;
-		cursor: pointer;
-	  margin: 4px 4px 4px 12px;
-	  font-size: 1.3em;
-	  border-bottom: 2px solid #000;
-	}
+	@media (max-width: 768px) { justify-content: start; }
+`;
 
-	li:hover {
-		transition: 1s;
+const Li = styled.li<Clicked>`
+	display: inline-block;
+`;
+
+const Btn = styled.button`
+	border: none;
+	border-bottom: 2px solid #000;
+	cursor: pointer;
+	font-size: 1.3em;
+	margin: 4px 4px 4px 12px;
+	transition: 1s;
+	background-color: #FFF;
+
+	&:after {
 		background-color: #EDEDED;
 	}
 
-	@media (max-width: 768px) {
-		justify-content: start;
-
-		li {
-			font-size: 1em;
-			margin: 4px;
-		}
+	&:focus {
+		color: #54AFFA;
 	}
 
+	@media (max-width: 768px) {
+		font-size: 1em;
+		margin: 4px;
+	}
 `;
 
-export { Tabs, Presentation };
+export { Li, Btn, Tabs, Content, Presentation };
