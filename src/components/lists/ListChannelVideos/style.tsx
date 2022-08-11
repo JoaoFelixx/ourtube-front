@@ -9,7 +9,7 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #FFF;
 
   @media (max-width: 768px) {
     p { font-size: 1em; }  
