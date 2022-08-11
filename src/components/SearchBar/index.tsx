@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ImExit } from 'react-icons/im';
 import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
 import { TiSocialYoutube } from 'react-icons/ti';
 import { GiMagnifyingGlass } from 'react-icons/gi';
+import { Link, useNavigate } from 'react-router-dom';
 import {
 	Nav,
 	Logo,
@@ -20,8 +20,17 @@ import { useSelectorAuth } from 'Context/AuthProvider';
 import Ourtube from '../../assets/ourtube-logo.png';
 
 export function SearchBar() {
+	const navigate = useNavigate();
 	const [showModal, setShowModal] = useState<boolean>(false);
-	const { authenticated } = useSelectorAuth();
+	const { authenticated, setAuthenticated } = useSelectorAuth();
+
+	const logOut = () => {
+		setAuthenticated?.(false);
+
+		localStorage.removeItem('ourtube_token');
+
+		navigate('/');
+	}
 
 	return (
 		<Nav>
@@ -42,7 +51,7 @@ export function SearchBar() {
 								Canal <TiSocialYoutube />
 							</Link>
 						</li>
-						<li>
+						<li style={{ cursor: 'pointer' }} onClick={logOut}>
 							Sair <ImExit />
 						</li>
 					</ul>
