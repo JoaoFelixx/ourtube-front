@@ -30,8 +30,7 @@ const Subscribe = styled.button`
 	border: none;
 	font-size: 1.2em;
 	color: #fff;
-	cursor: pointer;
-
+	
 	@media (max-width: 768px) {
 		margin-left: 2px;
 	}
