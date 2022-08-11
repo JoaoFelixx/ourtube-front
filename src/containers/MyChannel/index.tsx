@@ -11,6 +11,7 @@ import {
 	FlexContainer,
 	ListChannelVideos,
 } from 'components';
+import BannerImg from 'assets/default-banner.png';
 
 export function MyChannel() {
 	const [channel, setChannel] = useState<Channel | null>(null);
@@ -29,9 +30,9 @@ export function MyChannel() {
 
 				const { data, status } = await api.get<Channel | null>('/myChannel', { headers });
 
-				if (status === 204)
+				if (status === 204) 
 					return
-
+				
 				setChannel(data);
 
 			} catch (error) {
@@ -45,13 +46,12 @@ export function MyChannel() {
 			<SideNav />
 			<FlexContainer>
 				<SearchBar />
-				{channel && (
 					<Margin>
-						<Banner src={channel?.banner_src} />
-						<Panel channel={channel} />
-						<ListChannelVideos id={channel._id} />
+						<Banner 
+							src={channel ? channel?.banner_src : BannerImg} />
+						<Panel channel={channel || undefined} />
+						<ListChannelVideos id={channel ? channel._id : undefined} />
 					</Margin>
-				)}
 			</FlexContainer>
 		</Page>
 	)
