@@ -68,7 +68,7 @@ export function Panel({ channel }: PainelProps) {
 			</Content><br />
 
 			<Content>
-				{location.pathname !== '/myChannel' ? <Subscribe> Inscreva-se </Subscribe> : (
+				{location.pathname !== '/myChannel' ? <Subscribe> INSCREVA-SE </Subscribe> : (
 					<div>
 						<Button onClick={() => setShowModal(true)}>Personalizar o canal</Button>
 						<Button>Gerenciar Videos</Button>
