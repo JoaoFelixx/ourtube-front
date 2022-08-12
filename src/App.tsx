@@ -1,4 +1,4 @@
-import Routes from 'Router';
+import { Routes } from 'Router';
 import { GlobalStyle } from 'styles';
 import { ApplicationProvider } from 'Context/ApplicationContext';
 

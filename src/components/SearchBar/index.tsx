@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Ourtube from '../../assets/ourtube-logo.png';
 import { ImExit } from 'react-icons/im';
 import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
 import { TiSocialYoutube } from 'react-icons/ti';
+import { useSelectorAuth } from 'Context/AuthProvider';
+import { useSelectorVideos } from 'Context/VideosProvider';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -16,11 +19,11 @@ import {
 	LoginButton,
 	SearchButton,
 } from './style';
-import { useSelectorAuth } from 'Context/AuthProvider';
-import Ourtube from '../../assets/ourtube-logo.png';
 
 export function SearchBar() {
+	const videos = useSelectorVideos();
 	const navigate = useNavigate();
+	const [search, setSearch] = useState<string>('');
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const { authenticated, setAuthenticated } = useSelectorAuth();
 
@@ -32,6 +35,13 @@ export function SearchBar() {
 		navigate('/');
 	}
 
+	const onSubmitForSearch = () => {
+		if (search.length <= 3)
+			return
+
+		navigate(`/search/${search}`);
+	}
+
 	return (
 		<Nav>
 			<CardLogo>
@@ -40,8 +50,24 @@ export function SearchBar() {
 				</Link>
 			</CardLogo>
 			<SearchCard>
-				<Search type="sarch" placeholder="Pesquisar" />
-				<SearchButton type="submit"><GiMagnifyingGlass /></SearchButton>
+				<Search
+					list='descriptions'
+					minLength={2}
+					type="search"
+					onChange={(event) => setSearch(event.target.value)}
+					placeholder="Pesquisar" />
+				<datalist id='descriptions' style={{ overflow: 'hidden' }}>
+					{React.Children.toArray(
+						videos.map(({ description }) =>
+							<option value={description}></option>
+						)
+					)}
+				</datalist>
+				<SearchButton
+					type="button"
+					onClick={onSubmitForSearch}>
+					<GiMagnifyingGlass />
+				</SearchButton>
 			</SearchCard>
 			<CardLogin>
 				<Modal isVisible={showModal}>
