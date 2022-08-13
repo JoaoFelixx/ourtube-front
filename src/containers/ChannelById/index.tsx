@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from 'service';
 import { Channel } from 'interfaces';
 import { useParams } from 'react-router-dom';
-import { Page, Margin } from '../style';
-import { Li, Btn, Tabs, Content, Presentation } from './style';
 import {
 	Panel,
 	Banner,
@@ -12,6 +10,7 @@ import {
 	FlexContainer,
 	ListChannelVideos,
 } from 'components';
+import { Li, Btn, Tabs, Page, Margin, Content, Presentation } from './style';
 
 interface PageSelected {
 	page: string;
@@ -19,14 +18,14 @@ interface PageSelected {
 
 export function ChannelById() {
 	const { id } = useParams();
-	const [channel, setChannel] = useState<Channel | null>(null); 
+	const [channel, setChannel] = useState<Channel | null>(null);
 	const [pageSelected, setPageSelected] = useState<string>('home');
 
 	const Pagination = ({ page }: PageSelected) => ({
 		'home': (
 			<Content>
 				<Presentation>
-					{id && <ListChannelVideos id={id}/>}
+					{id && <ListChannelVideos id={id} />}
 					{channel && (
 						<div style={{ padding: '8px' }} >
 							<h3>Conheça {channel.name}</h3><br />
@@ -53,10 +52,10 @@ export function ChannelById() {
 			</Content>
 		),
 	}[page] || (
-		<Content>
-			{id && <ListChannelVideos id={id}/>}
-		</Content>
-	));
+			<Content>
+				{id && <ListChannelVideos id={id} />}
+			</Content>
+		));
 
 	useEffect(() => {
 		(async () => {

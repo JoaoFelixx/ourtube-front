@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Channel } from 'interfaces';
-import { Page, Margin } from '../style';
+import { Page, Margin } from './style';
 import {
 	Panel,
 	Banner,

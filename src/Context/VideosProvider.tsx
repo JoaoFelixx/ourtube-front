@@ -1,4 +1,4 @@
-import React, { 
+import { 
 	useState, 
 	useEffect, 
 	useContext,
@@ -10,7 +10,7 @@ import { Video, Provider } from 'interfaces';
 
 const Context = createContext<Video[]>([]);
 
-const useSelectorVideos = () => useContext(Context);
+const useSelectorVideos = (): Video[] => useContext(Context);
 
 function VideosProvider({ children }: Provider) {
 	const [videos, setVideos] = useState<Video[]>([]);

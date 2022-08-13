@@ -6,6 +6,19 @@ const Link = styled.a`
 	color: #000;
 `;
 
+const Page = styled.div`
+	width: 100%;
+	display: flex;
+`;
+
+const Margin = styled.div`
+	padding: 5px;
+
+	div {
+		padding: 5px 0;
+	}
+`;
+
 const Card = styled.div`
 	display: flex;
   margin-bottom: 1vh;
@@ -32,4 +45,4 @@ const Icon = styled.img`
   border-radius: 50%;
 `;
 
-export { Link, Card, Icon, Image, Title, Content };
+export { Link, Card, Icon, Page, Margin, Image, Title, Content };

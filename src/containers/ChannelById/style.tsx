@@ -4,6 +4,19 @@ interface Clicked {
 	clicked?: boolean;
 }
 
+const Page = styled.div`
+	width: 100%;
+	display: flex;
+`;
+
+const Margin = styled.div`
+	padding: 5px;
+
+	div {
+		padding: 5px 0;
+	}
+`;
+
 const Presentation = styled.div` 
 	background-color: #EDEDED;
 	display: flex;
@@ -69,4 +82,4 @@ const Btn = styled.button`
 	}
 `;
 
-export { Li, Btn, Tabs, Content, Presentation };
+export { Li, Btn, Tabs, Page, Margin, Content, Presentation };

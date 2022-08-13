@@ -6,7 +6,7 @@ import {
 	PopularWords,
 	FlexContainer,
 } from 'components';
-import { Page, Margin } from '../style';
+import { Page, Margin } from './style';
 
 export function Home() {
 	return (

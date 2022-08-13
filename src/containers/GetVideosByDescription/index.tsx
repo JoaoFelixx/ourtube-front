@@ -3,9 +3,8 @@ import { api } from 'service';
 import { Video } from 'interfaces';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { Page, Margin } from '../style';
 import { Ad, FlexContainer, SideNav, SearchBar } from 'components';
-import { Link, Card, Icon, Image, Title, Content } from './style';
+import { Link, Card, Icon, Page, Margin, Image, Title, Content } from './style';
 
 export function GetVideoByDescription() {
   const { description } = useParams();

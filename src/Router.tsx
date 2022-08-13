@@ -14,10 +14,10 @@ function Router() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path="/login/" element={<LoginPage />} />
-        <Route path="/video/:id/" element={<ShowVideoPage />} />
-        <Route path='/search/:description' element={<VideosByDescription />} />
         <Route path="/myChannel" element={<MyChannelPage />} />
+        <Route path="/video/:id/" element={<ShowVideoPage />} />
         <Route path="/channel/:id/" element={<ChannelByIdPage />} />
+        <Route path='/search/:description' element={<VideosByDescription />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

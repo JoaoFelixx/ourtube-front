@@ -5,9 +5,9 @@ import React, {
   useCallback,
   createContext,
 } from 'react';
+import { api } from 'service';
 import { useSelectorAuth } from './AuthProvider';
 import { Provider, Enrolled } from 'interfaces';
-import { api } from 'service';
 
 interface User {
   enrolled: Enrolled[];
@@ -28,7 +28,7 @@ function UserProvider({ children }: Provider) {
   useEffect(() => {
     (async () => {
       try {
-        const token = localStorage.getItem('ourtube_token')
+        const token = localStorage.getItem('ourtube_token');
 
         if (!authenticated || !token)
           return;
@@ -52,5 +52,4 @@ function UserProvider({ children }: Provider) {
     </Context.Provider>
   )
 }
-
 export { useSelectorUser, UserProvider };

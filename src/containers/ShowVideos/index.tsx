@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Page } from '../style';
-import { Flex } from './style';
 import { useParams } from 'react-router-dom';
+import { Flex, Page } from './style';
 import { useSelectorVideos } from 'Context/VideosProvider';
 import {
 	SideNav,
