@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Link = styled.a`
+const A = styled.a`
 	cursor: pointer;
 	text-decoration: none;
 	color: #000;
@@ -12,22 +12,30 @@ const Page = styled.div`
 `;
 
 const Margin = styled.div`
-	padding: 5px;
+	padding:  5vh 10vh;
 
 	div {
 		padding: 5px 0;
+	}
+
+	@media (max-width: 768px) {
+		padding: 5px 4px;
 	}
 `;
 
 const Card = styled.div`
 	display: flex;
-  margin-bottom: 1vh;
+  margin-bottom: 1em;
   background-color: #EDEDED;
   align-items: stretch;
 `;
 
 const Image = styled.img`
 	height: 30vh;
+
+	@media (max-width: 768px) {
+		height: 12vh;
+	}
 `;
 
 const Content = styled.div`
@@ -36,8 +44,13 @@ const Content = styled.div`
 `;
 
 const Title = styled.p`
-  font-size: 4vh;
+  font-size: 1em;
   text-transform: uppercase;
+  font-weight: bold;
+
+  @media (max-width: 768px) {
+
+  }
 `;
 
 const Icon = styled.img`
@@ -45,4 +58,59 @@ const Icon = styled.img`
   border-radius: 50%;
 `;
 
-export { Link, Card, Icon, Page, Margin, Image, Title, Content };
+const NoHasContent = styled.div`
+	color: #0099ff;
+	font-size: 1.2em;
+`;
+
+const IconChannel = styled.img`
+	height: 14vh;
+	border-radius: 50%;
+	margin-right: 4em;
+`;
+
+const Channel = styled.div`
+	display: flex;
+	align-items: center;
+	background-color: #EDEDED;
+	justify-content: space-around;
+	margin-bottom: 0.5em;
+
+	@media (max-width: 500px) {
+		justify-content: center;
+	}
+`;
+
+const Subscribe = styled.button` 
+	background-color: #ff0000; 
+	padding: 6px 12px;
+	border: none;
+	font-size: 1.2em;
+	color: #fff;
+	
+	@media (max-width: 768px) {
+		display: none;
+	}
+`;
+
+const Filter = styled.div`
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+`;
+
+export { 
+	A, 
+	Card, 
+	Icon, 
+	Page, 
+	Image, 
+	Title, 
+	Filter,
+	Margin, 
+	Content,
+	Channel,
+	Subscribe,
+	IconChannel,
+	NoHasContent, 
+};

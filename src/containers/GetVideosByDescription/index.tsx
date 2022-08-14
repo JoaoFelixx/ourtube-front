@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { api } from 'service';
-import { Video } from 'interfaces';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
-import { Ad, FlexContainer, SideNav, SearchBar } from 'components';
-import { Link, Card, Icon, Page, Margin, Image, Title, Content } from './style';
+import { BsFilterLeft } from 'react-icons/bs';
+import { useParams, Link } from 'react-router-dom';
+import { Channel as ChannelData, Video } from 'interfaces';
+import { FlexContainer, SideNav, SearchBar } from 'components';
+import {
+  A,
+  Card,
+  Icon,
+  Page,
+  Image,
+  Title,
+  Margin,
+  Filter,
+  Content,
+  Channel,
+  Subscribe,
+  IconChannel,
+  NoHasContent,
+} from './style';
 
 export function GetVideoByDescription() {
   const { description } = useParams();
+  const [hasContent, setHasContent] = useState<boolean>(true);
   const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
+  const [filteredChannels, setFilteredChannels] = useState<ChannelData[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -16,15 +33,18 @@ export function GetVideoByDescription() {
         if (!description)
           return
 
-        const { status, data } = await api.get<Video[]>(`/search/${description}`);
+        const [channels, videos] = await Promise.all([
+          api.get<ChannelData[]>(`/search/channels/${description}`),
+          api.get<Video[]>(`/search/videos/${description}`)
+        ]);
 
-        if (status === 204) {
-          toast.warning('Nenhuma busca efetuada com sucesso');
+        if (channels.status === 204 && videos.status === 204) {
+          setHasContent(false);
           return
         }
 
-        setFilteredVideos(data);
-
+        setFilteredVideos(videos.data);
+        setFilteredChannels(channels.data);
       } catch (error) {
         toast.error('Error na busca, tente novamente');
       }
@@ -35,28 +55,51 @@ export function GetVideoByDescription() {
     <Page>
       <SideNav />
       <FlexContainer>
+        <SearchBar />
         <Margin>
-          <SearchBar />
-          <Ad />
-          {React.Children.toArray(
-            filteredVideos.map(({ _id, description, preview_src, channel_id }) => {
-              return (
-                <Link href={`/video/${_id}`}>
-                  <Card>
-                    <Image src={preview_src} alt={description} />
-                    <div>
-                      <Title>{description}</Title>
-                      <br /><br />
-                      <Content>
-                        <Icon src={channel_id.icon_src} alt='Channel Icon' />
-                        <p>{channel_id.name}</p>
-                      </Content>
-                    </div>
-                  </Card>
-                </Link>
-              )
-            })
-          )}
+          {hasContent ? (
+            <React.Fragment>
+              <Filter>
+                <BsFilterLeft /> Filtros
+              </Filter>
+              {React.Children.toArray(
+                filteredChannels.map(({ _id, icon_src, name, description }) => {
+                  return (
+                    <Link 
+                      style={{ textDecoration: 'none', color: '#000' }} 
+                      to={`/channel/${_id}`}>
+                      <Channel>
+                        <IconChannel src={icon_src} alt={name} />
+                        <Content style={{ flexDirection: 'column', alignItems: 'start' }} >
+                          <Title>{name}</Title>
+                          <p>{description}</p>
+                        </Content>
+                        <Subscribe>INSCREVA-SE</Subscribe>
+                      </Channel>
+                    </Link>
+                  )
+                })
+              )}
+              {React.Children.toArray(
+                filteredVideos.map(({ _id, description, preview_src, channel_id }) => {
+                  return (
+                    <A href={`/video/${_id}`}>
+                      <Card>
+                        <Image src={preview_src} alt={description} />
+                        <div>
+                          <Title>{description}</Title>
+                          <Content>
+                            <Icon src={channel_id.icon_src} alt='Channel Icon' />
+                            <p>{channel_id.name}</p>
+                          </Content>
+                        </div>
+                      </Card>
+                    </A>
+                  )
+                })
+              )}
+            </React.Fragment>
+          ) : <NoHasContent />}
         </Margin>
       </FlexContainer>
     </Page>
