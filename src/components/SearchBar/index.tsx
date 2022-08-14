@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Ourtube from '../../assets/ourtube-logo.png';
 import { ImExit } from 'react-icons/im';
+import { useParams } from 'react-router-dom';
 import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
 import { TiSocialYoutube } from 'react-icons/ti';
@@ -23,7 +24,8 @@ import {
 export function SearchBar() {
 	const videos = useSelectorVideos();
 	const navigate = useNavigate();
-	const [search, setSearch] = useState<string>('');
+  const { description } = useParams();
+	const [search, setSearch] = useState<string>(description || '');
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const { authenticated, setAuthenticated } = useSelectorAuth();
 
@@ -52,8 +54,8 @@ export function SearchBar() {
 			<SearchCard>
 				<Search
 					list='descriptions'
-					minLength={2}
 					type="search"
+					value={search}
 					onChange={(event) => setSearch(event.target.value)}
 					placeholder="Pesquisar" />
 				<datalist id='descriptions' style={{ overflow: 'hidden' }}>
@@ -88,7 +90,7 @@ export function SearchBar() {
 						style={{ cursor: 'pointer' }}
 						onClick={() => setShowModal(!showModal)} />
 					:
-					<Link to="/login">
+					<Link style={{ textDecoration: 'none' }} to="/login">
 						<LoginButton>
 							<BiUserCircle color='#5A95E3' />
 							<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p>
