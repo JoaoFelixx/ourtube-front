@@ -3,7 +3,6 @@ import {
 	Videos,
 	SideNav,
 	SearchBar,
-	PopularWords,
 	FlexContainer,
 } from 'components';
 import { Page, Margin } from './style';
@@ -15,7 +14,6 @@ export function Home() {
 			<FlexContainer>
 				<SearchBar />
 				<Margin>
-					<PopularWords />
 					<Ad />
 					<Videos />
 				</Margin>

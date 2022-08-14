@@ -6,7 +6,7 @@ const Page = styled.div`
 `;
 
 const Margin = styled.div`
-	padding: 5px;
+	padding: 10px 2vh;
 
 	div {
 		padding: 5px 0;
