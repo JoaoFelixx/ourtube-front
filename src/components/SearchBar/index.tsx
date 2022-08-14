@@ -30,10 +30,11 @@ export function SearchBar() {
 	const { authenticated, setAuthenticated } = useSelectorAuth();
 
 	const logOut = () => {
+		setShowModal(false);
 		setAuthenticated?.(false);
 
 		localStorage.removeItem('ourtube_token');
-
+		
 		navigate('/');
 	}
 

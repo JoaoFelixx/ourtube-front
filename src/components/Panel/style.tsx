@@ -24,18 +24,6 @@ const Content = styled.div`
 	align-items: center;
 `;
 
-const Subscribe = styled.button` 
-	background-color: #ff0000; 
-	padding: 6px 12px;
-	border: none;
-	font-size: 1.2em;
-	color: #fff;
-	
-	@media (max-width: 768px) {
-		margin-left: 2px;
-	}
-`;
-
 const ClickCard = styled.div` 
 	padding: 0 10px 0 10px;
 	display: flex;
@@ -105,5 +93,4 @@ export {
 	Content, 
 	ClickCard, 
 	Separator, 
-	Subscribe,  
 };

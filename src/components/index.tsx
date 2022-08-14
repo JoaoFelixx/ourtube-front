@@ -4,6 +4,7 @@ import { Panel } from './Panel';
 import { Videos } from './Videos';
 import { Banner } from './Banner';
 import { FormLogin } from './forms';
+import { Subscribe } from './Subscribe';
 import { SearchBar } from './SearchBar';
 import { ShowVideo } from './ShowVideo';
 import { FlexContainer } from './FlexContainer';
@@ -15,6 +16,7 @@ export {
 	Videos,
 	Banner,
 	SideNav,
+	Subscribe,
 	SearchBar,
 	FormLogin,
 	ShowVideo,
