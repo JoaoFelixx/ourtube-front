@@ -1,6 +1,5 @@
 import { Ad } from './Ad';
 import SideNav from './SideNav';
-import PopularWords from './PopularWords';
 import { Panel } from './Panel';
 import { Videos } from './Videos';
 import { Banner } from './Banner';
@@ -19,7 +18,6 @@ export {
 	SearchBar,
 	FormLogin,
 	ShowVideo,
-	PopularWords,
 	FlexContainer,
 	ListVideosById,
 	ListChannelVideos,
