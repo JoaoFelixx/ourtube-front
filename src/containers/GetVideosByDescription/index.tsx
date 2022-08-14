@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { BsFilterLeft } from 'react-icons/bs';
 import { useParams, Link } from 'react-router-dom';
 import { Channel as ChannelData, Video } from 'interfaces';
-import { FlexContainer, SideNav, SearchBar } from 'components';
+import { FlexContainer, SideNav, SearchBar, Subscribe } from 'components';
 import {
   A,
   Card,
@@ -16,7 +16,6 @@ import {
   Filter,
   Content,
   Channel,
-  Subscribe,
   IconChannel,
   NoHasContent,
 } from './style';
@@ -74,7 +73,7 @@ export function GetVideoByDescription() {
                           <Title>{name}</Title>
                           <p>{description}</p>
                         </Content>
-                        <Subscribe>INSCREVA-SE</Subscribe>
+                        <Subscribe id={_id} />
                       </Channel>
                     </Link>
                   )

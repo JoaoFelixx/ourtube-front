@@ -81,18 +81,6 @@ const Channel = styled.div`
 	}
 `;
 
-const Subscribe = styled.button` 
-	background-color: #ff0000; 
-	padding: 6px 12px;
-	border: none;
-	font-size: 1.2em;
-	color: #fff;
-	
-	@media (max-width: 768px) {
-		display: none;
-	}
-`;
-
 const Filter = styled.div`
 	display: flex;
 	align-items: center;
@@ -110,7 +98,6 @@ export {
 	Margin, 
 	Content,
 	Channel,
-	Subscribe,
 	IconChannel,
 	NoHasContent, 
 };
