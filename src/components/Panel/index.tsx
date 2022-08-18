@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Channel } from 'interfaces';
+import { Channel, ChannelAndEnrolled } from 'interfaces';
 import { Subscribe } from '../Subscribe';
 import { useLocation } from 'react-router-dom';
 import { MdAddAPhoto } from 'react-icons/md';
@@ -18,7 +18,7 @@ import {
 import IconImg from 'assets/default-icon.png';
 
 interface PanelProps {
-	channel?: Channel;
+	channel?: Channel | ChannelAndEnrolled;
 }
 
 interface FormSelected {
@@ -41,9 +41,7 @@ export function Panel({ channel }: PanelProps) {
 						<MdAddAPhoto size="2em" /><br />
 						Editar banner e icone do canal
 					</ClickCard>
-
 					<Separator />
-
 					<ClickCard onClick={() => setFormSelected('info')}>
 						<AiTwotoneEdit size="2em" /><br />
 						Editar nome e descrição do canal
@@ -64,7 +62,9 @@ export function Panel({ channel }: PanelProps) {
 				<Icon src={channel ? channel.icon_src : IconImg} alt="Logo" />
 				<div>
 					<h1>{channel?.name}</h1>
-					<span> 0 Inscritos </span>
+					{channel && (
+						<span>{'enrolled' in channel ? channel.enrolled.length : '0'} Inscritos </span>
+					)}
 				</div>
 			</Content><br />
 			<Content>
