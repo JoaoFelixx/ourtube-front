@@ -3,7 +3,7 @@ import { LoginPage } from './LoginPage';
 import { MyChannelPage } from './MyChannelPage';
 import { ShowVideoPage } from './ShowVideoPage';
 import { ChannelByIdPage } from './ChannelByIdPage';
-import { VideosByDescription } from './VideosByDescription';
+import { GetByDescription } from './GetByDescription';
 
 export {
 	HomePage,
@@ -11,5 +11,5 @@ export {
 	MyChannelPage,
 	ShowVideoPage,
 	ChannelByIdPage,
-	VideosByDescription,
+	GetByDescription,
 }

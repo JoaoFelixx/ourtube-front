@@ -3,13 +3,13 @@ import { Login } from './Login';
 import { MyChannel } from './MyChannel';
 import { ShowVideos } from './ShowVideos';
 import { ChannelById } from './ChannelById';
-import { GetVideoByDescription } from './GetVideosByDescription';
+import { SearchByDescription } from './SearchByDescription';
 
-export { 
-  Home, 
-  Login, 
-  MyChannel, 
-  ShowVideos, 
+export {
+  Home,
+  Login,
+  MyChannel,
+  ShowVideos,
   ChannelById,
-  GetVideoByDescription, 
+  SearchByDescription,
 };
