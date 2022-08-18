@@ -9,9 +9,16 @@ import { api } from 'service';
 import { useSelectorAuth } from './AuthProvider';
 import { Provider, Enrolled } from 'interfaces';
 
+type DispatchOptions = 'delete' | 'put' | 'post';
+
+interface Dispatch {
+  type: DispatchOptions;
+  enrolledSended: Enrolled;
+}
+
 interface User {
   enrolled: Enrolled[];
-  dispatch?: React.Dispatch<Enrolled>;
+  dispatch?: React.Dispatch<Dispatch>;
 }
 
 const Context = createContext<User>({ enrolled: [] });
@@ -22,8 +29,18 @@ function UserProvider({ children }: Provider) {
   const [enrolled, setEnrolled] = useState<Enrolled[]>([]);
   const { authenticated } = useSelectorAuth();
 
-  const dispatch = useCallback((subscribe: Enrolled) =>
-    setEnrolled([...enrolled, subscribe]), [enrolled]);
+  const dispatch = useCallback(({ type, enrolledSended }: Dispatch) => ({
+    'post': setEnrolled([...enrolled, enrolledSended]),
+    'put': () => {
+      const enrolledSaved = enrolled.filter(({ _id }) => _id !== enrolledSended._id);
+      enrolledSaved.push(enrolledSended);
+      setEnrolled(enrolledSaved);
+    },
+    'delete': () => {
+      const enrolledSaved = enrolled.filter(({ _id }) => _id !== enrolledSended._id);
+      setEnrolled(enrolledSaved);
+    }
+  }[type]), [enrolled]);
 
   useEffect(() => {
     (async () => {
