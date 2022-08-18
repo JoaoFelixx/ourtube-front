@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from 'service';
-import { Channel } from 'interfaces';
 import { useParams } from 'react-router-dom';
+import { ChannelAndEnrolled } from 'interfaces';
 import {
 	Panel,
 	Banner,
@@ -18,7 +18,7 @@ interface PageSelected {
 
 export function ChannelById() {
 	const { id } = useParams();
-	const [channel, setChannel] = useState<Channel | null>(null);
+	const [channel, setChannel] = useState<ChannelAndEnrolled | null>(null);
 	const [pageSelected, setPageSelected] = useState<string>('home');
 
 	const Pagination = ({ page }: PageSelected) => ({
@@ -60,7 +60,7 @@ export function ChannelById() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const { status, data } = await api.get(`/channel/${id}`);
+				const { status, data } = await api.get<ChannelAndEnrolled>(`/channel/${id}`);
 
 				if (status === 204)
 					return

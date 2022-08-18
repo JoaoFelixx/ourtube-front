@@ -7,9 +7,9 @@ interface Channel {
 }
 
 interface Enrolled {
-  _id: string;
-  user_id: string;
-  channel_id: string;
+	_id: string;
+	user_id: string;
+	channel_id: string;
 }
 
 interface Video {
@@ -29,4 +29,8 @@ interface Provider {
 	children: React.ReactNode;
 }
 
-export type { ID, Video, Channel, Provider, Enrolled };
+interface ChannelAndEnrolled extends Channel {
+	enrolled: Enrolled[];
+}
+
+export type { ID, Video, Channel, Provider, Enrolled, ChannelAndEnrolled };
