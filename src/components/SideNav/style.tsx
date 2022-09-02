@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 const Nav = styled.nav`
+	position: relative;
 	padding: 0 3em;
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	background-color: #EDEDED;
-	height: 100vh;
+	height: infinite;
 	@media (max-width: 768px) {
 		display: none;
 	}
