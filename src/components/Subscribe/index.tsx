@@ -2,15 +2,15 @@ import React from 'react';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Enrolled, ID } from 'interfaces';
-import { useSelectorUser } from 'Context/UserProvider';
 import { SubscribeButton } from './style';
+import { useSelectorUser } from 'Context/UserProvider';
 
 export function Subscribe({ id }: ID) {
   const { enrolled, dispatch } = useSelectorUser();
 
   const unsubscribe = async () => {
     try {
-      const token = localStorage.getItem('ourtube_token')
+      const token = localStorage.getItem('ourtube_token');
 
       if (!token)
         return
@@ -19,14 +19,14 @@ export function Subscribe({ id }: ID) {
         Authorization: `Bearer ${JSON.parse(token)}`
       }
 
-      await api.delete(`/subscribe/${id}`, { headers });
+      const enrolledForDelete = enrolled.find(({ channel_id }) => channel_id === id);
 
-      const deletedEnrolled = enrolled.find(({ _id }) => _id === id);
-
-      if (!deletedEnrolled)
+      if (!enrolledForDelete)
         return
 
-      dispatch?.({ type: 'delete', enrolledSended: deletedEnrolled });
+      await api.delete(`/subscribe/${id}`, { headers });
+
+      dispatch?.({ type: 'delete:enrolled', enrolledSended: enrolledForDelete });
 
     } catch (error) {
       toast.error('Erro ao se desinscrever, tente novamente');
@@ -48,7 +48,7 @@ export function Subscribe({ id }: ID) {
 
       const result = await api.post<Enrolled>('/subscribe', data, { headers });
 
-      dispatch?.({ type: 'post', enrolledSended: result.data });
+      dispatch?.({ type: 'post:enrolled', enrolledSended: result.data });
 
     } catch (error) {
       toast.error('Erro ao se inscrever, tente novamente');
