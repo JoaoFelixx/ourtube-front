@@ -9,7 +9,7 @@ import { api } from 'service';
 import { useSelectorAuth } from './AuthProvider';
 import { Provider, Enrolled } from 'interfaces';
 
-type DispatchOptions = 'delete' | 'put' | 'post';
+type DispatchOptions = 'delete:enrolled' | 'post:enrolled';
 
 interface Dispatch {
   type: DispatchOptions;
@@ -30,17 +30,14 @@ function UserProvider({ children }: Provider) {
   const { authenticated } = useSelectorAuth();
 
   const dispatch = useCallback(({ type, enrolledSended }: Dispatch) => ({
-    'post': setEnrolled([...enrolled, enrolledSended]),
-    'put': () => {
-      const enrolledSaved = enrolled.filter(({ _id }) => _id !== enrolledSended._id);
-      enrolledSaved.push(enrolledSended);
+    'post:enrolled': () => setEnrolled([...enrolled, enrolledSended]),
+    'delete:enrolled': () => {
+      const enrolledSaved = enrolled
+        .filter(({ channel_id }) => enrolledSended.channel_id !== channel_id);
+
       setEnrolled(enrolledSaved);
     },
-    'delete': () => {
-      const enrolledSaved = enrolled.filter(({ _id }) => _id !== enrolledSended._id);
-      setEnrolled(enrolledSaved);
-    }
-  }[type]), [enrolled]);
+  }[type]()), [enrolled]);
 
   useEffect(() => {
     (async () => {
