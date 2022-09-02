@@ -59,11 +59,14 @@ export function Panel({ channel }: PanelProps) {
 				</Modal>
 			}
 			<Content>
-				<Icon src={channel ? channel.icon_src : IconImg} alt="Logo" />
+				<Icon src={channel ? channel.icon_src : IconImg} alt={`Logo ${channel?.name}`} />
 				<div>
 					<h1>{channel?.name}</h1>
 					{channel && (
-						<span>{'enrolled' in channel ? channel.enrolled.length : '0'} Inscritos </span>
+						<span>
+							{'enrolled' in channel &&
+								channel.enrolled.length !== 1 ? `${channel.enrolled.length || 0} Inscritos` : '1 Inscrito'}
+						</span>
 					)}
 				</div>
 			</Content><br />
