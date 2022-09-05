@@ -4,6 +4,7 @@ import { MyChannel } from './MyChannel';
 import { ShowVideos } from './ShowVideos';
 import { ChannelById } from './ChannelById';
 import { SearchByDescription } from './SearchByDescription';
+import { SubscribedChannels } from './SubscribedChannels';
 
 export {
   Home,
@@ -11,5 +12,6 @@ export {
   MyChannel,
   ShowVideos,
   ChannelById,
+  SubscribedChannels,
   SearchByDescription,
 };

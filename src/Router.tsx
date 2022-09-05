@@ -1,6 +1,7 @@
 import {
   HomePage,
   LoginPage,
+  Subscribes,
   ShowVideoPage,
   MyChannelPage,
   ChannelByIdPage,
@@ -14,7 +15,8 @@ function Router() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path='/register' element={<LoginPage />}></Route>
+        <Route path='/register' element={<LoginPage />} />
+        <Route path="/subscribes" element={<Subscribes />} />
         <Route path="/myChannel" element={<MyChannelPage />} />
         <Route path="/video/:id" element={<ShowVideoPage />} />
         <Route path="/channel/:id" element={<ChannelByIdPage />} />
