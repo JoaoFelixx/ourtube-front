@@ -1,8 +1,8 @@
 import { Ad } from './Ad';
-import SideNav from './SideNav';
 import { Panel } from './Panel';
 import { Videos } from './Videos';
 import { Banner } from './Banner';
+import { SideNav } from './SideNav';
 import { Subscribe } from './Subscribe';
 import { FormLogin } from './forms';
 import { SearchBar } from './SearchBar';
