@@ -84,20 +84,14 @@ const Modal = styled.div<IsVisible>`
 
 	ul {
     list-style-type:none;
-    line-height: 2em;  
-	}  
+    line-height: 2em;	
+  }  
 
-   li > a {
+  li, li > a {
     display: flex;
     justify-content: space-between;
 	  align-items: center;
   }
-li {
-    display: flex;
-    justify-content: space-between;
-	  align-items: center;
-
-}
 `;
 
 export {

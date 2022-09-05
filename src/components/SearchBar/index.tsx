@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Ourtube from '../../assets/ourtube-logo.png';
+import Ourtube from 'assets/ourtube-logo.png';
 import { ImExit } from 'react-icons/im';
 import { useParams } from 'react-router-dom';
 import { CgMenuGridR } from 'react-icons/cg';
@@ -24,7 +24,7 @@ import {
 export function SearchBar() {
 	const videos = useSelectorVideos();
 	const navigate = useNavigate();
-  const { description } = useParams();
+	const { description } = useParams();
 	const [search, setSearch] = useState<string>(description || '');
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const { authenticated, setAuthenticated } = useSelectorAuth();
@@ -34,7 +34,7 @@ export function SearchBar() {
 		setAuthenticated?.(false);
 
 		localStorage.removeItem('ourtube_token');
-		
+
 		navigate('/');
 	}
 
@@ -60,11 +60,13 @@ export function SearchBar() {
 					onChange={(event) => setSearch(event.target.value)}
 					placeholder="Pesquisar" />
 				<datalist id='descriptions' style={{ overflow: 'hidden' }}>
-					{React.Children.toArray(
-						videos.map(({ description }) =>
-							<option value={description}></option>
+					{search.length >= 3 &&
+						React.Children.toArray(
+							videos.map(({ description }, index) =>
+								index > 7 ? null : <option value={description}></option>
+							)
 						)
-					)}
+					}
 				</datalist>
 				<SearchButton
 					type="button"
@@ -76,7 +78,7 @@ export function SearchBar() {
 				<Modal isVisible={showModal}>
 					<ul>
 						<li>
-							<Link to="/myChannel" >
+							<Link style={{ textDecoration: 'none', color: '#000' }} to="/myChannel" >
 								Canal <TiSocialYoutube />
 							</Link>
 						</li>
