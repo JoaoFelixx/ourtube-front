@@ -8,6 +8,7 @@ const Nav = styled.nav`
 	align-content: center;
 	background-color: #EDEDED;
 	height: infinite;
+	min-height: 100vh;
 	@media (max-width: 768px) {
 		display: none;
 	}

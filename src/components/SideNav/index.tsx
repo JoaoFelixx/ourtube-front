@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FiYoutube } from 'react-icons/fi';
 import { FaRegCompass } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { MdVideoLibrary, MdHistory } from 'react-icons/md';
 import { Nav, Div, Menu, FixedContainer } from './style';
 
 export function SideNav() {
+	const navigate = useNavigate();
 	const unusableService = () => toast.warning('Serviço indisponivel');
 
 	return (
@@ -30,7 +31,7 @@ export function SideNav() {
 					<FiYoutube size="24px" /><br />
 					Shorts
 				</Div>
-				<Div>
+				<Div onClick={() => navigate('/subscribes')}>
 					<BsCollectionPlayFill size="24px" /><br />
 					Inscrições
 				</Div>
