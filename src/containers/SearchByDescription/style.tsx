@@ -12,11 +12,7 @@ const Page = styled.div`
 `;
 
 const Margin = styled.div`
-	padding:  5vh 10vh;
-
-	div {
-		padding: 5px 0;
-	}
+	padding:  10px 2em;
 
 	@media (max-width: 768px) {
 		padding: 5px 4px;
@@ -31,7 +27,7 @@ const Card = styled.div`
 `;
 
 const Image = styled.img`
-	height: 30vh;
+	height: 15em;
 
 	@media (max-width: 768px) {
 		height: 12vh;
