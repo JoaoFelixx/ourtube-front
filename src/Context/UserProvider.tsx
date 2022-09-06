@@ -7,9 +7,19 @@ import React, {
 } from 'react';
 import { api } from 'service';
 import { useSelectorAuth } from './AuthProvider';
-import { Provider, Enrolled } from 'interfaces';
+import { Provider, Enrolled, Channel } from 'interfaces';
 
 type DispatchOptions = 'delete:enrolled' | 'post:enrolled';
+
+interface Subscribes {
+  _id: string;
+  user_id: string;
+  channel_id: Channel;
+}
+
+interface SubscribeFormatted extends Enrolled{
+  channel?: Channel;
+}
 
 interface Dispatch {
   type: DispatchOptions;
@@ -17,7 +27,7 @@ interface Dispatch {
 }
 
 interface User {
-  enrolled: Enrolled[];
+  enrolled: SubscribeFormatted[];
   dispatch?: React.Dispatch<Dispatch>;
 }
 
@@ -26,7 +36,7 @@ const Context = createContext<User>({ enrolled: [] });
 const useSelectorUser = (): User => useContext(Context);
 
 function UserProvider({ children }: Provider) {
-  const [enrolled, setEnrolled] = useState<Enrolled[]>([]);
+  const [enrolled, setEnrolled] = useState<SubscribeFormatted[]>([]);
   const { authenticated } = useSelectorAuth();
 
   const dispatch = useCallback(({ type, enrolledSended }: Dispatch) => ({
@@ -51,9 +61,19 @@ function UserProvider({ children }: Provider) {
           Authorization: `Bearer ${JSON.parse(token)}`
         }
 
-        const { data } = await api.get<Enrolled[]>('user/subscribes', { headers });
+        const { data } = await api.get<Subscribes[]>('user/subscribes', { headers });
 
-        setEnrolled(data);
+        const subscribesFormatted = data.reduce<SubscribeFormatted[]>((acc, current, index) => {          
+          const subscribe: SubscribeFormatted = {
+            ...current,
+            channel: current.channel_id,
+            channel_id: current.channel_id._id,
+          };
+
+          return [...acc, subscribe];
+        }, [])
+
+        setEnrolled(subscribesFormatted);
       } catch (error) {
         return
       }
