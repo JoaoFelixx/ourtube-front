@@ -4,16 +4,20 @@ import { toast } from 'react-toastify';
 import { Enrolled, ID } from 'interfaces';
 import { SubscribeButton } from './style';
 import { useSelectorUser } from 'Context/UserProvider';
+import { useSelectorAuth } from 'Context/AuthProvider';
 
 export function Subscribe({ id }: ID) {
   const { enrolled, dispatch } = useSelectorUser();
-
+  const { authenticated } = useSelectorAuth();
+  
   const unsubscribe = async () => {
     try {
       const token = localStorage.getItem('ourtube_token');
 
-      if (!token)
+      if (!token || !authenticated) {
+        toast.warning('Faça Login');
         return
+      }
 
       const headers = {
         Authorization: `Bearer ${JSON.parse(token)}`
@@ -54,7 +58,7 @@ export function Subscribe({ id }: ID) {
       toast.error('Erro ao se inscrever, tente novamente');
     }
   }
-
+  
   return (
     <React.Fragment>
       {enrolled.find(({ channel_id }) => channel_id === id) ?
