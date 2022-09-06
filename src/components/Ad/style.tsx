@@ -9,18 +9,22 @@ const Card = styled.div`
 `;
 
 const Flex = styled.div` 
-	width: auto;
+	width: 100%;
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: space-around;
 `;
 
 const Text = styled.h3`
-	font-size: 14px;
+	font-size: 1em;
 `;
 
 const Image = styled.img` 
-	width: 140px;
+	height: 168px;
+
+	@media (max-width: 520px) {
+		display: none;
+	}
 `;
 
 export {
