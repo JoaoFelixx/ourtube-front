@@ -17,7 +17,7 @@ export function SideNav() {
 				<Menu>
 					<AiOutlineMenu size="26px" />
 				</Menu><br />
-				<Link style={{ textDecoration: 'none' }} to='/'>
+				<Link style={{ textDecoration: 'none', color: '#000' }} to='/'>
 					<Div>
 						<AiFillHome size="24px" /><br />
 						Inicio
