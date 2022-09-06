@@ -44,22 +44,23 @@ export function SubscribedChannels() {
       <FlexContainer>
         <SearchBar />
         <Margin>
-          {React.Children.toArray(
-            channels.map(({ _id, name, description, icon_src }) => {
-              return (
-                <Link style={{ textDecoration: 'none' }} to={`/channel/${_id}`}>
-                  <Card>
-                    <Icon src={icon_src} alt={name} />
-                    <div className='description' >
-                      <h3>{name}</h3>
-                      <p>{description}</p>
-                    </div>
-                    <Subscribe id={_id} />
-                  </Card>
-                </Link>
-              )
-            })
-          )}
+          {channels.length === 0 ? <p>Nenhuma inscrição registrada</p> :
+            React.Children.toArray(
+              channels.map(({ _id, name, description, icon_src }) => {
+                return (
+                  <Link style={{ textDecoration: 'none' }} to={`/channel/${_id}`}>
+                    <Card>
+                      <Icon src={icon_src} alt={name} />
+                      <div className='description' >
+                        <h3>{name}</h3>
+                        <p>{description}</p>
+                      </div>
+                      <Subscribe id={_id} />
+                    </Card>
+                  </Link>
+                )
+              })
+            )}
         </Margin>
       </FlexContainer>
     </Page>
