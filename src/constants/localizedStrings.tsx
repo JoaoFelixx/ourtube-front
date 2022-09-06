@@ -1,9 +1,4 @@
 import LocalizedStrings from "react-localization";
+import { pt } from './pt';
 
-const pt = { helloWorld: 'Olá Mundo' }
-
-const localizedStrings = new LocalizedStrings({
-  pt,
-})
-
-export default localizedStrings;
+export const localizedStrings = new LocalizedStrings({ pt });
