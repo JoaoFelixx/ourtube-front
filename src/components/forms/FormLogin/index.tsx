@@ -4,6 +4,7 @@ import { api } from 'service';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useSelectorAuth } from 'Context/AuthProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 import { Card, Input, Button } from './style';
 
 interface FormType {
@@ -36,18 +37,18 @@ export function FormLogin({ isLogin }: FormType) {
 			}
 
 			if (password !== confPassword) {
-				toast.warning('Senhas não são iguais');
+				toast.warning(localizedStrings.isNotSamePassword);
 				return
 			}
 
 			await api.post('/users', user);
 
-			toast.success('Cadastrado com sucesso');
+			toast.success(localizedStrings.registeredWithSuccessful);
 
 			setTimeout(() => navigate('/login'), 2000);
 
 		} catch (error) {
-			toast.error('Erro ao efetuar processo');
+			toast.error(localizedStrings.errorRegistering);
 		}
 	}
 
@@ -56,15 +57,17 @@ export function FormLogin({ isLogin }: FormType) {
 			<form onSubmit={onSubmit} >
 				<div className="top">
 					<img src={Ourtube} alt="Icon ourtube" />
-					<h1 style={{ marginLeft: '4px' }}>{isLogin ? 'Fazer Login' : 'Registre-se'}</h1>
+					<h1 style={{ marginLeft: '4px' }}>
+						{isLogin ? localizedStrings.makeLogin : localizedStrings.register}
+					</h1>
 				</div><br />
-				<label>Email</label>
+				<label>{localizedStrings.email}</label>
 				<Input
 					type="email"
 					required
 					onChange={(event) => setEmail(event.target.value)}
 					placeholder="username@user.com" /><br /><br />
-				<label>Senha</label>
+				<label>{localizedStrings.password}</label>
 				<Input
 					type="password"
 					required
@@ -73,7 +76,7 @@ export function FormLogin({ isLogin }: FormType) {
 
 				{!isLogin && (
 					<React.Fragment>
-						<label>Confirmação de senha</label>
+						<label>{localizedStrings.confPassword}</label>
 						<Input
 							type="password"
 							required
@@ -82,8 +85,8 @@ export function FormLogin({ isLogin }: FormType) {
 					</React.Fragment>
 				)}
 				<div className="buttons">
-					<Button color='#019AFA'>Enviar</Button>
-					<Button type="reset" color='#ff0000'>Cancelar</Button>
+					<Button color='#019AFA'>{localizedStrings.send}</Button>
+					<Button type="reset" color='#ff0000'>{localizedStrings.cancel}</Button>
 				</div>
 			</form>
 		</Card>

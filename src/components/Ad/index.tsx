@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import Felixflix from 'assets/felixflix.png';
 import PrivateMarket from 'assets/private-market.png';
 import { useWindowSize } from 'hooks';
+import { localizedStrings } from 'constants/localizedStrings';
 import { Flex, Text, Card, Image, } from './style';
 
 type NumberSelected = 'felixflix' | 'privateMarket';
@@ -30,7 +31,7 @@ export function Ad() {
 					</React.Fragment>
 				)}
 				<Text>
-					P R O P A G A N D A
+					{localizedStrings.advertising}
 				</Text>
 			</Flex>
 		</Card>

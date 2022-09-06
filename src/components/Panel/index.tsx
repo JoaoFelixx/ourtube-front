@@ -4,6 +4,7 @@ import { Subscribe } from '../Subscribe';
 import { useLocation } from 'react-router-dom';
 import { MdAddAPhoto } from 'react-icons/md';
 import { AiTwotoneEdit } from 'react-icons/ai';
+import { localizedStrings } from 'constants/localizedStrings';
 import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
@@ -35,16 +36,16 @@ export function Panel({ channel }: PanelProps) {
 		'images': <FormChannelEditImages />,
 	}[form] || (
 			<React.Fragment>
-				<h1 style={{ textAlign: 'center' }}> Escolha o formulário de edição </h1>
+				<h1 style={{ textAlign: 'center' }}>{localizedStrings.selectEditForm}</h1>
 				<Content style={{ justifyContent: 'space-around' }}>
 					<ClickCard onClick={() => setFormSelected('images')} >
 						<MdAddAPhoto size="2em" /><br />
-						Editar banner e icone do canal
+						{localizedStrings.editBannerAndIconFromChannel}
 					</ClickCard>
 					<Separator />
 					<ClickCard onClick={() => setFormSelected('info')}>
 						<AiTwotoneEdit size="2em" /><br />
-						Editar nome e descrição do canal
+						{localizedStrings.editNameAndDescriptionFromChannel}
 					</ClickCard>
 				</Content>
 			</React.Fragment>
@@ -73,8 +74,8 @@ export function Panel({ channel }: PanelProps) {
 			<Content>
 				{location.pathname !== '/myChannel' && channel ? <Subscribe id={channel._id} /> : (
 					<div>
-						<Button onClick={() => setShowModal(true)}>Personalizar o canal</Button>
-						<Button>Gerenciar Videos</Button>
+						<Button onClick={() => setShowModal(true)}>{localizedStrings.customChannel}</Button>
+						<Button>{localizedStrings.managerVideos}</Button>
 					</div>
 				)}
 			</Content>

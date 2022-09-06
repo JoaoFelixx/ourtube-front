@@ -5,6 +5,7 @@ import { Enrolled, ID } from 'interfaces';
 import { SubscribeButton } from './style';
 import { useSelectorUser } from 'Context/UserProvider';
 import { useSelectorAuth } from 'Context/AuthProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 
 export function Subscribe({ id }: ID) {
   const { enrolled, dispatch } = useSelectorUser();
@@ -15,7 +16,7 @@ export function Subscribe({ id }: ID) {
       const token = localStorage.getItem('ourtube_token');
 
       if (!token || !authenticated) {
-        toast.warning('Faça Login');
+        toast.warning(localizedStrings.makeLogin);
         return
       }
 
@@ -33,7 +34,7 @@ export function Subscribe({ id }: ID) {
       dispatch?.({ type: 'delete:enrolled', enrolledSended: enrolledForDelete });
 
     } catch (error) {
-      toast.error('Erro ao se desinscrever, tente novamente');
+      toast.error(localizedStrings.errorUnsubscribingTryAgain);
     }
   }
 
@@ -55,15 +56,15 @@ export function Subscribe({ id }: ID) {
       dispatch?.({ type: 'post:enrolled', enrolledSended: result.data });
 
     } catch (error) {
-      toast.error('Erro ao se inscrever, tente novamente');
+      toast.error(localizedStrings.errorSubscribingTryAgain);
     }
   }
   
   return (
     <React.Fragment>
       {enrolled.find(({ channel_id }) => channel_id === id) ?
-        <SubscribeButton isSubscribed onClick={unsubscribe}>INSCRITO</SubscribeButton> :
-        <SubscribeButton onClick={subscribe}>INSCREVA-SE</SubscribeButton>
+        <SubscribeButton isSubscribed onClick={unsubscribe}>{localizedStrings.subscribed}</SubscribeButton> :
+        <SubscribeButton onClick={subscribe}>{localizedStrings.signUp}</SubscribeButton>
       }
     </React.Fragment>
   )

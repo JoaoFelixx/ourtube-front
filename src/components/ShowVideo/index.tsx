@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Video, Card } from './style';
+import { localizedStrings } from 'constants/localizedStrings';
 import { useSelectorVideos } from 'Context/VideosProvider';
 import { Video as VideoData, ID } from 'interfaces';
 
@@ -21,7 +22,7 @@ export function ShowVideo({ id }: ID) {
 
 	return (
 		<Card>
-			{(!videoSelected && videoNotExists) ? <h2>Error, video not a found</h2> : (
+			{(!videoSelected && videoNotExists) ? <h2>{localizedStrings.errorVideoNotAFound}</h2> : (
 				<div>
 					<Video poster={videoSelected?.preview_src} loop controls>
 						<source
@@ -29,7 +30,7 @@ export function ShowVideo({ id }: ID) {
 							type={videoSelected?.mimetype} />
 					</Video>
 					<div style={{ gridArea: 'comments' }}>
-						Comentarios
+						{localizedStrings.comments}
 					</div>
 				</div>
 			)}

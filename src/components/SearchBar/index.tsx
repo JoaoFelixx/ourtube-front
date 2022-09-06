@@ -6,6 +6,7 @@ import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
 import { TiSocialYoutube } from 'react-icons/ti';
 import { useSelectorAuth } from 'Context/AuthProvider';
+import { localizedStrings } from 'constants/localizedStrings';
 import { useSelectorVideos } from 'Context/VideosProvider';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
@@ -58,7 +59,7 @@ export function SearchBar() {
 					type="search"
 					value={search}
 					onChange={(event) => setSearch(event.target.value)}
-					placeholder="Pesquisar" />
+					placeholder={localizedStrings.search} />
 				<datalist id='descriptions' style={{ overflow: 'hidden' }}>
 					{search.length >= 3 &&
 						React.Children.toArray(
@@ -79,11 +80,11 @@ export function SearchBar() {
 					<ul>
 						<li>
 							<Link style={{ textDecoration: 'none', color: '#000' }} to="/myChannel" >
-								Canal <TiSocialYoutube />
+								{localizedStrings.channel} <TiSocialYoutube />
 							</Link>
 						</li>
 						<li style={{ cursor: 'pointer' }} onClick={logOut}>
-							Sair <ImExit />
+							{localizedStrings.leave} <ImExit />
 						</li>
 					</ul>
 				</Modal>
@@ -96,7 +97,7 @@ export function SearchBar() {
 					<Link style={{ textDecoration: 'none' }} to="/login">
 						<LoginButton>
 							<BiUserCircle color='#5A95E3' />
-							<p style={{ marginLeft: '6px' }} >FAZER LOGIN</p>
+							<p style={{ marginLeft: '6px' }} >{localizedStrings.makeLogin.toUpperCase()}</p>
 						</LoginButton>
 					</Link>
 				}

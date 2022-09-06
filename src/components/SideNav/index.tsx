@@ -1,7 +1,8 @@
-import { Link,useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FiYoutube } from 'react-icons/fi';
 import { FaRegCompass } from 'react-icons/fa';
+import { Link,useNavigate } from 'react-router-dom';
+import { localizedStrings } from 'constants/localizedStrings';
 import { BsCollectionPlayFill } from 'react-icons/bs';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import { MdVideoLibrary, MdHistory } from 'react-icons/md';
@@ -20,28 +21,28 @@ export function SideNav() {
 				<Link style={{ textDecoration: 'none', color: '#000' }} to='/'>
 					<Div>
 						<AiFillHome size="24px" /><br />
-						Inicio
+						{localizedStrings.start}
 					</Div>
 				</Link>
 				<Div onClick={unusableService} >
 					<FaRegCompass size="24px" /><br />
-					Explorar
+					{localizedStrings.explore}
 				</Div>
 				<Div onClick={unusableService} >
 					<FiYoutube size="24px" /><br />
-					Shorts
+					{localizedStrings.shorts}
 				</Div>
 				<Div onClick={() => navigate('/subscribes')}>
 					<BsCollectionPlayFill size="24px" /><br />
-					Inscrições
+					{localizedStrings.subscribes}
 				</Div>
 				<Div onClick={unusableService} >
 					<MdVideoLibrary size="28px" /><br />
-					Biblioteca
+					{localizedStrings.library}
 				</Div>
 				<Div onClick={unusableService} >
 					<MdHistory size="30px" /><br />
-					Histórico
+					{localizedStrings.historic}
 				</Div>
 			</FixedContainer>
 		</Nav>
