@@ -11,7 +11,9 @@ const SubscribeButton = styled.button<IsSubscribed>`
 	font-size: 1.2em;
 	color: #fff;
 	cursor: pointer;
-	
+	text-transform: uppercase;
+	font-weight: bold;
+
 	@media (max-width: 768px) {
 		margin-left: 2px;
 	}
