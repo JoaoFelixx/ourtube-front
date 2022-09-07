@@ -12,5 +12,6 @@ export const errors = {
   errorGettingData: 'Erro ao buscar dados',
   errorSearchingTryAgain: 'Erro na busca, tente novamente',
   errorGettingChannels: 'Erro buscando canais',
-  noRegistrationRegistered: 'Nenhuma inscrição registrada'
+  noRegistrationRegistered: 'Nenhuma inscrição registrada',
+  errorLoadingVideosFromServer: 'Erro ao carregar videos do servidor',
 }
