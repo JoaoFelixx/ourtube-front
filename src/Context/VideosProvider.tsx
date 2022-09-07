@@ -7,6 +7,7 @@ import {
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Video, Provider } from 'interfaces';
+import { localizedStrings } from 'constants/localizedStrings';
 
 const Context = createContext<Video[]>([]);
 
@@ -23,7 +24,7 @@ function VideosProvider({ children }: Provider) {
 				setVideos(data);
 
 			} catch (error) {
-				toast.error('Erro ao carregar videos do servidor')
+				toast.error(localizedStrings.errorLoadingVideosFromServer);
 			}
 		})()
 	}, [])
