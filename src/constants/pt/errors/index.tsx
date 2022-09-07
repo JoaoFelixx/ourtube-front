@@ -14,4 +14,5 @@ export const errors = {
   errorGettingChannels: 'Erro buscando canais',
   noRegistrationRegistered: 'Nenhuma inscrição registrada',
   errorLoadingVideosFromServer: 'Erro ao carregar videos do servidor',
+  makeLoginToAuthenticate: 'Faça login para autenticar',
 }
