@@ -4,19 +4,17 @@ import { toast } from 'react-toastify';
 import { Enrolled, ID } from 'interfaces';
 import { SubscribeButton } from './style';
 import { useSelectorUser } from 'Context/UserProvider';
-import { useSelectorAuth } from 'Context/AuthProvider';
 import { localizedStrings } from 'constants/localizedStrings';
 
 export function Subscribe({ id }: ID) {
   const { enrolled, dispatch } = useSelectorUser();
-  const { authenticated } = useSelectorAuth();
   
   const unsubscribe = async () => {
     try {
       const token = localStorage.getItem('ourtube_token');
 
-      if (!token || !authenticated) {
-        toast.warning(localizedStrings.makeLogin);
+      if (!token) {
+        toast.warning(localizedStrings.makeLoginToAuthenticate);
         return
       }
 
@@ -42,8 +40,10 @@ export function Subscribe({ id }: ID) {
     try {
       const token = localStorage.getItem('ourtube_token')
 
-      if (!token)
+      if (!token) {
+        toast.warning(localizedStrings.makeLoginToAuthenticate);
         return
+      }
 
       const headers = {
         Authorization: `Bearer ${JSON.parse(token)}`
