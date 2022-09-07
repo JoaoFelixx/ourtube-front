@@ -3,6 +3,7 @@ import { api } from 'service';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Channel } from 'interfaces';
+import { localizedStrings } from 'constants/localizedStrings';
 import { Card, Icon, Page, Margin } from './style';
 import { FlexContainer, SideNav, SearchBar, Subscribe } from 'components';
 
@@ -27,13 +28,13 @@ export function SubscribedChannels() {
 
         const { data } = await api.get<ISubscribedChannels[]>('/user/subscribes', { headers });
 
-        const subscribes = data.reduce<Channel[]>((acc, current, index) =>
+        const subscribes = data.reduce<Channel[]>((acc, current) =>
           [...acc, current.channel_id], [])
 
         setChannels(subscribes)
 
       } catch (error) {
-        toast.error('Error getting channels');
+        toast.error(localizedStrings.errorGettingChannels);
       }
     })()
   }, [])
@@ -44,7 +45,7 @@ export function SubscribedChannels() {
       <FlexContainer>
         <SearchBar />
         <Margin>
-          {channels.length === 0 ? <p>Nenhuma inscrição registrada</p> :
+          {channels.length === 0 ? <p>{localizedStrings.noRegistrationRegistered}</p> :
             React.Children.toArray(
               channels.map(({ _id, name, description, icon_src }) => {
                 return (

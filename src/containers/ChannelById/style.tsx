@@ -67,6 +67,7 @@ const Btn = styled.button`
 	margin: 4px 4px 4px 12px;
 	transition: 1s;
 	background-color: #FFF;
+	text-transform: uppercase;
 
 	&:after {
 		background-color: #EDEDED;

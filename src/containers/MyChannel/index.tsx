@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { api } from 'service';
 import { toast } from 'react-toastify';
+import BannerImg from 'assets/default-banner.png';
 import { Channel } from 'interfaces';
 import { Page, Margin } from './style';
+import { localizedStrings } from 'constants/localizedStrings';
 import {
 	Panel,
 	Banner,
@@ -11,7 +13,7 @@ import {
 	FlexContainer,
 	ListChannelVideos,
 } from 'components';
-import BannerImg from 'assets/default-banner.png';
+
 
 export function MyChannel() {
 	const [channel, setChannel] = useState<Channel | null>(null);
@@ -36,7 +38,7 @@ export function MyChannel() {
 				setChannel(data);
 
 			} catch (error) {
-				toast.error('Erro ao buscar dados');
+				toast.error(localizedStrings.errorGettingData);
 			}
 		})()
 	}, [])

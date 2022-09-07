@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from 'service';
 import { useParams } from 'react-router-dom';
+import { localizedStrings } from 'constants/localizedStrings';
 import { ChannelAndEnrolled } from 'interfaces';
 import {
 	Panel,
@@ -13,13 +14,13 @@ import {
 import { Li, Btn, Tabs, Page, Margin, Content, Presentation } from './style';
 
 interface PageSelected {
-	page: string;
+	page: 'home' | 'about' | 'videos';
 }
 
 export function ChannelById() {
 	const { id } = useParams();
 	const [channel, setChannel] = useState<ChannelAndEnrolled | null>(null);
-	const [pageSelected, setPageSelected] = useState<string>('home');
+	const [pageSelected, setPageSelected] = useState<PageSelected['page']>('home');
 
 	const Pagination = ({ page }: PageSelected) => ({
 		'home': (
@@ -28,7 +29,7 @@ export function ChannelById() {
 					{id && <ListChannelVideos id={id} />}
 					{channel && (
 						<div style={{ padding: '8px' }} >
-							<h3>Conheça {channel.name}</h3><br />
+							<h3>{localizedStrings.meet} {channel.name}</h3><br />
 							<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
 								{channel.description}
 							</p>
@@ -42,7 +43,7 @@ export function ChannelById() {
 				<Presentation>
 					{channel && (
 						<div style={{ padding: '8px' }} >
-							<h3>Conheça {channel.name}</h3><br />
+							<h3>{localizedStrings.meet} {channel.name}</h3><br />
 							<p style={{ maxWidth: '40ch', fontSize: '1em' }}>
 								{channel.description}
 							</p>
@@ -51,11 +52,12 @@ export function ChannelById() {
 				</Presentation>
 			</Content>
 		),
-	}[page] || (
+		'videos': (
 			<Content>
 				{id && <ListChannelVideos id={id} />}
 			</Content>
-		));
+		)
+	}[page]);
 
 	useEffect(() => {
 		(async () => {
@@ -83,9 +85,9 @@ export function ChannelById() {
 						<Banner src={channel.banner_src} />
 						<Panel channel={channel} />
 						<Tabs>
-							<Li><Btn onClick={() => setPageSelected('home')}>INICIO</Btn></Li>
-							<Li><Btn onClick={() => setPageSelected('videos')}>VIDEOS</Btn></Li>
-							<Li><Btn onClick={() => setPageSelected('about')}>SOBRE</Btn></Li>
+							<Li><Btn onClick={() => setPageSelected('home')}>{localizedStrings.start}</Btn></Li>
+							<Li><Btn onClick={() => setPageSelected('videos')}>{localizedStrings.videos}</Btn></Li>
+							<Li><Btn onClick={() => setPageSelected('about')}>{localizedStrings.about}</Btn></Li>
 						</Tabs>
 						<Pagination page={pageSelected} />
 					</Margin>

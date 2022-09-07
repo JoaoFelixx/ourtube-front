@@ -3,6 +3,7 @@ import { api } from 'service';
 import { toast } from 'react-toastify';
 import { BsFilterLeft } from 'react-icons/bs';
 import { useParams, Link } from 'react-router-dom';
+import { localizedStrings } from 'constants/localizedStrings';
 import { Channel as ChannelData, Video } from 'interfaces';
 import { FlexContainer, SideNav, SearchBar, Subscribe } from 'components';
 import {
@@ -45,7 +46,7 @@ export function SearchByDescription() {
         setFilteredVideos(videos.data);
         setFilteredChannels(channels.data);
       } catch (error) {
-        toast.error('Error na busca, tente novamente');
+        toast.error(localizedStrings.errorSearchingTryAgain);
       }
     })()
   }, [description])
@@ -59,7 +60,7 @@ export function SearchByDescription() {
           {hasContent ? (
             <React.Fragment>
               <Filter>
-                <BsFilterLeft /> Filtros
+                <BsFilterLeft /> {localizedStrings.filter}
               </Filter>
               {React.Children.toArray(
                 filteredChannels.map(({ _id, icon_src, name, description }) => {
