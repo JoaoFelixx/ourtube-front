@@ -9,4 +9,8 @@ export const errors = {
   unusableService: 'Serviço indisponivel',
   errorUnsubscribingTryAgain: 'Erro ao se desinscrever, tente novamente',
   errorSubscribingTryAgain: 'Erro ao se increver, tente novamente',
+  errorGettingData: 'Erro ao buscar dados',
+  errorSearchingTryAgain: 'Erro na busca, tente novamente',
+  errorGettingChannels: 'Erro buscando canais',
+  noRegistrationRegistered: 'Nenhuma inscrição registrada'
 }
