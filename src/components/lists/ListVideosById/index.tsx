@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react';
 import { Video } from 'interfaces';
 import { Item, List } from './style';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 
 interface ListProps {
 	id: string;
@@ -10,7 +10,7 @@ interface ListProps {
 
 export function ListVideosById({ id, isDisplayNone }: ListProps) {
 	const [videosSelected, setVideosSelected] = useState<null | Video[]>(null);
-	const videos = useSelectorVideos();
+	const { videos } = useSelectorApp();
 
 	const Videos = memo(() => {
 		return (

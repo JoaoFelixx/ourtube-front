@@ -1,6 +1,6 @@
 import React, { useEffect, useState, memo } from 'react';
 import { Video } from 'interfaces';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { Item, List, Flex, Content, Preview } from './style';
 
 interface ListProps {
@@ -9,7 +9,7 @@ interface ListProps {
 
 export function ListChannelVideos({ id }: ListProps) {
 	const [videosSelected, setVideosSelected] = useState<null | Video[]>(null);
-	const videos = useSelectorVideos();
+	const { videos } = useSelectorApp();
 
 	const Videos = memo(() => {
 		return (
@@ -18,8 +18,8 @@ export function ListChannelVideos({ id }: ListProps) {
 					videosSelected?.map(({ _id, description, preview_src, channel_id }) => {
 						return (
 							<Item>
-								<a 
-									style={{ textDecoration: 'none', color: '#000' }} 
+								<a
+									style={{ textDecoration: 'none', color: '#000' }}
 									href={`/video/${_id}`} >
 									<Flex>
 										<Preview src={preview_src} alt={description} />

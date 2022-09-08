@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Flex, Page } from './style';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import {
 	SideNav,
 	ShowVideo,
@@ -12,7 +12,7 @@ import {
 
 export function ShowVideos() {
 	const { id } = useParams();
-	const videos = useSelectorVideos();
+	const { videos } = useSelectorApp();
 	const [channel_id, setChannel_id] = useState<null | string>(null);
 
 	useEffect(() => {

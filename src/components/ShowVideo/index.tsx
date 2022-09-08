@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Video, Card } from './style';
 import { localizedStrings } from 'constants/localizedStrings';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { Video as VideoData, ID } from 'interfaces';
 
 export function ShowVideo({ id }: ID) {
-	const videos = useSelectorVideos();
+	const {videos} = useSelectorApp();
 	const [videoNotExists, setVideoNotExists] = useState(false);
 	const [videoSelected, setVideoSelected] = useState<VideoData | null>(null);
 

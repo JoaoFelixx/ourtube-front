@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import {
 	Icon,
 	Card,
@@ -12,7 +12,7 @@ import {
 } from './style';
 
 export function Videos() {
-	const videos = useSelectorVideos();
+	const { videos } = useSelectorApp();
 
 	const Videos = memo(() => {
 		return (

@@ -1,13 +1,13 @@
 import { Routes } from 'Router';
 import { GlobalStyle } from 'styles';
-import { ApplicationProvider } from 'Context/ApplicationContext';
+import { ContextInstance } from 'Context/ContextInstance';
 
 function Application() {
   return (
-    <ApplicationProvider>
+    <ContextInstance>
       <GlobalStyle />
       <Routes />
-    </ApplicationProvider>
+    </ContextInstance>
   );
 }
 

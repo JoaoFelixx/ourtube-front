@@ -7,7 +7,7 @@ import { BiUserCircle } from 'react-icons/bi';
 import { TiSocialYoutube } from 'react-icons/ti';
 import { useSelectorAuth } from 'Context/AuthProvider';
 import { localizedStrings } from 'constants/localizedStrings';
-import { useSelectorVideos } from 'Context/VideosProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -23,7 +23,7 @@ import {
 } from './style';
 
 export function SearchBar() {
-	const videos = useSelectorVideos();
+	const { videos } = useSelectorApp();
 	const navigate = useNavigate();
 	const { description } = useParams();
 	const [search, setSearch] = useState<string>(description || '');
