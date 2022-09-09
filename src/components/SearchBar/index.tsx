@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Ourtube from 'assets/ourtube-logo.png';
 import { ImExit } from 'react-icons/im';
 import { useParams } from 'react-router-dom';
 import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { TiSocialYoutube } from 'react-icons/ti';
 import { useSelectorAuth } from 'Context/AuthProvider';
 import { localizedStrings } from 'constants/localizedStrings';
-import { useSelectorApp } from 'Context/ApplicationProvider';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -23,10 +23,11 @@ import {
 } from './style';
 
 export function SearchBar() {
-	const { videos } = useSelectorApp();
 	const navigate = useNavigate();
 	const { description } = useParams();
 	const [search, setSearch] = useState<string>(description || '');
+	const { videos, channels } = useSelectorApp();
+	const [options, setOptions] = useState<string[]>([]);
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const { authenticated, setAuthenticated } = useSelectorAuth();
 
@@ -39,12 +40,14 @@ export function SearchBar() {
 		navigate('/');
 	}
 
-	const onSubmitForSearch = () => {
-		if (search.length <= 3)
-			return
+	const onSubmitForSearch = () => navigate(`/search/${search}`);
+	
+	useEffect(() => {
+		const videosDescriptions = videos.map(({ description }) => description);
+		const channelNames = channels.map(({ name }) => name);
 
-		navigate(`/search/${search}`);
-	}
+		setOptions([...videosDescriptions, ...channelNames])
+	}, [videos, channels]);
 
 	return (
 		<Nav>
@@ -61,13 +64,11 @@ export function SearchBar() {
 					onChange={(event) => setSearch(event.target.value)}
 					placeholder={localizedStrings.search} />
 				<datalist id='descriptions' style={{ overflow: 'hidden' }}>
-					{search.length >= 3 &&
-						React.Children.toArray(
-							videos.map(({ description }, index) =>
-								index > 7 ? null : <option value={description}></option>
-							)
+					{React.Children.toArray(
+						options.sort().map((name, index) =>
+							index > 7 ? null : <option value={name}></option>
 						)
-					}
+					)}
 				</datalist>
 				<SearchButton
 					type="button"
@@ -88,12 +89,10 @@ export function SearchBar() {
 						</li>
 					</ul>
 				</Modal>
-
 				{authenticated ?
 					<CgMenuGridR
 						style={{ cursor: 'pointer' }}
-						onClick={() => setShowModal(!showModal)} />
-					:
+						onClick={() => setShowModal(!showModal)} /> :
 					<Link style={{ textDecoration: 'none' }} to="/login">
 						<LoginButton>
 							<BiUserCircle color='#5A95E3' />
