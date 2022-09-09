@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Channel, ChannelAndEnrolled } from 'interfaces';
+import IconImg from 'assets/default-icon.png';
 import { Subscribe } from '../Subscribe';
 import { useLocation } from 'react-router-dom';
 import { MdAddAPhoto } from 'react-icons/md';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { localizedStrings } from 'constants/localizedStrings';
+import { Channel, ChannelAndEnrolled } from 'interfaces';
 import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
@@ -16,20 +17,25 @@ import {
 	ClickCard,
 	Separator,
 } from './style';
-import IconImg from 'assets/default-icon.png';
 
 interface PanelProps {
 	channel?: Channel | ChannelAndEnrolled;
 }
 
-interface FormSelected {
-	form: string;
+interface FormSelected { form: string; }
+interface Subscribes {
+	[index: number]: string;
+	other: (number: number) => string;
 }
 
 export function Panel({ channel }: PanelProps) {
 	const location = useLocation();
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const [formSelected, setFormSelected] = useState<string>('');
+	const subscribes:Subscribes = {
+		'1': '1 Inscrito',
+		'other': (number: number) => `${number} inscritos`,
+	}
 
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
 		'info': <FormUpdateChannel />,
@@ -65,8 +71,8 @@ export function Panel({ channel }: PanelProps) {
 					<h1>{channel?.name}</h1>
 					{channel && (
 						<span>
-							{'enrolled' in channel &&
-								channel.enrolled.length !== 1 ? `${channel.enrolled.length || 0} Inscritos` : '1 Inscrito'}
+							{'enrolled' in channel && 
+								(subscribes[channel.enrolled.length] || subscribes.other(channel.enrolled.length))}
 						</span>
 					)}
 				</div>
