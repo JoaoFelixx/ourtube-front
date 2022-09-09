@@ -1,34 +1,48 @@
-import React, { 
-	useState, 
-	useEffect, 
+import React, {
+	useState,
+	useEffect,
 	useContext,
-	createContext, 
+	createContext,
 } from 'react';
 import { api } from 'service';
-import { Video, Provider } from 'interfaces';
+import { Video, Provider, Channel } from 'interfaces';
 
 type Theme = 'dark' | 'white';
 
 interface Application {
 	videos: Video[];
+	channels: Channel[];
 	theme: Theme;
 	setTheme?: React.Dispatch<Application['theme']>;
 }
 
-const Context = createContext<Application>({ videos: [], theme: 'white' });
+const Context = createContext<Application>({
+	videos: [],
+	channels: [],
+	theme: 'white'
+});
 
 const useSelectorApp = (): Application => useContext(Context);
 
 function ApplicationProvider({ children }: Provider) {
-	const [videos, setVideos] = useState<Video[]>([]);
 	const [theme, setTheme] = useState<Theme>('white');
+	const [data, setData] = useState<Omit<Application, 'theme' | 'setTheme'>>({
+		channels: [],
+		videos: [],
+	});
 
 	useEffect(() => {
 		(async () => {
 			try {
-				const { data } = await api.get<Video[]>('/videos');
+				const [
+					{ data: videos },
+					{ data: channels }
+				] = await Promise.all([
+					api.get<Video[]>('/videos'),
+					api.get<Channel[]>('/channels'),
+				])
 
-				setVideos(data);
+				setData({ videos, channels });
 
 			} catch (error) {
 				return
@@ -37,7 +51,7 @@ function ApplicationProvider({ children }: Provider) {
 	}, [])
 
 	return (
-		<Context.Provider value={{ videos, theme, setTheme }}>
+		<Context.Provider value={{ ...data, theme, setTheme }}>
 			{children}
 		</Context.Provider>
 	)
