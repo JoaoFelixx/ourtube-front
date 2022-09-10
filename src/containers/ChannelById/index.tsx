@@ -1,26 +1,21 @@
-import { useEffect, useState } from 'react';
-import { api } from 'service';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { localizedStrings } from 'constants/localizedStrings';
-import { ChannelAndEnrolled } from 'interfaces';
-import {
+import { useSelectorChannel, ChannelProvider } from 'Context/ChannelProvider';
+import { Li, Btn, Tabs, Page, Margin, Content, Presentation } from './style'; import {
 	Panel,
-	Banner,
 	SideNav,
 	SearchBar,
 	FlexContainer,
 	ListChannelVideos,
 } from 'components';
-import { Li, Btn, Tabs, Page, Margin, Content, Presentation } from './style';
 
 interface PageSelected {
 	page: 'home' | 'about' | 'videos';
 }
 
-export function ChannelById() {
-	const { id } = useParams();
-	const [channel, setChannel] = useState<ChannelAndEnrolled | null>(null);
+function Table() {
 	const [pageSelected, setPageSelected] = useState<PageSelected['page']>('home');
+	const { id, channel } = useSelectorChannel();
 
 	const Pagination = ({ page }: PageSelected) => ({
 		'home': (
@@ -59,39 +54,31 @@ export function ChannelById() {
 		)
 	}[page]);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const { status, data } = await api.get<ChannelAndEnrolled>(`/channel/${id}`);
+	return (
+		<React.Fragment>
+			<Tabs>
+				<Li><Btn onClick={() => setPageSelected('home')}>{localizedStrings.start}</Btn></Li>
+				<Li><Btn onClick={() => setPageSelected('videos')}>{localizedStrings.videos}</Btn></Li>
+				<Li><Btn onClick={() => setPageSelected('about')}>{localizedStrings.about}</Btn></Li>
+			</Tabs>
+			<Pagination page={pageSelected} />
+		</React.Fragment>
 
-				if (status === 204)
-					return
+	)
+}
 
-				setChannel(data);
-
-			} catch (error) {
-				return
-			}
-		})()
-	}, [id])
-
+export function ChannelById() {
 	return (
 		<Page>
 			<SideNav />
 			<FlexContainer>
 				<SearchBar />
-				{channel && (
-					<Margin>
-						<Banner src={channel.banner_src} />
-						<Panel channel={channel} />
-						<Tabs>
-							<Li><Btn onClick={() => setPageSelected('home')}>{localizedStrings.start}</Btn></Li>
-							<Li><Btn onClick={() => setPageSelected('videos')}>{localizedStrings.videos}</Btn></Li>
-							<Li><Btn onClick={() => setPageSelected('about')}>{localizedStrings.about}</Btn></Li>
-						</Tabs>
-						<Pagination page={pageSelected} />
-					</Margin>
-				)}
+				<Margin>
+					<ChannelProvider>
+						<Panel />
+						<Table />
+					</ChannelProvider>
+				</Margin>
 			</FlexContainer>
 		</Page>
 	)

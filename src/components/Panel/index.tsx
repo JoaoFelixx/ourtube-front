@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import IconImg from 'assets/default-icon.png';
+import BannerImg from 'assets/default-banner.png';
+import { Banner } from 'components/Banner';
 import { Subscribe } from '../Subscribe';
-import { useLocation } from 'react-router-dom';
 import { MdAddAPhoto } from 'react-icons/md';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { localizedStrings } from 'constants/localizedStrings';
-import { Channel, ChannelAndEnrolled } from 'interfaces';
+import { useSelectorChannel } from 'Context/ChannelProvider';
 import { FormChannelEditImages, FormUpdateChannel } from '../forms';
 import {
 	Card,
@@ -18,29 +19,32 @@ import {
 	Separator,
 } from './style';
 
-interface PanelProps {
-	channel?: Channel | ChannelAndEnrolled;
+interface FormSelected {
+	form: 'info' | 'images' | 'select'
 }
 
-interface FormSelected { form: string; }
 interface Subscribes {
 	[index: number]: string;
 	other: (number: number) => string;
 }
 
-export function Panel({ channel }: PanelProps) {
-	const location = useLocation();
-	const [showModal, setShowModal] = useState<boolean>(false);
-	const [formSelected, setFormSelected] = useState<string>('');
-	const subscribes:Subscribes = {
+export function Panel() {
+	const subscribes: Subscribes = {
 		'1': '1 Inscrito',
 		'other': (number: number) => `${number} inscritos`,
 	}
+	const [formSelected, setFormSelected] = useState<FormSelected['form']>('select');
+	const {
+		channel,
+		location,
+		showModal,
+		setShowModal,
+	} = useSelectorChannel();
 
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
 		'info': <FormUpdateChannel />,
 		'images': <FormChannelEditImages />,
-	}[form] || (
+		'select': (
 			<React.Fragment>
 				<h1 style={{ textAlign: 'center' }}>{localizedStrings.selectEditForm}</h1>
 				<Content style={{ justifyContent: 'space-around' }}>
@@ -55,36 +59,43 @@ export function Panel({ channel }: PanelProps) {
 					</ClickCard>
 				</Content>
 			</React.Fragment>
-		))
+		)
+	}[form]);
 
 	return (
-		<Card>
-			{showModal &&
-				<Modal>
-					<Exit onClick={() => { setShowModal(false); setFormSelected(''); }}>X</Exit>
-					<Forms form={formSelected} />
-				</Modal>
-			}
-			<Content>
-				<Icon src={channel ? channel.icon_src : IconImg} alt={`Logo ${channel?.name}`} />
-				<div>
-					<h1>{channel?.name}</h1>
-					{channel && (
-						<span>
-							{'enrolled' in channel && 
-								(subscribes[channel.enrolled.length] || subscribes.other(channel.enrolled.length))}
-						</span>
-					)}
-				</div>
-			</Content><br />
-			<Content>
-				{location.pathname !== '/myChannel' && channel ? <Subscribe id={channel._id} /> : (
+		<React.Fragment>
+			<Banner src={channel?.banner_src || BannerImg} />
+			<Card>
+				{showModal &&
+					<Modal>
+						<Exit onClick={() => { setShowModal?.(false); setFormSelected('select'); }}>X</Exit>
+						<Forms form={formSelected} />
+					</Modal>
+				}
+				<Content>
+					<Icon src={channel?.icon_src || IconImg} alt={`Logo ${channel?.name}`} />
 					<div>
-						<Button onClick={() => setShowModal(true)}>{localizedStrings.customChannel}</Button>
-						<Button>{localizedStrings.managerVideos}</Button>
+						<h1>{channel?.name || 'Channel name'}</h1>
+						{channel && (
+							<span>
+								{'enrolled' in channel &&
+									(subscribes[channel.enrolled.length] || subscribes.other(channel.enrolled.length))}
+							</span>
+						)}
 					</div>
-				)}
-			</Content>
-		</Card>
+				</Content><br />
+				<Content>
+					{location !== '/myChannel' && channel ? <Subscribe id={channel._id} /> : (
+						<div>
+							<Button
+								onClick={() => setShowModal?.(true)}>
+								{localizedStrings.customChannel}
+							</Button>
+							<Button>{localizedStrings.managerVideos}</Button>
+						</div>
+					)}
+				</Content>
+			</Card>
+		</React.Fragment>
 	)
 }
