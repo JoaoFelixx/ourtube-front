@@ -2,21 +2,26 @@ import React, {
   useState,
   useEffect,
   useContext,
+  useCallback,
   createContext,
 } from 'react';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { localizedStrings } from 'constants/localizedStrings';
-import { ChannelAndEnrolled, Provider } from 'interfaces';
+import { Provider, ChannelAndEnrolled } from 'interfaces';
+
+interface DispatchOptions {
+  type: 'change:channel' | 'delete:channel' | 'toggle:modal';
+  channel?: ChannelAndEnrolled;
+}
 
 interface PanelProps {
   id?: string;
   channel?: ChannelAndEnrolled;
   location: string;
   showModal: boolean;
-  setChannel?: React.Dispatch<ChannelAndEnrolled>;
-  setShowModal?: React.Dispatch<boolean>;
+  dispatch?: React.Dispatch<DispatchOptions>;
 }
 
 const Context = createContext<PanelProps>({
@@ -32,11 +37,15 @@ function ChannelProvider({ children }: Provider) {
   const [channel, setChannel] = useState<PanelProps['channel']>(undefined);
   const [showModal, setShowModal] = useState<boolean>(false);
 
+  const dispatch = useCallback(({ type, channel }: DispatchOptions) => ({
+    'change:channel': setChannel(channel),
+    'delete:channel': setChannel(undefined),
+    'toggle:modal': setShowModal(!showModal),
+  }[type]), [showModal]);
+
   useEffect(() => {
     (async () => {
       try {
-        const token = localStorage.getItem('ourtube_token');
-
         if (location !== '/myChannel') {
           const { status, data } = await api.get<ChannelAndEnrolled>(`/channel/${id}`);
 
@@ -47,6 +56,8 @@ function ChannelProvider({ children }: Provider) {
 
           return
         }
+
+        const token = localStorage.getItem('ourtube_token');
 
         if (!token)
           return
@@ -69,10 +80,10 @@ function ChannelProvider({ children }: Provider) {
   }, [id, location]);
 
   return (
-    <Context.Provider value={{ id, location, channel, showModal, setChannel, setShowModal }}>
+    <Context.Provider value={{ id, channel, location, showModal, dispatch }}>
       {children}
     </Context.Provider>
   )
 }
 
-export {useSelectorChannel, ChannelProvider };
+export { useSelectorChannel, ChannelProvider };
