@@ -1,11 +1,5 @@
 import { FormLogin } from './FormLogin';
-import { FormCreateChannel } from './FormCreateChannel';
+import { FormChannel } from './FormChannel';
 import { FormChannelEditImages } from './FormChannelEditImages';
-import { FormUpdateChannel } from './FormUpdateChannel';
 
-export {
-  FormLogin,
-  FormCreateChannel,
-  FormUpdateChannel,
-  FormChannelEditImages,
-};
+export { FormLogin, FormChannel, FormChannelEditImages, };

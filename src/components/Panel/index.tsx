@@ -7,7 +7,7 @@ import { MdAddAPhoto } from 'react-icons/md';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { localizedStrings } from 'constants/localizedStrings';
 import { useSelectorChannel } from 'Context/ChannelProvider';
-import { FormChannelEditImages, FormUpdateChannel } from '../forms';
+import { FormChannelEditImages, FormChannel } from '../forms';
 import {
 	Card,
 	Icon,
@@ -37,12 +37,14 @@ export function Panel() {
 	const {
 		channel,
 		location,
+		dispatch,
 		showModal,
-		setShowModal,
 	} = useSelectorChannel();
 
+	console.log(typeof dispatch);
+
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
-		'info': <FormUpdateChannel />,
+		'info': <FormChannel />,
 		'images': <FormChannelEditImages />,
 		'select': (
 			<React.Fragment>
@@ -68,7 +70,7 @@ export function Panel() {
 			<Card>
 				{showModal &&
 					<Modal>
-						<Exit onClick={() => { setShowModal?.(false); setFormSelected('select'); }}>X</Exit>
+						<Exit onClick={() => { dispatch?.({ type: 'toggle:modal' }); setFormSelected('select'); }}>X</Exit>
 						<Forms form={formSelected} />
 					</Modal>
 				}
@@ -88,7 +90,7 @@ export function Panel() {
 					{location !== '/myChannel' && channel ? <Subscribe id={channel._id} /> : (
 						<div>
 							<Button
-								onClick={() => setShowModal?.(true)}>
+								onClick={() => dispatch?.({ type: 'toggle:modal' })}>
 								{localizedStrings.customChannel}
 							</Button>
 							<Button>{localizedStrings.managerVideos}</Button>
