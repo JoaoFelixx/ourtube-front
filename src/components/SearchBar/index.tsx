@@ -6,7 +6,6 @@ import { CgMenuGridR } from 'react-icons/cg';
 import { BiUserCircle } from 'react-icons/bi';
 import { useSelectorApp } from 'Context/ApplicationProvider';
 import { TiSocialYoutube } from 'react-icons/ti';
-import { useSelectorAuth } from 'Context/AuthProvider';
 import { localizedStrings } from 'constants/localizedStrings';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
@@ -26,11 +25,12 @@ export function SearchBar() {
 	const navigate = useNavigate();
 	const { description } = useParams();
 	const [search, setSearch] = useState<string>(description || '');
-	const { videos, channels } = useSelectorApp();
 	const [options, setOptions] = useState<string[]>([]);
 	const [showModal, setShowModal] = useState<boolean>(false);
-	const { authenticated, setAuthenticated } = useSelectorAuth();
-
+	const {
+		videos, channels, authenticated, setAuthenticated
+	} = useSelectorApp();
+	
 	const logOut = () => {
 		setShowModal(false);
 		setAuthenticated?.(false);
@@ -41,7 +41,7 @@ export function SearchBar() {
 	}
 
 	const onSubmitForSearch = () => navigate(`/search/${search}`);
-	
+
 	useEffect(() => {
 		const videosDescriptions = videos.map(({ description }) => description);
 		const channelNames = channels.map(({ name }) => name);

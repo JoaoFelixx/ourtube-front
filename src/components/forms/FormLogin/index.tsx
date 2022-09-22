@@ -3,7 +3,7 @@ import Ourtube from 'assets/icon.png';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useSelectorAuth } from 'Context/AuthProvider';
+import { useSelectorApp } from 'Context/ApplicationProvider';
 import { localizedStrings } from 'constants/localizedStrings';
 import { Card, Input, Button } from './style';
 
@@ -16,7 +16,7 @@ export function FormLogin({ isLogin }: FormType) {
 	const [email, setEmail] = useState<string | null>(null);
 	const [password, setPassword] = useState<string | null>(null);
 	const [confPassword, setConfPassword] = useState<string | null>(null);
-	const { setAuthenticated } = useSelectorAuth();
+	const { setAuthenticated } = useSelectorApp();
 
 	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		try {
