@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Ourtube from 'assets/icon.png';
 import { api } from 'service';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import { useSelectorApp } from 'Context/ApplicationProvider';
 import { localizedStrings } from 'constants/localizedStrings';
-import { Card, Input, Button } from './style';
+import { useNavigate, Link } from 'react-router-dom';
+import { Card, Input, Button, DiscreteComponent } from './style';
 
 interface FormType {
 	isLogin?: boolean;
@@ -88,6 +88,12 @@ export function FormLogin({ isLogin }: FormType) {
 					<Button color='#019AFA'>{localizedStrings.send}</Button>
 					<Button type="reset" color='#ff0000'>{localizedStrings.cancel}</Button>
 				</div>
+				<DiscreteComponent>
+					{isLogin ?
+						<Link to='/register'>Não possui conta ?</Link> :
+						<Link to='/login'>Já possui conta ?</Link>
+					}
+				</DiscreteComponent>
 			</form>
 		</Card>
 	)
