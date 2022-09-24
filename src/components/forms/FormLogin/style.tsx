@@ -9,6 +9,14 @@ interface InputHasError {
 	hasError?: boolean;
 }
 
+const DiscreteComponent = styled.div`
+	a {
+		color: #000;
+		text-decoration: none;
+		font-weight: bold;
+	}
+`;
+
 const Card = styled.div`
   background-image: url(${Background});
   background-attachment: fixed;
@@ -75,4 +83,4 @@ const Input = styled.input<InputHasError>`
 	}
 `;
 
-export { Card, Input, Button }
+export { Card, Input, Button, DiscreteComponent }
