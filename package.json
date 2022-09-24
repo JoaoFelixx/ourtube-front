@@ -2,6 +2,13 @@
   "name": "front-end-ourtube",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cypress:test": "npx cypress open"
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "react": "^18.2.0",
@@ -24,13 +31,8 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
+    "cypress": "^10.8.0",
     "typescript": "^4.8.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
