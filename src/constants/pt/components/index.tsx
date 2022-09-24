@@ -8,7 +8,7 @@ export const components = {
   send: 'Enviar',
   cancel: 'Cancelar',
   makeLogin: 'Fazer Login',
-  register: 'Regsitre-se',
+  register: 'Registre-se',
   email: 'E-mail',
   password: 'Senha',
   confPassword: 'Confirmação de senha',
