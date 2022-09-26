@@ -2,7 +2,7 @@ export const errors = {
   addAllPhotos: 'Adicione todas as fotos',
   errorRegisteringImages: 'Erro ao registrar imagens',
   errorRegisteringChannelTryAgain: 'Erro ao registrar canal, tente novamente',
-  errorUpdatingChannelTryAngain: 'Erro ao atualizar canal, tente novamente',
+  errorUpdatingChannelTryAgain: 'Erro ao atualizar canal, tente novamente',
   isNotSamePassword: 'Senhas não são iguais',
   errorRegistering: 'Erro ao se registrar',
   errorVideoNotAFound: 'Erro, video não encontrado',

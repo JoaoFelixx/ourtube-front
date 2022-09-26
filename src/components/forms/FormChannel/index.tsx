@@ -38,7 +38,7 @@ export function FormChannel() {
       toast.success(localizedStrings.channelCreatedWithSuccessful);
 
     } catch (error) {
-      toast.error(localizedStrings.errorUpdatingChannelTryAngain);
+      toast.error(localizedStrings.errorUpdatingChannelTryAgain);
     }
   }
 
