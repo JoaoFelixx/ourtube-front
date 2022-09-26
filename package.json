@@ -1,7 +1,12 @@
 {
   "name": "front-end-ourtube",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "João Félix",
+    "url": "https://felixdeveloper.netlify.app"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
