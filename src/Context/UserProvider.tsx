@@ -10,7 +10,6 @@ import { useSelectorApp } from './ApplicationProvider';
 import { Provider, Enrolled, Channel } from 'interfaces';
 
 type DispatchOptions = 'delete:enrolled' | 'post:enrolled';
-
 interface Subscribes {
   _id: string;
   user_id: string;
@@ -40,14 +39,11 @@ function UserProvider({ children }: Provider) {
   const { authenticated } = useSelectorApp();
 
   const dispatch = useCallback(({ type, enrolledSended }: Dispatch) => ({
-    'post:enrolled': () => setEnrolled([...enrolled, enrolledSended]),
-    'delete:enrolled': () => {
-      const enrolledSaved = enrolled
-        .filter(({ channel_id }) => enrolledSended.channel_id !== channel_id);
-
-      setEnrolled(enrolledSaved);
-    },
-  }[type]()), [enrolled]);
+    'post:enrolled': setEnrolled([...enrolled, enrolledSended]),
+    'delete:enrolled': setEnrolled(e =>
+      e.filter(({ channel_id }) => enrolledSended.channel_id !== channel_id)
+    ),
+  }[type]), [enrolled]);
 
   useEffect(() => {
     (async () => {
