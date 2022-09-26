@@ -1,3 +1,4 @@
+import { ID } from 'interfaces';
 import { api } from 'service';
 import { toast } from 'react-toastify';
 import { Card, Button } from './style';
@@ -9,11 +10,7 @@ interface ChannelImages {
 	bannerList: FileList;
 }
 
-interface ChannelId {
-	_id?: string;
-}
-
-export function FormChannelEditImages({ _id }: ChannelId) {
+export function FormChannelEditImages({ id }: Partial<ID>) {
 	const { register: registerImg, handleSubmit: submitImg } = useForm<ChannelImages>();
 
 	const onSubmitImages: SubmitHandler<ChannelImages> = async ({ iconList, bannerList }) => {
@@ -44,9 +41,14 @@ export function FormChannelEditImages({ _id }: ChannelId) {
 				}
 			}
 
+			if (!id) {
+				toast.warning('ID não informado')
+				return
+			}
+			 
 			await Promise.all([
-				api.put(`/channels/icon/${_id}`, formIcon, headers),
-				api.put(`/channels/banner/${_id}`, formBanner, headers)
+				api.put(`/channels/icon/${id}`, formIcon, headers),
+				api.put(`/channels/banner/${id}`, formBanner, headers)
 			])
 
 			toast.success(localizedStrings.photosSendedWithSuccessful);
