@@ -33,19 +33,14 @@ export function Panel() {
 		'1': '1 Inscrito',
 		'other': (number: number) => `${number} inscritos`,
 	}
+	
 	const [formSelected, setFormSelected] = useState<FormSelected['form']>('select');
-	const {
-		channel,
-		location,
-		dispatch,
-		showModal,
-	} = useSelectorChannel();
-
-	console.log(typeof dispatch);
+	const [showModal, setShowModal] = useState<boolean>(false);
+	const { channel, location, } = useSelectorChannel();
 
 	const Forms = ({ form }: FormSelected): JSX.Element => ({
 		'info': <FormChannel />,
-		'images': <FormChannelEditImages />,
+		'images': <FormChannelEditImages id={channel?._id} />,
 		'select': (
 			<React.Fragment>
 				<h1 style={{ textAlign: 'center' }}>{localizedStrings.selectEditForm}</h1>
@@ -70,7 +65,10 @@ export function Panel() {
 			<Card>
 				{showModal &&
 					<Modal>
-						<Exit onClick={() => { dispatch?.({ type: 'toggle:modal' }); setFormSelected('select'); }}>X</Exit>
+						<Exit onClick={() => {
+							setShowModal(false);
+							setFormSelected('select');
+						}}>X</Exit>
 						<Forms form={formSelected} />
 					</Modal>
 				}
@@ -87,10 +85,10 @@ export function Panel() {
 					</div>
 				</Content><br />
 				<Content>
-					{location !== '/myChannel' && channel ? <Subscribe id={channel._id} /> : (
+					{(location !== '/myChannel' && channel) ? <Subscribe id={channel._id} /> : (
 						<div>
 							<Button
-								onClick={() => dispatch?.({ type: 'toggle:modal' })}>
+								onClick={() => setShowModal(true)}>
 								{localizedStrings.customChannel}
 							</Button>
 							<Button>{localizedStrings.managerVideos}</Button>
